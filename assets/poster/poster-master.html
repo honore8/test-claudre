@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE SALON — Launch Poster</title>
+<link rel="stylesheet" href="../../design-system/tokens.css">
+<style>
+  @page { size: 420mm 594mm; margin: 0; }
+
+  /*
+    This document is rendered at several target pixel sizes/aspect ratios
+    (see ../poster/render-poster.js). All type and the comb are sized in
+    vw so the same markup re-composes cleanly for each frame: the grid's
+    middle 1fr row simply grows or shrinks, keeping the comb centered,
+    while the top and bottom copy blocks stay anchored to their edges.
+  */
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-white);
+    overflow: hidden;
+  }
+
+  .poster {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: var(--space-7) var(--margin-desktop);
+    color: var(--color-blue);
+    position: relative;
+  }
+
+  /* ---- Top block ---- */
+  .top {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    font-size: 7.6vw;
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .convened {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 1.8vw;
+    letter-spacing: 0.02em;
+    color: var(--color-blue);
+    margin: 0;
+  }
+
+  .tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 2.6vw;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  /* ---- Middle: the comb ---- */
+  .comb-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .comb {
+    width: 30vw;
+    max-height: 62vh;
+    color: var(--color-blue);
+  }
+
+  /* ---- Bottom block ---- */
+  .bottom {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .thesis {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 3vw;
+    line-height: 1.25;
+    max-width: 72vw;
+    margin: 0;
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .meta .date {
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: 2vw;
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+
+  .meta .place {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 1.8vw;
+    margin: 0;
+  }
+
+  .meta .unga {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 1.4vw;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    color: var(--color-blue);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .rule {
+    width: 4.8vw;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.4;
+  }
+</style>
+</head>
+<body>
+  <div class="poster">
+    <div class="top">
+      <h1 class="title">THE SALON</h1>
+      <p class="convened">Convened by Bluemind Foundation</p>
+      <p class="tagline">Shaped by Africa.<br>Open to the World.</p>
+    </div>
+
+    <div class="comb-wrap">
+      <svg class="comb" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="THE SALON comb symbol (placeholder)">
+        <g fill="currentColor">
+          <rect x="20" y="30" width="200" height="24" rx="12"/>
+          <path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/>
+          <path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/>
+          <path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/>
+          <path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/>
+          <path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/>
+          <path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/>
+          <path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/>
+          <path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/>
+          <path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="bottom">
+      <p class="thesis">Where Relationships Become Infrastructure.</p>
+      <div class="rule"></div>
+      <div class="meta">
+        <p class="date">September 17, 2026</p>
+        <p class="place">New York</p>
+        <p class="unga">during the 81st United Nations General Assembly (UNGA)</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

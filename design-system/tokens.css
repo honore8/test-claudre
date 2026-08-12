@@ -1,0 +1,83 @@
+/*
+  THE SALON by Bluemind Foundation — Design Tokens
+  ---------------------------------------------------
+  Single source of truth for color, type, spacing and grid.
+  Every deliverable in this repository imports this file rather than
+  redefining values, so the system stays consistent and easy to retheme.
+
+  PLACEHOLDER NOTICE
+  Bluemind Foundation's exact brand hex codes and existing typeface were
+  not available when this system was built. The values below are
+  deliberate, considered placeholders chosen to match the brief's
+  direction (quiet luxury, editorial, African without cliché — no
+  gradients, no shadows, no glossy effects). Swap the four color values
+  and the two font-family stacks below once the real brand file is
+  provided; nothing else in the system needs to change.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  /* ---- Color: primary Bluemind Blue, white, and two restrained accents ---- */
+  --color-blue: #14274E;        /* Bluemind Blue — PLACEHOLDER, replace with brand hex */
+  --color-blue-ink: #0D1B38;    /* darker blue for text-on-white, hover states */
+  --color-white: #FFFFFF;
+  --color-warm-black: #1A1815;  /* accent only — body copy on ivory, never a fill */
+  --color-ivory: #F5F1EA;       /* soft ivory — accent surface only */
+
+  /* No gradients, no shadows, no glossy effects — enforced by not defining any. */
+
+  /* ---- Typography ---- */
+  /* Display: editorial serif, used sparingly and large. PLACEHOLDER for Bluemind's redrawn letterforms. */
+  --font-display: 'Fraunces', 'Georgia', serif;
+  /* Text / UI: quiet grotesque sans for labels, body, form fields. */
+  --font-text: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+
+  --tracking-label: 0.14em;   /* wide tracking for small caps labels (ACT I, dates, eyebrows) */
+  --tracking-display: -0.01em;
+
+  /* ---- Spacing scale (8px base) ---- */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 96px;
+  --space-8: 128px;
+  --space-9: 192px;
+
+  /* ---- Layout ---- */
+  --container-max: 1200px;
+  --margin-desktop: 8vw;
+  --margin-tablet: 6vw;
+  --margin-mobile: 6vw;
+  --grid-columns: 12;
+  --grid-gap: 24px;
+
+  /* ---- Motion / borders kept minimal on purpose ---- */
+  --border-hairline: 1px solid currentColor;
+  --radius-none: 0;
+}
+
+/* ---- Base reset shared by every HTML deliverable ---- */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--color-white);
+  color: var(--color-blue);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { max-width: 100%; display: block; }
+
+.font-display { font-family: var(--font-display); letter-spacing: var(--tracking-display); }
+.eyebrow {
+  font-family: var(--font-text);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* Never use box-shadow, filter:drop-shadow, or linear/radial-gradient anywhere in this system. */

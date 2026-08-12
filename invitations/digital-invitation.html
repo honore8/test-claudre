@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THE SALON — Digital Invitation</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  body {
+    background: var(--color-white);
+  }
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-8) var(--margin-desktop) var(--space-8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .eyebrow { color: var(--color-blue); margin: 0 0 var(--space-3); }
+  .event-name {
+    font-family: var(--font-display);
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    font-size: 76px;
+    color: var(--color-blue);
+    margin: 0 0 var(--space-3);
+  }
+  .convened {
+    font-family: var(--font-text);
+    font-size: 17px;
+    color: var(--color-blue);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 0 var(--space-7);
+  }
+  .comb {
+    width: 150px;
+    color: var(--color-blue);
+    margin-bottom: var(--space-7);
+  }
+  .tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 34px;
+    color: var(--color-blue);
+    max-width: 640px;
+    line-height: 1.45;
+    margin: 0 0 var(--space-7);
+  }
+  .rule {
+    border: none;
+    border-top: var(--border-hairline);
+    color: var(--color-blue);
+    width: 72px;
+    margin: 0 0 var(--space-5);
+  }
+  .when-where {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-7);
+  }
+  .date-line {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-blue);
+    margin: 0;
+  }
+  .city-line {
+    font-family: var(--font-text);
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-blue);
+    margin: 0;
+  }
+  .venue-line {
+    font-family: var(--font-text);
+    font-size: 15px;
+    color: var(--color-blue);
+    opacity: 0.75;
+    margin: 0;
+  }
+  .structure {
+    max-width: 640px;
+    margin-bottom: var(--space-7);
+    padding-top: var(--space-6);
+    border-top: var(--border-hairline);
+    color: var(--color-blue);
+  }
+  .structure-intro {
+    font-family: var(--font-text);
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0 0 var(--space-4);
+    opacity: 0.85;
+  }
+  .acts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    text-align: left;
+    margin: 0 auto;
+    max-width: 520px;
+  }
+  .act {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: var(--space-3);
+    align-items: baseline;
+  }
+  .act-label {
+    font-family: var(--font-text);
+    font-size: 12px;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-blue);
+    opacity: 0.6;
+  }
+  .act-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-blue);
+    margin: 0 0 4px;
+  }
+  .act-desc {
+    font-family: var(--font-text);
+    font-size: 14px;
+    color: var(--color-blue);
+    opacity: 0.75;
+    margin: 0;
+  }
+  .cta {
+    display: inline-block;
+    font-family: var(--font-text);
+    font-size: 13px;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-blue);
+    text-decoration: none;
+    border: var(--border-hairline);
+    padding: 18px 44px;
+    margin-bottom: var(--space-6);
+  }
+  .invite-only {
+    font-family: var(--font-text);
+    font-size: 12px;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-blue);
+    opacity: 0.6;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <p class="eyebrow">An Inaugural Gathering</p>
+    <h1 class="event-name">THE SALON</h1>
+    <p class="convened">Convened by Bluemind Foundation.<br>Shaped by Africa. Open to the World.</p>
+
+    <img class="comb" src="../design-system/comb-placeholder.svg" alt="">
+
+    <p class="tagline">Where Relationships<br>Become Infrastructure.</p>
+
+    <hr class="rule">
+
+    <div class="when-where">
+      <p class="date-line">September 17, 2026</p>
+      <p class="city-line">New York</p>
+      <p class="venue-line">Praxis, New York Headquarters — during the 81st UN General Assembly</p>
+    </div>
+
+    <div class="structure">
+      <p class="structure-intro">An evening in two registers, one house.</p>
+      <div class="acts">
+        <div class="act">
+          <p class="act-label">Lower Level</p>
+          <div>
+            <p class="act-name">Act I — The Evidence</p>
+            <p class="act-desc">Seated presentations.</p>
+          </div>
+        </div>
+        <div class="act">
+          <p class="act-label">Lower Level</p>
+          <div>
+            <p class="act-name">Act II — From Evidence to Infrastructure</p>
+            <p class="act-desc">Seated presentations.</p>
+          </div>
+        </div>
+        <div class="act">
+          <p class="act-label">Upper Level</p>
+          <div>
+            <p class="act-name">Act III — La Clairière</p>
+            <p class="act-desc">A Celebration of Black Cultures of Care. Standing, food, music.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a class="cta" href="#">Request an Invitation</a>
+
+    <p class="invite-only">By Invitation Only — Approximately 50 Guests</p>
+  </div>
+</body>
+</html>

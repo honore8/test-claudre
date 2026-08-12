@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>THE SALON — Save the Date</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  @page { size: 1200px 1500px; margin: 0; }
+  html, body {
+    width: 1200px;
+    height: 1500px;
+    background: var(--color-white);
+    overflow: hidden;
+  }
+  .card {
+    width: 1200px;
+    height: 1500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 130px 100px 110px;
+    text-align: center;
+  }
+  .top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+  .eyebrow {
+    color: var(--color-blue);
+  }
+  .event-name {
+    font-family: var(--font-display);
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    font-size: 44px;
+    color: var(--color-blue);
+    margin: 0;
+  }
+  .convened {
+    font-family: var(--font-text);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--color-blue);
+    letter-spacing: 0.02em;
+    max-width: 560px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .comb {
+    width: 130px;
+    color: var(--color-blue);
+  }
+  .middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 27px;
+    color: var(--color-blue);
+    max-width: 620px;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .date-line {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--color-blue);
+    margin: 0;
+  }
+  .city-line {
+    font-family: var(--font-text);
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-blue);
+    margin: 0;
+  }
+  .invite-only {
+    font-family: var(--font-text);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-blue);
+    opacity: 0.72;
+    margin-top: 30px;
+  }
+  hr.rule {
+    border: none;
+    border-top: var(--border-hairline);
+    color: var(--color-blue);
+    width: 64px;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <p class="eyebrow">Save the Date</p>
+      <h1 class="event-name">THE SALON</h1>
+      <p class="convened">Convened by Bluemind Foundation.<br>Shaped by Africa. Open to the World.</p>
+    </div>
+
+    <div class="middle">
+      <img class="comb" src="../design-system/comb-placeholder.svg" alt="">
+      <p class="tagline">Where Relationships<br>Become Infrastructure.</p>
+    </div>
+
+    <div class="bottom">
+      <hr class="rule">
+      <p class="date-line">September 17, 2026</p>
+      <p class="city-line">New York — 81st UN General Assembly</p>
+      <p class="invite-only">By Invitation Only</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,537 @@
+/*
+  THE SALON by Bluemind Foundation — Landing Page Styles
+  --------------------------------------------------------
+  Imports design-system/tokens.css for all color, type and spacing
+  values. This file only arranges those tokens into layout — it does
+  not introduce new colors, gradients, shadows or radii.
+*/
+
+/* ---- Layout primitives ---- */
+
+.wrap {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--margin-desktop);
+  padding-right: var(--margin-desktop);
+}
+
+section {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+}
+
+.rule {
+  border: none;
+  border-top: var(--border-hairline);
+  margin: 0;
+  opacity: 0.35;
+}
+
+.center {
+  text-align: center;
+}
+
+/* ---- Skip link (accessibility, invisible until focused) ---- */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+}
+.skip-link:focus {
+  left: var(--space-2);
+  top: var(--space-2);
+  z-index: 50;
+  background: var(--color-white);
+  padding: var(--space-1) var(--space-2);
+}
+
+/* ---- HERO ---- */
+
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-5);
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+.hero-kicker {
+  color: var(--color-blue);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: clamp(44px, 9vw, 108px);
+  line-height: 1;
+  margin: 0;
+}
+
+.hero-convened {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  margin: 0;
+  opacity: 0.85;
+}
+
+.hero-comb {
+  width: min(220px, 34vw);
+  color: var(--color-blue);
+  margin: var(--space-2) 0;
+}
+
+.hero-lines {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(18px, 2.6vw, 26px);
+  line-height: 1.45;
+  max-width: 720px;
+  margin: 0;
+}
+
+.hero-lines .line {
+  display: block;
+}
+
+/* ---- Buttons: hairline text buttons only — no fill, no shadow ---- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-text);
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: inherit;
+  text-decoration: none;
+  background: transparent;
+  border: var(--border-hairline);
+  border-radius: var(--radius-none);
+  padding: var(--space-3) var(--space-5);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background: var(--color-blue);
+    color: var(--color-white);
+  }
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+.hero-cta {
+  margin-top: var(--space-2);
+}
+
+/* ---- Eyebrow / section labels ---- */
+
+.eyebrow {
+  color: var(--color-blue);
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+/* ---- THE IDEA ---- */
+
+.idea {
+  text-align: center;
+}
+
+.idea-frame {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.idea-tag {
+  font-family: var(--font-text);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 0 var(--space-5);
+  opacity: 0.85;
+}
+
+.idea-statement {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 3.4vw, 38px);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ---- THE THREE ACTS ---- */
+
+.acts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.act {
+  padding: var(--space-6) var(--space-4);
+  border-top: var(--border-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.acts .act + .act {
+  border-left: var(--border-hairline);
+}
+
+.act-index {
+  opacity: 0.6;
+}
+
+.act-name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.act-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(21px, 2.4vw, 27px);
+  line-height: 1.3;
+  margin: var(--space-1) 0 0;
+}
+
+.act-body {
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* ---- Placeholder sections: Speakers / Partners / Programme ---- */
+
+.placeholder {
+  text-align: center;
+}
+
+.placeholder-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(22px, 3vw, 30px);
+  margin: 0 0 var(--space-4);
+}
+
+.placeholder-note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 17px;
+  opacity: 0.55;
+  margin: 0 auto;
+}
+
+/* ---- REQUEST AN INVITATION (form) ---- */
+
+.invitation-intro {
+  max-width: 700px;
+  margin: 0 0 var(--space-7);
+  font-size: 16px;
+  line-height: 1.75;
+  opacity: 0.9;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+legend {
+  font-family: var(--font-text);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  font-weight: 500;
+  font-size: 13px;
+  padding: 0 0 var(--space-3);
+  border-bottom: var(--border-hairline);
+  width: 100%;
+  margin-bottom: var(--space-2);
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+.field label,
+.group-label {
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
+.hint {
+  font-size: 12px;
+  opacity: 0.55;
+  margin: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+textarea,
+select {
+  font-family: var(--font-text);
+  font-size: 15px;
+  color: var(--color-blue);
+  background: transparent;
+  border: none;
+  border-bottom: var(--border-hairline);
+  border-radius: var(--radius-none);
+  padding: var(--space-2) 0;
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-bottom: 2px solid var(--color-blue);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-blue);
+  opacity: 0.4;
+}
+
+.word-count {
+  font-size: 12px;
+  opacity: 0.55;
+  margin: var(--space-1) 0 0;
+  text-align: right;
+}
+.word-count.over {
+  opacity: 1;
+  font-style: italic;
+}
+
+.option-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.option-list.columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2) var(--space-4);
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.option input[type="radio"],
+.option input[type="checkbox"] {
+  margin: 3px 0 0;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: var(--color-blue);
+}
+
+.option-other-field {
+  margin-left: var(--space-5);
+}
+
+.option-other-field input {
+  max-width: 320px;
+}
+
+.subfields-note {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: var(--border-hairline);
+}
+
+.consent input {
+  margin-top: 4px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--color-blue);
+}
+
+.consent label {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.form-closing {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 560px;
+  margin: 0;
+}
+
+.form-submit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+/* ---- FOOTER ---- */
+
+footer {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-top: var(--border-hairline);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-4);
+  align-items: baseline;
+}
+
+.footer-name {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 15px;
+  margin: 0;
+}
+
+.footer-meta {
+  font-size: 13px;
+  line-height: 1.7;
+  opacity: 0.75;
+  margin: 0;
+}
+
+.footer-meta a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-underline-offset: 3px;
+}
+
+/* =====================================================================
+   RESPONSIVE — mobile-first adjustments below a tablet breakpoint
+   ===================================================================== */
+
+@media (max-width: 900px) {
+  .wrap {
+    padding-left: var(--margin-mobile, 6vw);
+    padding-right: var(--margin-mobile, 6vw);
+  }
+
+  section {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+  }
+
+  .acts {
+    grid-template-columns: 1fr;
+  }
+
+  .acts .act + .act {
+    border-left: none;
+  }
+
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field-grid .field {
+    grid-column: 1 / -1;
+  }
+
+  .option-list.columns {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    gap: var(--space-4);
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    padding: var(--space-3) var(--space-3);
+  }
+}
