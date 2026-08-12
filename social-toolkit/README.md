@@ -14,7 +14,7 @@ Reusable 1080×1080 square templates for **THE SALON by Bluemind Foundation** �
 | `registration-open.html` | — | "Request an Invitation" headline + supporting line + text-button CTA | CTA is a hairline-bordered text link, no filled/saturated button, matching the invitation suite's RSVP treatment |
 | `event-recap.html` | — | "Thank You" + centered comb + `[EVENT NAME] — [DATE]` footer | Headline and supporting line are intentionally generic/durable so this can be reused after future editions without rewriting |
 
-Every template is exported to a matching `.png` at **1080×1080px**, rendered with `deviceScaleFactor: 2` (i.e. the source viewport is 1080×1080 CSS pixels; the PNG is a crisp 2x-density capture of that same frame, not upscaled to 2160×2160 canvas dimensions — check each PNG's own pixel dimensions before dropping into a platform that expects an exact 1080×1080 file, and re-export at `deviceScaleFactor: 1` if a 1:1 pixel file is required).
+Every template's HTML/CSS is built for a **1080×1080 logical canvas**, then exported to PNG from a 1080×1080 viewport at `deviceScaleFactor: 2`. That produces a **2160×2160px** PNG — the same square composition at Retina pixel density, matching what the brief's "1080×1080, deviceScaleFactor 2" spec is designed to produce. If a platform strictly requires a 1080×1080 pixel file, downscale the PNG 50% (it was authored at 2x for crispness, so it downsamples cleanly) or re-export with `deviceScaleFactor: 1`.
 
 ## How to swap placeholder copy
 

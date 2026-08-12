@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE SALON — Founding Cultural Partner Profile Template (US Letter)</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  /* Same template logic as speaker-profile.html, applied to a Founding
+     Cultural Partner. Typographic only — no logo-wall styling, no
+     logo mark; the partner is represented by name alone. */
+  @page { size: 8.5in 11in; margin: 0; }
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-white);
+    overflow: hidden;
+  }
+  .page {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 7vh 9vw;
+    color: var(--color-blue);
+    display: flex;
+    flex-direction: column;
+  }
+  .eyebrow {
+    color: var(--color-blue);
+    opacity: 0.65;
+    margin-bottom: 2.4vh;
+  }
+  .name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: var(--tracking-display);
+    font-size: 4.4vw;
+    margin: 0;
+    line-height: 1.05;
+  }
+  .rule {
+    width: 3.6vw;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.35;
+    margin: 4vh 0;
+  }
+  .desc-label {
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 1.05vw;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    opacity: 0.55;
+    margin: 0 0 1.6vh;
+  }
+  .desc-area {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.5vw;
+    line-height: 1.75;
+    opacity: 0.85;
+    max-width: 46vw;
+  }
+  .footer {
+    margin-top: auto;
+    padding-top: 3vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .footer p {
+    font-family: var(--font-text);
+    font-size: 0.95vw;
+    letter-spacing: 0.02em;
+    opacity: 0.6;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <p class="eyebrow">Founding Cultural Partner</p>
+    <h1 class="name">[Partner Name]</h1>
+
+    <div class="rule"></div>
+
+    <p class="desc-label">About</p>
+    <p class="desc-area">[PARTNER DESCRIPTION — placeholder]</p>
+
+    <div class="footer">
+      <p>THE SALON — Press Kit</p>
+      <p>September 17, 2026 — New York</p>
+    </div>
+  </div>
+</body>
+</html>
