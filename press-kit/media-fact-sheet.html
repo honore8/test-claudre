@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE SALON — Media Fact Sheet (US Letter)</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  @page { size: 8.5in 11in; margin: 0; }
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-white);
+    overflow: hidden;
+  }
+  .page {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 7vh 9vw;
+    color: var(--color-blue);
+    display: flex;
+    flex-direction: column;
+  }
+  .head {
+    margin-bottom: 4.5vh;
+  }
+  .head .eyebrow {
+    color: var(--color-blue);
+    opacity: 0.65;
+  }
+  .head h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    font-size: 3.4vw;
+    margin: 0.6vh 0 0;
+  }
+  .rule {
+    width: 3.6vw;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.35;
+    margin-top: 1.6vh;
+  }
+  .facts {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+  }
+  .fact {
+    display: grid;
+    grid-template-columns: 22% 1fr;
+    gap: 3vw;
+  }
+  .fact .label {
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 1.05vw;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin: 0;
+  }
+  .fact .value {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 1.25vw;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .fact .value strong {
+    font-weight: 500;
+  }
+  .acts {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vh;
+  }
+  .acts li {
+    font-family: var(--font-text);
+    font-size: 1.15vw;
+    line-height: 1.5;
+  }
+  .acts .act-label {
+    font-weight: 600;
+    opacity: 0.75;
+  }
+  .about {
+    margin-top: 5vh;
+    padding-top: 3vh;
+    border-top: var(--border-hairline);
+  }
+  .about h2 {
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 1.05vw;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin: 0 0 1.4vh;
+  }
+  .about p {
+    font-family: var(--font-text);
+    font-size: 1.2vw;
+    line-height: 1.65;
+    margin: 0;
+    opacity: 0.9;
+  }
+  .footer {
+    margin-top: auto;
+    padding-top: 3vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .footer p {
+    font-family: var(--font-text);
+    font-size: 0.95vw;
+    letter-spacing: 0.02em;
+    opacity: 0.6;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="head">
+      <p class="eyebrow">Media Fact Sheet</p>
+      <h1>THE SALON</h1>
+      <div class="rule"></div>
+    </div>
+
+    <div class="facts">
+      <div class="fact">
+        <p class="label">What</p>
+        <p class="value">An inaugural, invitation-only cultural gathering of approximately 50 guests, convened by <strong>Bluemind Foundation</strong>.</p>
+      </div>
+      <div class="fact">
+        <p class="label">When</p>
+        <p class="value"><strong>September 17, 2026</strong></p>
+      </div>
+      <div class="fact">
+        <p class="label">Where</p>
+        <p class="value">Praxis' New York headquarters, during the <strong>81st UN General Assembly</strong> (UNGA).</p>
+      </div>
+      <div class="fact">
+        <p class="label">Who</p>
+        <p class="value">By invitation only — approximately 50 guests.</p>
+      </div>
+      <div class="fact">
+        <p class="label">Structure</p>
+        <ul class="acts">
+          <li><span class="act-label">Act I — The Evidence.</span> Seated presentations, lower level.</li>
+          <li><span class="act-label">Act II — From Evidence to Infrastructure.</span> Seated presentations, lower level.</li>
+          <li><span class="act-label">Act III — La Clairière.</span> A standing celebration of Black cultures of care — food, music, conversation — upper level.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="about">
+      <h2>About Bluemind Foundation</h2>
+      <p>[ABOUT BLUEMIND FOUNDATION — placeholder]</p>
+    </div>
+
+    <div class="footer">
+      <p>THE SALON — Press Kit</p>
+      <p>Media inquiries: [MEDIA CONTACT — placeholder]</p>
+    </div>
+  </div>
+</body>
+</html>
