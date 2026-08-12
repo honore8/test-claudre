@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>THE SALON — Founding Partner Announcement Template</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<!--
+  Speaker & Founding Partner Announcement Visual Approach — Once photography
+  becomes appropriate (post speaker confirmation), maintain restraint: a
+  single subject, tightly cropped portrait (shoulders-up), shot against a
+  plain, unstyled backdrop (soft ivory or Bluemind Blue seamless paper — no
+  environmental or office backgrounds), converted to a two-tone duotone
+  treatment in Bluemind Blue and white (or Bluemind Blue and soft ivory)
+  rather than full color. The comb glyph may appear as a small fixed
+  eyebrow mark near, never overlapping, the face. Pair with the person's
+  name and one-line role set in the display serif, and an "ANNOUNCING"
+  eyebrow label in tracked-caps sans. No drop shadows, no saturated color
+  blocks behind the portrait, no grids of multiple partner logos — one
+  subject or one mark at a time, same generous margins as everything else
+  in the system.
+
+  This template announces an ORGANIZATION rather than an individual, so no
+  portrait placeholder is included by default — the mark for a founding
+  partner is typically the partner's name in the display serif alone, kept
+  to the same "one subject at a time" restraint (no logo walls). If a
+  future update pairs this with partner artwork, follow the same duotone
+  and single-mark rules described above.
+
+  SWAP INSTRUCTIONS: replace [PARTNER NAME] and the description placeholder
+  below without touching layout or classes.
+-->
+</head>
+<body>
+<style>
+  html, body { width: 1080px; height: 1080px; background: var(--color-white); overflow: hidden; }
+  .frame {
+    position: relative;
+    width: 1080px;
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 96px;
+  }
+  .corner-comb {
+    position: absolute;
+    top: 64px;
+    left: 64px;
+    width: 40px;
+    color: var(--color-blue);
+  }
+  .eyebrow {
+    color: var(--color-blue);
+    margin: 0 0 40px;
+  }
+  .name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 64px;
+    color: var(--color-blue);
+    margin: 0 0 24px;
+    letter-spacing: var(--tracking-display);
+    max-width: 780px;
+  }
+  .description {
+    font-family: var(--font-text);
+    font-size: 17px;
+    color: var(--color-blue);
+    opacity: 0.8;
+    margin: 0;
+    max-width: 560px;
+    line-height: 1.6;
+  }
+  .footer {
+    position: absolute;
+    bottom: 64px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: var(--font-text);
+    font-size: 12px;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-blue);
+    opacity: 0.6;
+  }
+</style>
+
+  <div class="frame">
+    <img class="corner-comb" src="../design-system/comb-placeholder.svg" alt="">
+
+    <p class="eyebrow">Founding Cultural Partner</p>
+
+    <h1 class="name">[PARTNER NAME]</h1>
+    <p class="description">[ONE-LINE DESCRIPTION OF PARTNER]</p>
+
+    <p class="footer">THE SALON — September 17, 2026</p>
+  </div>
+</body>
+</html>

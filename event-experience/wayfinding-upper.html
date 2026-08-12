@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE SALON — Wayfinding, Upper Level (11in × 17in)</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  /*
+    Companion to wayfinding-lower.html, mounted at the base of the
+    stairwell to draw guests up into ACT III. The copy marks the
+    symbolic shift: from evidence to encounter, from ideas to
+    relationships.
+  */
+  @page { size: 11in 17in; margin: 0; }
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-white);
+    overflow: hidden;
+  }
+  .sign {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 6vh 9vw;
+    color: var(--color-blue);
+    text-align: center;
+  }
+  .eyebrow {
+    color: var(--color-blue);
+  }
+  .arrow-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3vh;
+  }
+  .arrow {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 13vw;
+    line-height: 1;
+    margin: 0;
+  }
+  .level {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-size: 3.4vw;
+    margin: 0;
+  }
+  .act-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.9vw;
+    margin: 0;
+  }
+  .act-sub {
+    font-family: var(--font-text);
+    font-size: 1.15vw;
+    letter-spacing: 0.01em;
+    opacity: 0.8;
+    margin: 0.6vh 0 0;
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6vh;
+  }
+  .rule {
+    width: 4.5vw;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.4;
+  }
+  .poetic {
+    font-family: var(--font-text);
+    font-style: italic;
+    font-size: 1.3vw;
+    opacity: 0.72;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="sign">
+    <p class="eyebrow">Act III</p>
+
+    <div class="arrow-wrap">
+      <p class="arrow">↑</p>
+      <p class="level">Upper Level</p>
+      <p class="act-name">La Clairière</p>
+      <p class="act-sub">A Celebration of Black Cultures of Care</p>
+    </div>
+
+    <div class="bottom">
+      <div class="rule"></div>
+      <p class="poetic">Continue upward — from evidence to encounter.</p>
+    </div>
+  </div>
+</body>
+</html>

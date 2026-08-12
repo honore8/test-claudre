@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE SALON — Place Setting Tent Card (4in × 6in flat, folds to 4in × 3in)</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  /*
+    Place-setting tent card. Printed flat at 4in x 6in, then folded in
+    half along the horizontal midline to stand as a 4in x 3in tent.
+    The lower half is the front-facing panel seen by the guest walking
+    up to the table; the upper half repeats the same content rotated
+    180 degrees so the card also reads correctly to whoever is seated
+    across the table, once folded. The dashed line and "FOLD" label
+    are a non-printing production guide — omit that layer on final
+    output, or keep it as a light guide for the print shop.
+  */
+  @page { size: 4in 6in; margin: 0; }
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-white);
+    overflow: hidden;
+  }
+  .sheet {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+    color: var(--color-blue);
+  }
+  .panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4vh 8vw;
+  }
+  .panel.top { transform: rotate(180deg); }
+  .panel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.2vh;
+    text-align: center;
+  }
+  .eyebrow {
+    color: var(--color-blue);
+    opacity: 0.62;
+    font-size: 2.6vw;
+  }
+  .guest-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: var(--tracking-display);
+    font-size: 7vw;
+    line-height: 1.15;
+    margin: 0;
+    max-width: 84vw;
+  }
+  .fold-guide {
+    display: flex;
+    align-items: center;
+    gap: 1.4vw;
+    padding: 0 6vw;
+    color: var(--color-blue);
+    opacity: 0.32;
+  }
+  .fold-guide .line {
+    flex: 1;
+    height: 0;
+    border-top: 1px dashed currentColor;
+  }
+  .fold-guide .label {
+    font-family: var(--font-text);
+    font-size: 1.8vw;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="panel top">
+      <div class="panel-content">
+        <p class="eyebrow">The Salon</p>
+        <h1 class="guest-name">[Guest Name]</h1>
+      </div>
+    </div>
+
+    <div class="fold-guide">
+      <span class="line"></span>
+      <span class="label">Fold</span>
+      <span class="line"></span>
+    </div>
+
+    <div class="panel bottom">
+      <div class="panel-content">
+        <p class="eyebrow">The Salon</p>
+        <h1 class="guest-name">[Guest Name]</h1>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

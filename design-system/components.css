@@ -1,0 +1,242 @@
+/*
+  THE SALON — Component Library
+  -------------------------------
+  Reusable, copy-pasteable component classes for every HTML deliverable
+  in this system. Built only from design-system/tokens.css variables —
+  no colors, fonts, or spacing values are introduced here that don't
+  already exist in tokens.css.
+
+  Usage: link tokens.css, then this file, in that order.
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="components.css">
+*/
+
+/* =========================================================
+   Buttons — hairline-bordered text buttons only.
+   No filled/saturated buttons, no shadows, no rounded pills.
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-text);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  font-size: 13px;
+  font-weight: 500;
+  background: transparent;
+  color: var(--color-blue);
+  border: var(--border-hairline);
+  border-radius: var(--radius-none);
+  padding: var(--space-3) var(--space-5);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.btn:hover,
+.btn:focus-visible {
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+/* Use on a blue field: inverts to white hairline / white text. */
+.btn--on-blue {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+.btn--on-blue:hover,
+.btn--on-blue:focus-visible {
+  background: var(--color-white);
+  color: var(--color-blue);
+}
+
+/* =========================================================
+   Titles — display headline treatments.
+   ========================================================= */
+.title {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.03;
+}
+.title--xl { font-size: clamp(44px, 7vw, 96px); }
+.title--l  { font-size: clamp(30px, 4vw, 52px); }
+
+/* =========================================================
+   Section header — eyebrow label + headline pairing.
+   Used to open acts / sections throughout the system.
+   ========================================================= */
+.section-header { max-width: 60ch; }
+.section-header .eyebrow { display: block; margin-bottom: var(--space-2); }
+.section-header-title {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.6vw, 44px);
+  margin: 0;
+  line-height: 1.08;
+}
+
+/* =========================================================
+   Quotes / pull-quotes — large serif quotation, minimal attribution.
+   ========================================================= */
+.pull-quote { max-width: 56ch; margin: 0; }
+.pull-quote p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.35;
+  margin: 0 0 var(--space-3);
+}
+.pull-quote cite {
+  display: block;
+  font-family: var(--font-text);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* =========================================================
+   Speaker card — placeholder, no photo.
+   Photography is not used yet, so a hairline monogram mark
+   stands in for a portrait slot rather than an empty avatar box.
+   ========================================================= */
+.card-speaker {
+  border: var(--border-hairline);
+  padding: var(--space-4);
+  max-width: 280px;
+}
+.card-speaker-mark {
+  width: 56px;
+  height: 56px;
+  border: var(--border-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin-bottom: var(--space-3);
+}
+.card-speaker-name { margin: 0 0 4px; font-family: var(--font-display); font-size: 20px; font-weight: 400; }
+.card-speaker-role { margin: 0; font-size: 13px; opacity: 0.7; line-height: 1.5; }
+
+/* =========================================================
+   Partner card — same logic as speaker card: name/wordmark
+   placeholder, no photo, no logo image required.
+   ========================================================= */
+.card-partner {
+  border: var(--border-hairline);
+  padding: var(--space-4);
+  max-width: 280px;
+  text-align: center;
+}
+.card-partner-wordmark {
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin: 0 0 var(--space-2);
+}
+.card-partner-type {
+  margin: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  opacity: 0.55;
+}
+
+/* =========================================================
+   Call-to-action block — headline + one line + button.
+   e.g. "Request an Invitation".
+   ========================================================= */
+.cta-block {
+  border: var(--border-hairline);
+  padding: var(--space-6) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 640px;
+}
+.cta-block-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(24px, 3vw, 34px);
+  margin: 0;
+}
+.cta-block-line { margin: 0; font-size: 15px; opacity: 0.75; line-height: 1.6; }
+
+/* =========================================================
+   Forms — hairline underlines/borders only.
+   No rounded pill inputs, no shadows.
+   ========================================================= */
+.form-field { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-4); }
+.form-field .eyebrow { display: block; }
+
+.input,
+.textarea,
+.select {
+  font-family: var(--font-text);
+  font-size: 16px;
+  color: var(--color-blue);
+  background: transparent;
+  border: none;
+  border-bottom: var(--border-hairline);
+  border-radius: var(--radius-none);
+  padding: var(--space-2) 0;
+  outline: none;
+  width: 100%;
+}
+.input:focus,
+.textarea:focus,
+.select:focus { border-bottom: 2px solid var(--color-blue); }
+.textarea { resize: vertical; min-height: 96px; font-family: var(--font-text); }
+.select { appearance: none; -webkit-appearance: none; border-radius: var(--radius-none); }
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 15px;
+}
+.form-check input[type="checkbox"],
+.form-check input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: var(--border-hairline);
+  border-radius: var(--radius-none);
+  margin: 0;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.form-check input[type="radio"] { border-radius: 50%; }
+.form-check input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: var(--color-blue);
+}
+.form-check input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--color-blue);
+}
+
+/* =========================================================
+   Dividers — hairline rule, and a wider-spaced section break.
+   ========================================================= */
+.divider {
+  border: none;
+  border-top: var(--border-hairline);
+  margin: var(--space-5) 0;
+}
+.divider--wide {
+  border: none;
+  border-top: var(--border-hairline);
+  margin: var(--space-8) 0;
+}

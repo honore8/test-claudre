@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE SALON — Name Badge Template (3.5in × 2.25in)</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  /*
+    Attendee badge, 3.5in x 2.25in landscape (standard badge stock).
+    Mail-merge the two bracketed fields per guest; the tiny comb mark
+    in the lower-right corner is fixed and does not move card to card.
+    No lanyard clip-art, no role-color ribbons — a single quiet card.
+  */
+  @page { size: 3.5in 2.25in; margin: 0; }
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-white);
+    overflow: hidden;
+  }
+  .badge {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3.2vh;
+    color: var(--color-blue);
+    text-align: center;
+    padding: 6vh 7vw;
+    position: relative;
+  }
+  .eyebrow {
+    color: var(--color-blue);
+    opacity: 0.68;
+    font-size: 3.6vw;
+    letter-spacing: 0.16em;
+  }
+  .name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: var(--tracking-display);
+    font-size: 9vw;
+    line-height: 1.08;
+    margin: 0;
+    max-width: 88vw;
+  }
+  .org {
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: 3.4vw;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin: 0;
+    max-width: 86vw;
+  }
+  .corner-mark {
+    position: absolute;
+    bottom: 5vh;
+    right: 5vw;
+    width: 7vw;
+    color: var(--color-blue);
+    opacity: 0.9;
+  }
+</style>
+</head>
+<body>
+  <div class="badge">
+    <p class="eyebrow">The Salon</p>
+    <h1 class="name">[First Name]<br>[Last Name]</h1>
+    <p class="org">[Organization]</p>
+
+    <svg class="corner-mark" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+      <g fill="currentColor">
+        <rect x="20" y="30" width="200" height="24" rx="12"/>
+        <path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/>
+        <path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/>
+        <path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/>
+        <path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/>
+        <path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/>
+        <path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/>
+        <path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/>
+        <path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/>
+        <path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/>
+      </g>
+    </svg>
+  </div>
+</body>
+</html>

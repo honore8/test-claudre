@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Slide 1 — Cover</title>
+<link rel="stylesheet" href="carousel.css">
+<style>
+  .slide { justify-content: space-between; align-items: center; text-align: center; }
+
+  .top { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); padding-top: var(--space-4); }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    font-size: 84px;
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .comb-wrap { display: flex; align-items: center; justify-content: center; flex: 1; }
+  .comb-hero { width: 300px; }
+
+  .bottom { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); padding-bottom: var(--space-6); }
+
+  .convened {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 19px;
+    margin: 0;
+  }
+
+  .tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.4;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="top">
+      <h1 class="title">THE SALON</h1>
+    </div>
+
+    <div class="comb-wrap">
+      <svg class="comb comb-hero" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="THE SALON comb symbol (placeholder)">
+        <g fill="currentColor">
+          <rect x="20" y="30" width="200" height="24" rx="12"/>
+          <path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/>
+          <path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/>
+          <path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/>
+          <path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/>
+          <path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/>
+          <path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/>
+          <path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/>
+          <path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/>
+          <path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="bottom">
+      <p class="convened">Convened by Bluemind Foundation.</p>
+      <p class="tagline">Shaped by Africa.<br>Open to the World.</p>
+    </div>
+
+    <div class="slide-mark">The Salon</div>
+    <div class="slide-index">01 / 07</div>
+  </div>
+</body>
+</html>

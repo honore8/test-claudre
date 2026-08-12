@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>THE SALON — Request an Invitation Template</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<!--
+  SWAP INSTRUCTIONS: this template's copy is intentionally durable and
+  should rarely need edits — only the footer date/city would ever change
+  for a future edition. The CTA below is a text link, not a filled button,
+  by design (hairline border, no saturated fill), matching the invitation
+  suite's RSVP treatment.
+-->
+</head>
+<body>
+<style>
+  html, body { width: 1080px; height: 1080px; background: var(--color-white); overflow: hidden; }
+  .frame {
+    position: relative;
+    width: 1080px;
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 96px;
+  }
+  .comb-small {
+    width: 40px;
+    color: var(--color-blue);
+    margin-bottom: 40px;
+  }
+  .headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 60px;
+    color: var(--color-blue);
+    margin: 0 0 24px;
+    letter-spacing: var(--tracking-display);
+    max-width: 760px;
+  }
+  .supporting {
+    font-family: var(--font-text);
+    font-size: 17px;
+    color: var(--color-blue);
+    opacity: 0.8;
+    margin: 0 0 48px;
+  }
+  .cta {
+    display: inline-block;
+    font-family: var(--font-text);
+    font-size: 13px;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-blue);
+    text-decoration: none;
+    border: var(--border-hairline);
+    padding: 18px 44px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 64px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: var(--font-text);
+    font-size: 13px;
+    color: var(--color-blue);
+    opacity: 0.7;
+  }
+  .footer .city {
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    font-size: 12px;
+  }
+</style>
+
+  <div class="frame">
+    <img class="comb-small" src="../design-system/comb-placeholder.svg" alt="">
+
+    <h1 class="headline">Request an Invitation</h1>
+    <p class="supporting">An invitation-only gathering. ~50 guests.</p>
+
+    <a class="cta" href="#">Request an Invitation</a>
+
+    <p class="footer">September 17, 2026 &nbsp;—&nbsp; <span class="city">New York</span></p>
+  </div>
+</body>
+</html>

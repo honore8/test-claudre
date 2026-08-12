@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE SALON — Title Slide Template (ACT I / ACT II)</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  /*
+    Digital projection slide, 16:9, for the seated presentations
+    (ACT I "The Evidence" and ACT II "From Evidence to Infrastructure")
+    on the lower level. Full-bleed Bluemind Blue with reversed (white/ivory)
+    type — a deliberate, restrained departure from the ink-on-paper
+    treatment of the printed collateral, appropriate to a projected
+    surface in a dim room. No gradient, no shadow: a single flat fill.
+  */
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-blue);
+    overflow: hidden;
+  }
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-blue);
+    color: var(--color-white);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 5.5vh 9vw;
+    position: relative;
+  }
+  .eyebrow {
+    color: var(--color-white);
+    opacity: 0.72;
+    font-size: 1.05vw;
+  }
+  .center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.4vh;
+    max-width: 78vw;
+  }
+  .headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: var(--tracking-display);
+    font-size: 5.6vw;
+    line-height: 1.08;
+    margin: 0;
+  }
+  .support {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 1.5vw;
+    line-height: 1.5;
+    color: var(--color-white);
+    opacity: 0.82;
+    margin: 0;
+    max-width: 52vw;
+  }
+  .footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .footer .meta {
+    font-family: var(--font-text);
+    font-size: 0.85vw;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-white);
+    opacity: 0.55;
+    margin: 0;
+  }
+  .comb-mark {
+    width: 1.5vw;
+    color: var(--color-white);
+    opacity: 0.75;
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <p class="eyebrow">[ACT I — "The Evidence"]</p>
+
+    <div class="center">
+      <h1 class="headline">[Title / Headline Placeholder]</h1>
+      <p class="support">[One-line supporting statement placeholder — a single sentence of context beneath the headline.]</p>
+    </div>
+
+    <div class="footer">
+      <p class="meta">The Salon — September 17, 2026</p>
+      <svg class="comb-mark" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+        <g fill="currentColor">
+          <rect x="20" y="30" width="200" height="24" rx="12"/>
+          <path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/>
+          <path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/>
+          <path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/>
+          <path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/>
+          <path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/>
+          <path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/>
+          <path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/>
+          <path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/>
+          <path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

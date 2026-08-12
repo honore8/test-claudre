@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE SALON — Wayfinding, Lower Level (11in × 17in)</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  /*
+    Directional sign, 11in x 17in portrait, for a stand or wall mount
+    at the top of the stairwell / building entrance, pointing down to
+    ACT I and ACT II. Copy is kept quiet and specific rather than
+    generic "this way" signage — the wording marks the beginning of
+    the evening's arc (evidence first).
+  */
+  @page { size: 11in 17in; margin: 0; }
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-white);
+    overflow: hidden;
+  }
+  .sign {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 6vh 9vw;
+    color: var(--color-blue);
+    text-align: center;
+  }
+  .eyebrow {
+    color: var(--color-blue);
+  }
+  .arrow-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3vh;
+  }
+  .arrow {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 13vw;
+    line-height: 1;
+    margin: 0;
+  }
+  .level {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-size: 3.4vw;
+    margin: 0;
+  }
+  .act-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.9vw;
+    margin: 0;
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6vh;
+  }
+  .rule {
+    width: 4.5vw;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.4;
+  }
+  .poetic {
+    font-family: var(--font-text);
+    font-style: italic;
+    font-size: 1.3vw;
+    opacity: 0.72;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="sign">
+    <p class="eyebrow">Act I &amp; Act II</p>
+
+    <div class="arrow-wrap">
+      <p class="arrow">↓</p>
+      <p class="level">Lower Level</p>
+      <p class="act-name">The Evidence</p>
+    </div>
+
+    <div class="bottom">
+      <div class="rule"></div>
+      <p class="poetic">Begin with what is proven.</p>
+    </div>
+  </div>
+</body>
+</html>

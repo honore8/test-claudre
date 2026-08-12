@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THE SALON — Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="docs.css">
+</head>
+<body>
+
+<header class="docs-hero">
+  <p class="eyebrow">THE SALON by Bluemind Foundation — Inaugural Gathering, 17 September 2026, New York</p>
+  <h1 class="font-display docs-hero-title">Design System</h1>
+  <p class="docs-hero-sub">Institutional reference for every visual deliverable in this program — color, type, grid, spacing, the comb symbol, and photography guidance. Read this before building anything.</p>
+</header>
+
+<nav class="docs-nav">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#color">Color</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#grid">Grid &amp; Layout</a></li>
+    <li><a href="#spacing">Spacing</a></li>
+    <li><a href="#icon">Icon Usage</a></li>
+    <li><a href="#comb">The Comb Symbol</a></li>
+    <li><a href="#photography">Photography</a></li>
+    <li><a href="#dodont">Do &amp; Don't</a></li>
+    <li><a href="components.html">Component Library →</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ============================================================ -->
+  <section id="overview" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">01 — Overview</span>
+      <h2 class="font-display docs-section-title">Design philosophy</h2>
+    </div>
+    <div class="docs-prose">
+      <p>THE SALON's visual system is minimal, elegant, timeless, and confident. It is editorial and architectural in construction — closer to a considered print publication or a gallery catalogue than a digital product. The governing standard is quiet luxury: restraint communicates the value of the room, not decoration.</p>
+      <p>The system draws on African design sensibility without resorting to cliché — no tribal-pattern borders, no earth-tone gradients standing in for "African," no motifs used as texture. Confidence is expressed through typography, proportion, and material color, not through symbols asked to carry cultural weight they were not designed to carry.</p>
+      <p>This is explicitly <strong>not</strong> an NGO aesthetic (no stock-photo warmth, no crowded infographics, no primary-color cheerfulness), <strong>not</strong> a startup aesthetic (no gradients, no rounded pill buttons, no glossy app-store polish), and <strong>not</strong> a corporate-conference aesthetic (no logo walls, no stage-backdrop clutter, no lanyard-branding energy). Reference points for calibration: Frieze, Kinfolk, The Gentlewoman, Vogue, and the restraint of an Apple keynote.</p>
+      <p>In practice this means large margins, generous white space, and beautiful typography carrying nearly the entire system. Nothing on the page is decorative. Every element — a rule, a label, a single glyph — earns its place by doing work: establishing hierarchy, marking a boundary, or standing in for a symbol the room already understands. When in doubt, remove the element rather than add one.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="color" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">02 — Color</span>
+      <h2 class="font-display docs-section-title">Palette</h2>
+      <p class="docs-section-lede">Four colors, used deliberately. No gradients, no tints or opacity ramps standing in as a substitute for the palette, no fifth color introduced without cause.</p>
+    </div>
+
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--color-blue)"></div>
+        <div class="swatch-meta">
+          <span class="eyebrow">Bluemind Blue</span>
+          <p class="swatch-var">--color-blue</p>
+          <p class="swatch-hex">#14274E &nbsp;(placeholder — see note)</p>
+          <p class="swatch-rule">Primary — the dominant surface and type color across the system. Used as large flat fills and as text color on white/ivory.</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--color-white); border-bottom:1px solid var(--color-blue)"></div>
+        <div class="swatch-meta">
+          <span class="eyebrow">White</span>
+          <p class="swatch-var">--color-white</p>
+          <p class="swatch-hex">#FFFFFF</p>
+          <p class="swatch-rule">Primary — the counterpart surface to Bluemind Blue. Most pages are one of these two, inverted.</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--color-warm-black)"></div>
+        <div class="swatch-meta">
+          <span class="eyebrow">Warm Black</span>
+          <p class="swatch-var">--color-warm-black</p>
+          <p class="swatch-hex">#1A1815</p>
+          <p class="swatch-rule">Accent only — body copy set on ivory. Never used as a large fill or a primary background.</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--color-ivory); border-bottom:1px solid var(--color-blue)"></div>
+        <div class="swatch-meta">
+          <span class="eyebrow">Soft Ivory</span>
+          <p class="swatch-var">--color-ivory</p>
+          <p class="swatch-hex">#F5F1EA</p>
+          <p class="swatch-rule">Accent surface only — used sparingly for a card, a callout, a section break. Never the dominant surface of a page.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="docs-note" style="margin-top:var(--space-5)">
+      <span class="eyebrow">Placeholder notice</span>
+      <code>--color-blue</code> (#14274E) is a deliberate placeholder chosen to match the brief's direction — Bluemind Foundation's exact brand hex was not available when this system was built. It will be swapped in <code>tokens.css</code> once the real brand color is supplied; nothing else in the system will need to change. Do not redefine it locally in any deliverable — reference the variable so the swap propagates everywhere at once.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="typography" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">03 — Typography</span>
+      <h2 class="font-display docs-section-title">Hierarchy</h2>
+      <p class="docs-section-lede">Two families carry the entire system: <strong>Fraunces</strong> (<code>--font-display</code>), an editorial serif used sparingly and large, and <strong>Inter</strong> (<code>--font-text</code>), a quiet grotesque for labels, body copy, and forms.</p>
+    </div>
+
+    <div class="type-row">
+      <div class="type-row-label"><span class="eyebrow">Display XL</span><p class="type-row-usage">Poster / cover title, the event name at maximum scale. Used once per surface, at most.</p></div>
+      <p class="type-sample font-display type-display-xl">THE SALON</p>
+    </div>
+
+    <div class="type-row">
+      <div class="type-row-label"><span class="eyebrow">Display L</span><p class="type-row-usage">Section and act headlines, subheads pairing with an eyebrow label.</p></div>
+      <p class="type-sample font-display type-display-l">An Evening of Craft &amp; Continuity</p>
+    </div>
+
+    <div class="type-row">
+      <div class="type-row-label"><span class="eyebrow">Eyebrow label</span><p class="type-row-usage">Categorization: act numbers, dates, locations, form labels. Always tracked uppercase, always small.</p></div>
+      <p class="type-sample eyebrow type-eyebrow-sample">ACT I — ARRIVAL · 17 SEPTEMBER 2026 · NEW YORK</p>
+    </div>
+
+    <div class="type-row">
+      <div class="type-row-label"><span class="eyebrow">Body</span><p class="type-row-usage">Paragraph copy — programme notes, invitation language, documentation prose. Set in Inter regular for maximum legibility at length.</p></div>
+      <p class="type-sample type-body-sample">THE SALON convenes a small, invitation-only gathering during the 81st UN General Assembly — an evening built for conversation rather than programming, for fifty guests rather than a thousand.</p>
+    </div>
+
+    <div class="type-row">
+      <div class="type-row-label"><span class="eyebrow">Caption</span><p class="type-row-usage">Credits, footnotes, fine print, timestamps. The smallest voice in the system — present but never competing.</p></div>
+      <p class="type-sample type-caption-sample">Design System v1 — Bluemind Foundation, 2026.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="grid" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">04 — Grid &amp; Layout</span>
+      <h2 class="font-display docs-section-title">Twelve columns, wide margins</h2>
+      <p class="docs-section-lede">Every desktop layout sits on a 12-column grid (<code>--grid-columns: 12</code>) inside margins of <code>--margin-desktop</code> (8vw) on each side. The margin is not empty space left over — it is a drawn line the content is never allowed to cross, the same discipline a print magazine keeps at its gutter.</p>
+    </div>
+    <div class="docs-prose" style="margin-bottom:var(--space-5)">
+      <p>Content rarely needs all twelve columns. A headline spanning six, a paragraph spanning five, a single pull-quote spanning four and centered — the unused columns are the point. Negative space is a design rule here, not decoration left behind: it is what makes a page feel considered rather than filled.</p>
+    </div>
+    <div class="grid-diagram">
+      <div class="grid-diagram-margins">
+        <div class="grid-diagram-margin"><span>MARGIN — 8VW</span></div>
+        <div class="grid-diagram-cols">
+          <div class="grid-diagram-col"><span>1</span></div>
+          <div class="grid-diagram-col"><span>2</span></div>
+          <div class="grid-diagram-col"><span>3</span></div>
+          <div class="grid-diagram-col"><span>4</span></div>
+          <div class="grid-diagram-col"><span>5</span></div>
+          <div class="grid-diagram-col"><span>6</span></div>
+          <div class="grid-diagram-col"><span>7</span></div>
+          <div class="grid-diagram-col"><span>8</span></div>
+          <div class="grid-diagram-col"><span>9</span></div>
+          <div class="grid-diagram-col"><span>10</span></div>
+          <div class="grid-diagram-col"><span>11</span></div>
+          <div class="grid-diagram-col"><span>12</span></div>
+        </div>
+        <div class="grid-diagram-margin"><span>MARGIN — 8VW</span></div>
+      </div>
+      <p class="grid-diagram-caption">12 content columns (<code>--grid-columns</code>, <code>--grid-gap: 24px</code>) bounded by an 8vw margin on each side (<code>--margin-desktop</code>). Container caps at <code>--container-max: 1200px</code> on very wide viewports so line lengths and margins stay proportional rather than stretching indefinitely.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="spacing" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">05 — Spacing Scale</span>
+      <h2 class="font-display docs-section-title">An 8px base, nine steps</h2>
+      <p class="docs-section-lede">All spacing — padding, margin, gaps between elements — comes from this scale. No arbitrary pixel values in any deliverable.</p>
+    </div>
+    <div class="spacing-ruler">
+      <div class="spacing-row"><span class="spacing-row-name">--space-1</span><div class="spacing-row-bar-track"><div class="spacing-row-bar" style="width:8px"></div></div><span class="spacing-row-px">8px</span></div>
+      <div class="spacing-row"><span class="spacing-row-name">--space-2</span><div class="spacing-row-bar-track"><div class="spacing-row-bar" style="width:16px"></div></div><span class="spacing-row-px">16px</span></div>
+      <div class="spacing-row"><span class="spacing-row-name">--space-3</span><div class="spacing-row-bar-track"><div class="spacing-row-bar" style="width:24px"></div></div><span class="spacing-row-px">24px</span></div>
+      <div class="spacing-row"><span class="spacing-row-name">--space-4</span><div class="spacing-row-bar-track"><div class="spacing-row-bar" style="width:32px"></div></div><span class="spacing-row-px">32px</span></div>
+      <div class="spacing-row"><span class="spacing-row-name">--space-5</span><div class="spacing-row-bar-track"><div class="spacing-row-bar" style="width:48px"></div></div><span class="spacing-row-px">48px</span></div>
+      <div class="spacing-row"><span class="spacing-row-name">--space-6</span><div class="spacing-row-bar-track"><div class="spacing-row-bar" style="width:64px"></div></div><span class="spacing-row-px">64px</span></div>
+      <div class="spacing-row"><span class="spacing-row-name">--space-7</span><div class="spacing-row-bar-track"><div class="spacing-row-bar" style="width:96px"></div></div><span class="spacing-row-px">96px</span></div>
+      <div class="spacing-row"><span class="spacing-row-name">--space-8</span><div class="spacing-row-bar-track"><div class="spacing-row-bar" style="width:128px"></div></div><span class="spacing-row-px">128px</span></div>
+      <div class="spacing-row"><span class="spacing-row-name">--space-9</span><div class="spacing-row-bar-track"><div class="spacing-row-bar" style="width:192px"></div></div><span class="spacing-row-px">192px</span></div>
+    </div>
+    <p class="docs-prose" style="margin-top:var(--space-4); font-size:14px; opacity:0.65;">Guidance: <code>--space-1</code>–<code>--space-3</code> for tight relationships (label to value, icon to text). <code>--space-4</code>–<code>--space-6</code> for component and card padding. <code>--space-7</code>–<code>--space-9</code> for section-to-section breathing room — the scale that makes the margins feel generous rather than merely present.</p>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="icon" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">06 — Icon Usage</span>
+      <h2 class="font-display docs-section-title">One icon. Exactly one.</h2>
+      <p class="docs-section-lede">The system has exactly one icon: the comb. No social icons, no decorative glyphs, no arrows-as-decoration, no set of line icons for "features" or "values." If a deliverable seems to need an icon, the correct response is nearly always typography or negative space instead — not a new glyph.</p>
+    </div>
+    <div class="icon-solo">
+      <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="THE SALON comb symbol"><g fill="currentColor"><rect x="20" y="30" width="200" height="24" rx="12"/><path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/><path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/><path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/><path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/><path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/><path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/><path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/><path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/><path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/></g></svg>
+      <p>The comb (see next section) is the sole exception, and it is treated as art, not as an icon in a toolbar. Any request to introduce a second icon should be treated as a deviation from the system requiring deliberate, documented justification — not a default.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="comb" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">07 — The Heal by Hair Comb Symbol</span>
+      <h2 class="font-display docs-section-title">The hero graphic</h2>
+      <p class="docs-section-lede">The comb is THE SALON's one visual signature — sourced from Heal by Hair. It functions as contemporary art, not as a logo: large, centered, and given room to be looked at rather than merely recognized.</p>
+    </div>
+
+    <div class="comb-variants">
+      <div class="comb-stage">
+        <div class="comb-clearspace">
+          <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comb symbol on white, blue on white"><g fill="currentColor"><rect x="20" y="30" width="200" height="24" rx="12"/><path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/><path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/><path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/><path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/><path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/><path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/><path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/><path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/><path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/></g></svg>
+          <span class="comb-clearspace-label">Blue on white</span>
+        </div>
+      </div>
+      <div class="comb-stage comb-stage--blue">
+        <div class="comb-clearspace">
+          <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comb symbol on blue, white on blue"><g fill="currentColor"><rect x="20" y="30" width="200" height="24" rx="12"/><path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/><path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/><path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/><path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/><path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/><path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/><path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/><path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/><path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/></g></svg>
+          <span class="comb-clearspace-label">White on blue</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="docs-prose" style="margin-top:var(--space-5)">
+      <p><strong>Clear space.</strong> Keep generous clear space around the comb: as a working minimum, no other element — text, rule, another symbol — should sit within one comb-height of its bounding box (illustrated by the dashed frame above). The comb should feel like it is resting in a room, not sharing a shelf.</p>
+      <p><strong>Color.</strong> The comb always renders in a single flat color via <code>currentColor</code> — Bluemind Blue on white or ivory, or white/ivory on Bluemind Blue. Never a second color within the mark, never a gradient fill, never an outline-only or two-tone treatment.</p>
+      <p><strong>Scale &amp; role.</strong> Large and centered, treated as the singular art moment of a page — a cover, a section break, a closing screen. It is never used small, never repeated or tiled as a pattern, and never pressed into service as a bullet, a favicon-style mark next to running text, or generic decoration filling empty space.</p>
+    </div>
+
+    <div class="placeholder-flag">
+      <span class="eyebrow">Placeholder — not final art</span>
+      The comb geometry shown throughout this system (<code>design-system/comb-placeholder.svg</code>) is an abstract minimal placeholder — a rounded spine with nine tapered teeth — standing in for the real "Heal by Hair" comb artwork. That artwork is being redesigned by an artist and has not yet been delivered. Every deliverable using the comb today is using placeholder geometry and must be updated once the final SVG is provided; no deliverable should treat the current shape as finished, brand-approved art.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="photography" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">08 — Photography</span>
+      <h2 class="font-display docs-section-title">No photography in 2026 launch materials</h2>
+      <p class="docs-section-lede">This is intentional, not a placeholder gap. Mystery is part of the launch — the room is defined by who is in it and what is said, not by a photo library. Photography returns once speakers and founding partners are confirmed and ready to be named.</p>
+    </div>
+
+    <div class="photo-nophoto">
+      <p>No photography — 2026 launch</p>
+    </div>
+
+    <div class="photo-callout">
+      <span class="eyebrow">Speaker &amp; Founding Partner Announcement Visual Approach</span>
+      <p>Once photography becomes appropriate (post speaker confirmation), maintain restraint: a single subject, tightly cropped portrait (shoulders-up), shot against a plain, unstyled backdrop (soft ivory or Bluemind Blue seamless paper — no environmental or office backgrounds), converted to a two-tone duotone treatment in Bluemind Blue and white (or Bluemind Blue and soft ivory) rather than full color. The comb glyph may appear as a small fixed eyebrow mark near, never overlapping, the face. Pair with the person's name and one-line role set in the display serif, and an "ANNOUNCING" eyebrow label in tracked-caps sans. No drop shadows, no saturated color blocks behind the portrait, no grids of multiple partner logos — one subject or one mark at a time, same generous margins as everything else in the system.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="dodont" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">09 — Do &amp; Don't</span>
+      <h2 class="font-display docs-section-title">At a glance</h2>
+    </div>
+    <div class="dodont-grid">
+      <div class="dodont-col dodont-do">
+        <h3>Do</h3>
+        <ul>
+          <li>Single flat color fields — Bluemind Blue, white, and ivory used as solid surfaces</li>
+          <li>Hairline borders and rules (1px, <code>currentColor</code>) to mark boundaries</li>
+          <li>Generous negative space around every element, especially the comb</li>
+          <li>One focal element per screen or spread</li>
+          <li>Tracked-caps eyebrow labels for categorization (dates, acts, roles)</li>
+          <li>Display serif used sparingly, at scale, for genuine headline moments</li>
+        </ul>
+      </div>
+      <div class="dodont-col dodont-dont">
+        <h3>Don't</h3>
+        <ul>
+          <li>Gradients of any kind, on any surface</li>
+          <li>Drop shadows, glossy or embossed effects</li>
+          <li>Photography in 2026 launch materials</li>
+          <li>Multiple accent colors active at once</li>
+          <li>Cluttered multi-logo partner walls</li>
+          <li>Decorative icons, arrows-as-decoration, or a second icon system</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="docs-footer">
+  THE SALON by Bluemind Foundation — Design System v1, 2026. Built on <code>tokens.css</code> and <code>comb-placeholder.svg</code>. See the <a href="components.html">Component Library</a> for copy-pasteable markup.
+</footer>
+
+</body>
+</html>

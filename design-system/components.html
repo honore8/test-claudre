@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THE SALON — Component Library</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="docs.css">
+<link rel="stylesheet" href="components.css">
+</head>
+<body>
+
+<header class="docs-hero">
+  <p class="eyebrow">THE SALON by Bluemind Foundation</p>
+  <h1 class="font-display docs-hero-title">Component Library</h1>
+  <p class="docs-hero-sub">Copy-pasteable building blocks — every component here is built only from <code>tokens.css</code> variables. Link <code>tokens.css</code> then <code>components.css</code> in any new page and use the class names as shown.</p>
+</header>
+
+<nav class="docs-nav">
+  <ul>
+    <li><a href="docs.html">← Design System</a></li>
+    <li><a href="#buttons">Buttons</a></li>
+    <li><a href="#titles">Titles</a></li>
+    <li><a href="#section-headers">Section Headers</a></li>
+    <li><a href="#quotes">Quotes</a></li>
+    <li><a href="#speaker-card">Speaker Card</a></li>
+    <li><a href="#partner-card">Partner Card</a></li>
+    <li><a href="#cta">CTA Block</a></li>
+    <li><a href="#forms">Forms</a></li>
+    <li><a href="#dividers">Dividers</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ============================================================ -->
+  <section id="buttons" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">Buttons</span>
+      <h2 class="font-display docs-section-title">Hairline text buttons</h2>
+      <p class="docs-section-lede">No filled or saturated buttons, no shadows, no rounded pill shapes. A button is a bordered word.</p>
+    </div>
+
+    <div class="example">
+      <div class="example-stage">
+        <a href="#" class="btn">Request an Invitation</a>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong>On white or ivory surfaces. Default button style.</p>
+        <pre class="example-code">&lt;a href="#" class="btn"&gt;Request an Invitation&lt;/a&gt;</pre>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-stage example-stage--blue">
+        <a href="#" class="btn btn--on-blue">Request an Invitation</a>
+        <a href="#" class="btn btn--on-blue">Learn More</a>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong>On a Bluemind Blue field — inverts the hairline and label to white.</p>
+        <pre class="example-code">&lt;a href="#" class="btn btn--on-blue"&gt;Request an Invitation&lt;/a&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="titles" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">Titles</span>
+      <h2 class="font-display docs-section-title">Display headline treatments</h2>
+    </div>
+
+    <div class="example">
+      <div class="example-stage">
+        <p class="title title--xl">THE SALON</p>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong><code>.title--xl</code> — cover and poster-scale moments, one per surface.</p>
+        <pre class="example-code">&lt;p class="title title--xl"&gt;THE SALON&lt;/p&gt;</pre>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-stage">
+        <p class="title title--l">An Evening of Craft &amp; Continuity</p>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong><code>.title--l</code> — page and act-level headlines.</p>
+        <pre class="example-code">&lt;p class="title title--l"&gt;An Evening of Craft &amp;amp; Continuity&lt;/p&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="section-headers" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">Section Headers</span>
+      <h2 class="font-display docs-section-title">Eyebrow + headline pairing</h2>
+    </div>
+
+    <div class="example">
+      <div class="example-stage">
+        <div class="section-header">
+          <span class="eyebrow">Act II — The Table</span>
+          <h3 class="section-header-title">Conversation, Seated</h3>
+        </div>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong>Opening any act, page section, or programme segment. The eyebrow always carries the categorization (act number, date, location); the headline carries the idea.</p>
+        <pre class="example-code">&lt;div class="section-header"&gt;
+  &lt;span class="eyebrow"&gt;Act II — The Table&lt;/span&gt;
+  &lt;h3 class="section-header-title"&gt;Conversation, Seated&lt;/h3&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="quotes" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">Quotes</span>
+      <h2 class="font-display docs-section-title">Pull-quotes</h2>
+    </div>
+
+    <div class="example">
+      <div class="example-stage">
+        <blockquote class="pull-quote">
+          <p>"The room is small on purpose. What is said inside it is not."</p>
+          <cite>Founding Note, THE SALON</cite>
+        </blockquote>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong>A single standout line — a founder's note, a guest remark, a programme epigraph. Large italic serif, minimal attribution beneath.</p>
+        <pre class="example-code">&lt;blockquote class="pull-quote"&gt;
+  &lt;p&gt;"The room is small on purpose..."&lt;/p&gt;
+  &lt;cite&gt;Founding Note, THE SALON&lt;/cite&gt;
+&lt;/blockquote&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="speaker-card" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">Speaker Card</span>
+      <h2 class="font-display docs-section-title">Placeholder — no photo</h2>
+      <p class="docs-section-lede">Photography is not used yet, so a hairline monogram mark stands in for a portrait slot — deliberately typographic, not an empty gray avatar box.</p>
+    </div>
+
+    <div class="example">
+      <div class="example-stage">
+        <div class="card-speaker">
+          <div class="card-speaker-mark font-display">A</div>
+          <p class="card-speaker-name">Speaker Name</p>
+          <p class="card-speaker-role">Title, Organization</p>
+        </div>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong>Speaker listings before photography is available. Replace the monogram mark with a duotone portrait per the Photography guidelines once confirmed.</p>
+        <pre class="example-code">&lt;div class="card-speaker"&gt;
+  &lt;div class="card-speaker-mark"&gt;A&lt;/div&gt;
+  &lt;p class="card-speaker-name"&gt;Speaker Name&lt;/p&gt;
+  &lt;p class="card-speaker-role"&gt;Title, Organization&lt;/p&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="partner-card" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">Partner Card</span>
+      <h2 class="font-display docs-section-title">Wordmark placeholder — no logo image</h2>
+    </div>
+
+    <div class="example">
+      <div class="example-stage">
+        <div class="card-partner">
+          <p class="card-partner-wordmark">Partner Name</p>
+          <p class="card-partner-type">Founding Partner</p>
+        </div>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong>Founding-partner acknowledgement before logo files are supplied. One card at a time — never a grid of many partner marks at once.</p>
+        <pre class="example-code">&lt;div class="card-partner"&gt;
+  &lt;p class="card-partner-wordmark"&gt;Partner Name&lt;/p&gt;
+  &lt;p class="card-partner-type"&gt;Founding Partner&lt;/p&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="cta" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">Call-to-Action Block</span>
+      <h2 class="font-display docs-section-title">Headline, one line, button</h2>
+    </div>
+
+    <div class="example">
+      <div class="example-stage">
+        <div class="cta-block">
+          <p class="cta-block-title font-display">Request an Invitation</p>
+          <p class="cta-block-line">THE SALON is by invitation only. Fifty guests, one evening, 17 September 2026.</p>
+          <a href="#" class="btn">Request an Invitation</a>
+        </div>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong>Closing prompt on the landing page or an announcement — always headline, one supporting line, one button. Nothing more.</p>
+        <pre class="example-code">&lt;div class="cta-block"&gt;
+  &lt;p class="cta-block-title"&gt;Request an Invitation&lt;/p&gt;
+  &lt;p class="cta-block-line"&gt;THE SALON is by invitation only...&lt;/p&gt;
+  &lt;a href="#" class="btn"&gt;Request an Invitation&lt;/a&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="forms" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">Forms</span>
+      <h2 class="font-display docs-section-title">Hairline fields, no pills, no shadows</h2>
+    </div>
+
+    <div class="example">
+      <div class="example-stage" style="display:block; max-width:420px;">
+        <div class="form-field">
+          <label class="eyebrow" for="c-name">Full Name</label>
+          <input class="input" type="text" id="c-name" placeholder="Jane Doe">
+        </div>
+        <div class="form-field">
+          <label class="eyebrow" for="c-org">Organization</label>
+          <select class="select" id="c-org">
+            <option>Select one</option>
+            <option>Foundation</option>
+            <option>Government</option>
+            <option>Private Sector</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="eyebrow" for="c-note">Note</label>
+          <textarea class="textarea" id="c-note" placeholder="Optional message"></textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-check"><input type="checkbox" checked> I will attend in person</label>
+          <label class="form-check"><input type="radio" name="c-r" checked> Evening session</label>
+          <label class="form-check"><input type="radio" name="c-r"> Afternoon session</label>
+        </div>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong>Invitation-request and RSVP forms. Labels always use <code>.eyebrow</code>; fields are hairline underlines/borders, never rounded pills, never shadowed.</p>
+        <pre class="example-code">&lt;div class="form-field"&gt;
+  &lt;label class="eyebrow" for="c-name"&gt;Full Name&lt;/label&gt;
+  &lt;input class="input" type="text" id="c-name"&gt;
+&lt;/div&gt;
+
+&lt;label class="form-check"&gt;
+  &lt;input type="checkbox"&gt; I will attend in person
+&lt;/label&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section id="dividers" class="docs-section">
+    <div class="docs-section-head">
+      <span class="eyebrow">Dividers</span>
+      <h2 class="font-display docs-section-title">Hairline rule, and a wider break</h2>
+    </div>
+
+    <div class="example">
+      <div class="example-stage" style="display:block;">
+        <p class="type-caption-sample" style="margin:0 0 8px;">Content above</p>
+        <hr class="divider">
+        <p class="type-caption-sample" style="margin:8px 0 0;">Content below</p>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong><code>.divider</code> — a standard rule between adjacent blocks within a section.</p>
+        <pre class="example-code">&lt;hr class="divider"&gt;</pre>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-stage" style="display:block;">
+        <p class="type-caption-sample" style="margin:0;">Section A</p>
+        <hr class="divider--wide">
+        <p class="type-caption-sample" style="margin:0;">Section B</p>
+      </div>
+      <div class="example-meta">
+        <p class="example-usage"><strong>When to use</strong><code>.divider--wide</code> — a full section break, with the wide spacing of <code>--space-8</code> above and below the rule.</p>
+        <pre class="example-code">&lt;hr class="divider--wide"&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="docs-footer">
+  THE SALON by Bluemind Foundation — Component Library v1, 2026. Link <code>tokens.css</code>, then <code>components.css</code>, then use these class names directly. See the <a href="docs.html">Design System</a> for the underlying rules.
+</footer>
+
+</body>
+</html>

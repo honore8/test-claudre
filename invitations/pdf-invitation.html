@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>THE SALON — Invitation (Print)</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  @page {
+    size: 148mm 210mm; /* A5 */
+    margin: 0;
+  }
+  html, body {
+    background: var(--color-white);
+  }
+  .sheet {
+    width: 148mm;
+    height: 210mm;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22mm 16mm 18mm;
+    text-align: center;
+  }
+  .sheet:last-child { page-break-after: auto; }
+
+  .top { display: flex; flex-direction: column; align-items: center; gap: 10mm; }
+  .eyebrow { color: var(--color-blue); margin: 0; }
+  .event-name {
+    font-family: var(--font-display);
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    font-size: 30pt;
+    color: var(--color-blue);
+    margin: 0;
+  }
+  .convened {
+    font-family: var(--font-text);
+    font-size: 10pt;
+    color: var(--color-blue);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .comb { width: 26mm; color: var(--color-blue); }
+  .middle { display: flex; flex-direction: column; align-items: center; gap: 8mm; }
+  .tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 15pt;
+    color: var(--color-blue);
+    max-width: 100mm;
+    line-height: 1.5;
+    margin: 0;
+  }
+  .bottom { display: flex; flex-direction: column; align-items: center; gap: 4mm; }
+  .rule { border: none; border-top: var(--border-hairline); color: var(--color-blue); width: 16mm; margin: 0 0 4mm; }
+  .date-line { font-family: var(--font-display); font-size: 15pt; font-weight: 500; color: var(--color-blue); margin: 0; }
+  .city-line { font-family: var(--font-text); font-size: 9pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-blue); margin: 0; }
+  .venue-line { font-family: var(--font-text); font-size: 8.5pt; color: var(--color-blue); opacity: 0.75; margin: 0; max-width: 100mm; }
+  .invite-only { font-family: var(--font-text); font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-blue); opacity: 0.65; margin-top: 3mm; }
+
+  /* Page 2: structure / acts */
+  .page2-eyebrow { color: var(--color-blue); margin: 0 0 12mm; }
+  .acts { display: flex; flex-direction: column; gap: 10mm; text-align: left; width: 100%; max-width: 108mm; }
+  .act-label { font-family: var(--font-text); font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-blue); opacity: 0.6; margin: 0 0 2mm; }
+  .act-name { font-family: var(--font-display); font-size: 13pt; font-weight: 500; color: var(--color-blue); margin: 0 0 1.5mm; }
+  .act-desc { font-family: var(--font-text); font-size: 9pt; color: var(--color-blue); opacity: 0.8; margin: 0; line-height: 1.5; }
+  .page2-rsvp { font-family: var(--font-text); font-size: 8.5pt; color: var(--color-blue); opacity: 0.75; line-height: 1.7; max-width: 100mm; margin: 0; }
+</style>
+</head>
+<body>
+
+  <!-- Page 1: Cover -->
+  <section class="sheet">
+    <div class="top">
+      <p class="eyebrow">By Invitation Only</p>
+      <h1 class="event-name">THE SALON</h1>
+      <p class="convened">Convened by Bluemind Foundation.<br>Shaped by Africa. Open to the World.</p>
+    </div>
+    <div class="middle">
+      <img class="comb" src="../design-system/comb-placeholder.svg" alt="">
+      <p class="tagline">Where Relationships<br>Become Infrastructure.</p>
+    </div>
+    <div class="bottom">
+      <hr class="rule">
+      <p class="date-line">September 17, 2026</p>
+      <p class="city-line">New York</p>
+      <p class="venue-line">Praxis, New York Headquarters<br>81st United Nations General Assembly</p>
+    </div>
+  </section>
+
+  <!-- Page 2: Structure -->
+  <section class="sheet">
+    <div class="top">
+      <p class="eyebrow page2-eyebrow">The Evening</p>
+    </div>
+    <div class="middle">
+      <div class="acts">
+        <div>
+          <p class="act-label">Lower Level</p>
+          <p class="act-name">Act I — The Evidence</p>
+          <p class="act-desc">Seated presentations.</p>
+        </div>
+        <div>
+          <p class="act-label">Lower Level</p>
+          <p class="act-name">Act II — From Evidence to Infrastructure</p>
+          <p class="act-desc">Seated presentations.</p>
+        </div>
+        <div>
+          <p class="act-label">Upper Level</p>
+          <p class="act-name">Act III — La Clairière</p>
+          <p class="act-desc">A Celebration of Black Cultures of Care.<br>Standing, food, music.</p>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <hr class="rule">
+      <p class="page2-rsvp">Kindly respond by the date indicated on the accompanying reply card.<br>Approximately fifty guests.</p>
+    </div>
+  </section>
+
+</body>
+</html>

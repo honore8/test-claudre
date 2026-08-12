@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>THE SALON — Countdown Template</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<!--
+  SWAP INSTRUCTIONS: replace [N] with the number of days remaining.
+  This template is about the numeral, not the comb — keep the mark small
+  and quiet as positioned, do not enlarge or center it.
+-->
+</head>
+<body>
+<style>
+  html, body { width: 1080px; height: 1080px; background: var(--color-white); overflow: hidden; }
+  .frame {
+    position: relative;
+    width: 1080px;
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .numeral {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 260px;
+    line-height: 1;
+    color: var(--color-blue);
+    margin: 0;
+    letter-spacing: var(--tracking-display);
+  }
+  .until {
+    color: var(--color-blue);
+    margin: 20px 0 0;
+  }
+  .comb-small {
+    position: absolute;
+    top: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    color: var(--color-blue);
+    opacity: 0.7;
+  }
+  .footer {
+    position: absolute;
+    bottom: 64px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: var(--font-text);
+    font-size: 13px;
+    color: var(--color-blue);
+    opacity: 0.7;
+  }
+  .footer .city {
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    font-size: 12px;
+  }
+</style>
+
+  <div class="frame">
+    <img class="comb-small" src="../design-system/comb-placeholder.svg" alt="">
+
+    <p class="numeral">[N] DAYS</p>
+    <p class="eyebrow until">Until The Salon</p>
+
+    <p class="footer">September 17, 2026 &nbsp;—&nbsp; <span class="city">New York</span></p>
+  </div>
+</body>
+</html>

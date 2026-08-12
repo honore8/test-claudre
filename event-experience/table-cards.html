@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE SALON — Table / Zone Tent Card (5in × 7in flat, folds to 5in × 3.5in)</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  /*
+    Seating-zone marker. Printed flat at 5in x 7in, folded in half
+    along the horizontal midline to stand as a 5in x 3.5in tent.
+    One field to fill per card: [Table / Zone Label] — e.g. "Table 4",
+    "Act I", or a zone name. Same fold-guide convention as name-card.html.
+  */
+  @page { size: 5in 7in; margin: 0; }
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-white);
+    overflow: hidden;
+  }
+  .sheet {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+    color: var(--color-blue);
+  }
+  .panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4vh 8vw;
+  }
+  .panel.top { transform: rotate(180deg); }
+  .panel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.4vh;
+    text-align: center;
+  }
+  .eyebrow {
+    color: var(--color-blue);
+    opacity: 0.62;
+    font-size: 2vw;
+  }
+  .zone-label {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: var(--tracking-display);
+    font-size: 6.4vw;
+    line-height: 1.15;
+    margin: 0;
+    max-width: 84vw;
+  }
+  .fold-guide {
+    display: flex;
+    align-items: center;
+    gap: 1.2vw;
+    padding: 0 6vw;
+    color: var(--color-blue);
+    opacity: 0.32;
+  }
+  .fold-guide .line {
+    flex: 1;
+    height: 0;
+    border-top: 1px dashed currentColor;
+  }
+  .fold-guide .label {
+    font-family: var(--font-text);
+    font-size: 1.4vw;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="panel top">
+      <div class="panel-content">
+        <p class="eyebrow">The Salon</p>
+        <h1 class="zone-label">[Table / Zone Label]</h1>
+      </div>
+    </div>
+
+    <div class="fold-guide">
+      <span class="line"></span>
+      <span class="label">Fold</span>
+      <span class="line"></span>
+    </div>
+
+    <div class="panel bottom">
+      <div class="panel-content">
+        <p class="eyebrow">The Salon</p>
+        <h1 class="zone-label">[Table / Zone Label]</h1>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

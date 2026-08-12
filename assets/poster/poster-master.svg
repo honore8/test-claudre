@@ -1,0 +1,50 @@
+<svg viewBox="0 0 1000 1414" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="THE SALON launch poster">
+  <!--
+    Static vector approximation of poster-master.html, at the true A2
+    ratio (0.7071:1). This is the closest editable-vector substitute for
+    an "Editable Figma file" producible from a coding session — Figma
+    itself cannot be generated here. This SVG imports cleanly into Figma
+    for further art-direction once the real Bluemind brand file (color,
+    typeface, final comb artwork) is available. See README.md.
+  -->
+  <rect x="0" y="0" width="1000" height="1414" fill="#FFFFFF"/>
+
+  <g fill="#14274E" font-family="Georgia, 'Times New Roman', serif">
+    <text x="500" y="150" font-size="76" letter-spacing="3" text-anchor="middle">THE SALON</text>
+  </g>
+
+  <g fill="#14274E" font-family="Helvetica, Arial, sans-serif">
+    <text x="500" y="220" font-size="18" text-anchor="middle">Convened by Bluemind Foundation</text>
+  </g>
+
+  <g fill="#14274E" font-family="Georgia, 'Times New Roman', serif" font-style="italic">
+    <text x="500" y="282" font-size="26" text-anchor="middle">Shaped by Africa.</text>
+    <text x="500" y="318" font-size="26" text-anchor="middle">Open to the World.</text>
+  </g>
+
+  <!-- Comb — placeholder geometry, centered in the visual field -->
+  <g transform="translate(350, 545) scale(1.25)" fill="#14274E">
+    <rect x="20" y="30" width="200" height="24" rx="12"/>
+    <path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/>
+    <path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/>
+    <path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/>
+    <path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/>
+    <path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/>
+    <path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/>
+    <path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/>
+    <path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/>
+    <path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/>
+  </g>
+
+  <g fill="#14274E" font-family="Georgia, 'Times New Roman', serif" font-weight="500">
+    <text x="500" y="1130" font-size="30" text-anchor="middle">Where Relationships Become Infrastructure.</text>
+  </g>
+
+  <line x1="476" y1="1178" x2="524" y2="1178" stroke="#14274E" stroke-opacity="0.4" stroke-width="1"/>
+
+  <g fill="#14274E" font-family="Helvetica, Arial, sans-serif">
+    <text x="500" y="1242" font-size="20" font-weight="500" text-anchor="middle">September 17, 2026</text>
+    <text x="500" y="1276" font-size="18" text-anchor="middle">New York</text>
+    <text x="500" y="1310" font-size="14" letter-spacing="1.5" fill-opacity="0.7" text-anchor="middle">DURING THE 81ST UNITED NATIONS GENERAL ASSEMBLY (UNGA)</text>
+  </g>
+</svg>

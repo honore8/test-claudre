@@ -1,0 +1,71 @@
+/*
+  THE SALON — LinkedIn Carousel
+  Shared styles for all slides. Imports the shared design tokens; adds
+  only carousel-specific layout on top. Each slide is rendered as an
+  1080x1350 canvas (see render-carousel.js).
+*/
+@import url('../../design-system/tokens.css');
+
+html, body {
+  width: 1080px;
+  height: 1350px;
+  overflow: hidden;
+  background: var(--color-white);
+}
+
+.slide {
+  width: 1080px;
+  height: 1350px;
+  padding: var(--margin-desktop);
+  display: flex;
+  flex-direction: column;
+  color: var(--color-blue);
+  position: relative;
+}
+
+/* Small persistent mark, bottom corner, every slide — quiet, not a logo lockup */
+.slide-mark {
+  position: absolute;
+  left: var(--margin-desktop);
+  bottom: var(--space-4);
+  font-family: var(--font-text);
+  font-size: 12px;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-blue);
+  opacity: 0.45;
+}
+
+.slide-index {
+  position: absolute;
+  right: var(--margin-desktop);
+  bottom: var(--space-4);
+  font-family: var(--font-text);
+  font-size: 12px;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-blue);
+  opacity: 0.45;
+}
+
+.eyebrow-lg {
+  font-family: var(--font-text);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color-blue);
+}
+
+.comb {
+  color: var(--color-blue);
+}
+
+.rule {
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+}
+
+.hairline {
+  border: var(--border-hairline);
+}

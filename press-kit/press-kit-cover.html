@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE SALON — Press Kit Cover (US Letter)</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  /*
+    Cover / title page for the press folder. US Letter, 8.5in x 11in
+    portrait. Ink-on-white, matching the printed collateral family.
+  */
+  @page { size: 8.5in 11in; margin: 0; }
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-white);
+    overflow: hidden;
+  }
+  .cover {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 8vh 10vw;
+    color: var(--color-blue);
+    text-align: center;
+  }
+  .top .eyebrow {
+    color: var(--color-blue);
+    opacity: 0.65;
+  }
+  .middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+  }
+  .comb {
+    width: 14vw;
+    color: var(--color-blue);
+  }
+  .title-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6vh;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 5.6vw;
+    margin: 0;
+  }
+  .by {
+    font-family: var(--font-text);
+    font-size: 1.4vw;
+    letter-spacing: 0.02em;
+    margin: 0;
+    opacity: 0.85;
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4vh;
+  }
+  .rule {
+    width: 4.5vw;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.4;
+    margin-bottom: 0.6vh;
+  }
+  .date-line {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.7vw;
+    margin: 0;
+  }
+  .place-line {
+    font-family: var(--font-text);
+    font-size: 1.15vw;
+    margin: 0;
+    opacity: 0.85;
+  }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <div class="top">
+      <p class="eyebrow">Press Kit</p>
+    </div>
+
+    <div class="middle">
+      <svg class="comb" viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="THE SALON comb symbol (placeholder)">
+        <g fill="currentColor">
+          <rect x="20" y="30" width="200" height="24" rx="12"/>
+          <path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/>
+          <path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/>
+          <path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/>
+          <path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/>
+          <path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/>
+          <path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/>
+          <path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/>
+          <path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/>
+          <path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/>
+        </g>
+      </svg>
+
+      <div class="title-block">
+        <h1 class="title">THE SALON</h1>
+        <p class="by">by Bluemind Foundation</p>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="rule"></div>
+      <p class="date-line">September 17, 2026</p>
+      <p class="place-line">New York — during the 81st UN General Assembly</p>
+    </div>
+  </div>
+</body>
+</html>

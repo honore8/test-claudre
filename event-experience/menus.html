@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>THE SALON — Reception &amp; Dinner Menu (5in × 8in)</title>
+<link rel="stylesheet" href="../design-system/tokens.css">
+<style>
+  /*
+    Reception / dinner menu card, 5in x 8in portrait, flat, single-sided.
+    Uses the ivory accent surface as its ground — the one deliberate
+    warm moment in this set, appropriate to a dinner table. No borders,
+    no food photography, no decorative rule beyond a single hairline.
+  */
+  @page { size: 5in 8in; margin: 0; }
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-ivory);
+    overflow: hidden;
+  }
+  .card {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-ivory);
+    color: var(--color-warm-black);
+    display: flex;
+    flex-direction: column;
+    padding: 6vh 9vw;
+    box-sizing: border-box;
+  }
+  .head {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4vh;
+    margin-bottom: 4vh;
+  }
+  .eyebrow {
+    color: var(--color-warm-black);
+    opacity: 0.65;
+  }
+  .event-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    font-size: 6.4vw;
+    margin: 0;
+  }
+  .rule {
+    width: 8vw;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.35;
+    margin-top: 1vh;
+  }
+  .sections {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .section h2 {
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 2.7vw;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin: 0 0 1.6vh;
+  }
+  .item {
+    margin: 0 0 1vh;
+  }
+  .item .name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 3.4vw;
+    margin: 0;
+  }
+  .item .note {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 2.1vw;
+    opacity: 0.62;
+    margin: 0.2vh 0 0;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 3vh;
+  }
+  .footer p {
+    font-family: var(--font-text);
+    font-size: 1.7vw;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <p class="eyebrow">Reception &amp; Dinner</p>
+      <h1 class="event-name">THE SALON</h1>
+      <div class="rule"></div>
+    </div>
+
+    <div class="sections">
+      <div class="section">
+        <h2>To Begin</h2>
+        <div class="item">
+          <p class="name">[Course / Item]</p>
+          <p class="note">[placeholder description]</p>
+        </div>
+        <div class="item">
+          <p class="name">[Course / Item]</p>
+          <p class="note">[placeholder description]</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>To Continue</h2>
+        <div class="item">
+          <p class="name">[Course / Item]</p>
+          <p class="note">[placeholder description]</p>
+        </div>
+        <div class="item">
+          <p class="name">[Course / Item]</p>
+          <p class="note">[placeholder description]</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>To Close</h2>
+        <div class="item">
+          <p class="name">[Course / Item]</p>
+          <p class="note">[placeholder description]</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>New York — September 17, 2026</p>
+    </div>
+  </div>
+</body>
+</html>
