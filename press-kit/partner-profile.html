@@ -59,8 +59,13 @@
     font-weight: 400;
     font-size: 1.5vw;
     line-height: 1.75;
+    color: var(--color-blue);
     opacity: 0.85;
     max-width: 46vw;
+    min-height: 16vh; /* approximate text-safe zone for a short partner description */
+    padding: 2vh 2vw;
+    box-sizing: border-box;
+    border: 1px dashed color-mix(in srgb, currentColor 35%, transparent);
   }
   .footer {
     margin-top: auto;
