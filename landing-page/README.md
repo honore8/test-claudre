@@ -1,93 +1,177 @@
 # THE SALON by Bluemind Foundation — Landing Page
 
 This is the public landing page for the inaugural edition of **THE SALON**,
-an invitation-only cultural gathering convened by Bluemind Foundation on
-**17 September 2026** in New York, at Praxis' NYC HQ, during the 81st UN
-General Assembly.
+an invitation-only gathering convened by Bluemind Foundation on
+**17 September 2026** in New York.
 
 It is one of five parallel workstreams building a shared visual-identity
-system in this repository. It consumes the shared design system and does
-not redefine any of it.
+system in this repository. It consumes the shared design system
+(`design-system/tokens.css`) and does not redefine any of it, except for
+one new page-local accent token — see "Ochre" below.
 
-## Hero v2 — monumental comb, simplified content (design review pass)
+This page has gone through two design-review passes since the first build;
+this README describes the **current, third state**. Earlier passes (a
+centered small-comb hero on white, a full nav bar with links, a 13-step
+form) were superseded — see git history if you need that context.
 
-Following design review, the hero was rebuilt from the earlier centered,
-small-comb-on-white treatment to a full-bleed Bluemind Blue composition:
+## Design direction (current)
 
-- **The comb** is now monumental — a large, cropped, original silhouette
-  (not traced from any reference image) bleeding off the top and right
-  edges: a rectangle with a large circle subtracted from its corner
-  (creating the concave "hollow"), plus straight tapered teeth below. It's
-  built as one `<svg viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMin
-  slice">` covering the whole hero (`.hero-v2-comb-wrap { inset: 0 }`), so
-  it scales to cover any viewport size while keeping the circle circular
-  (never stretched into an ellipse) and staying anchored to the top-right.
-  There is deliberately **no interior cutout/logo shape** in the handle —
-  a flat, solid mass with just the one hollow.
-- **Content was cut to exactly four lines**, per review: "THE SALON",
-  "Convened by Bluemind Foundation", the date/city (in a new ochre accent,
-  see below), "By invitation only". The earlier "Where Relationships
-  Become Infrastructure." tagline was removed entirely — nothing replaces
-  it.
-- **One CTA, one label**: the button reads "Request an Invitation"
-  everywhere it appears (hero, nav) — no more "Register" vs "Request an
-  Invitation" inconsistency.
-- **Typographic adjustments**: extra spacing was added between the final
-  "N" of SALON and the comb's hollow (`padding-right: 0.12em` on the
-  title), and between "A" and "L" (`.lw { margin-left: 0.05em }`), which
-  were sitting too close at this scale.
-- **New accent — ochre** (`--color-ochre: #c6883e`, defined locally in
-  this file's `:root`, not in the shared `design-system/tokens.css`): used
-  only for the event date, per explicit art-direction request. This is a
-  deliberate creative decision, not a placeholder like the blue hex/font/
-  comb are — but it's scoped to this page only for now, since the design
-  review asked to work on the landing page before rolling this direction
-  out to the rest of the system.
+THE SALON is explicitly **not a new brand** — there is no logo, no nav, no
+lockup. The signature is text: "THE SALON" / "Convened by Bluemind
+Foundation." The comb is a graphic/architectural element bled across the
+hero, not a pictogram. The whole page follows one rule: **one idea per
+screen, a lot of space, short text, typography as the graphic device.**
+Nothing should read as a conference, a form, or a UNGA side-event.
 
-### Typographic exploration: O+N ligature (not enabled by default)
+## Structure
 
-One further exploration was requested: a subtle visual connection between
-the "O" and "N" of SALON, without touching any other letterform. This
-exists as ready-to-use CSS but is **off by default** — to enable it, add
-`class="ls join-on"` to the "O" span in the `<h1 class="hero-v2-title">`
-markup (it already has `class="ls"`; just add `join-on`). The rule
-`.hero-v2-title .join-on + .ls { margin-left: -0.06em; }` pulls the very
-next letter (N) toward it. Tested at -0.06em, the O's bowl and N's stem
-touch subtly without overlapping awkwardly — see the design review chat
-for a rendered comparison.
+The page is a single scroll, in this order — deliberately short:
 
-### Vertical micro-position
+1. **Hero** — `THE SALON` / `Convened by Bluemind Foundation.` /
+   `September 17, 2026 · New York` (date in ochre) / `By invitation only.`
+   / one CTA. Nothing else — no tagline, no UNGA framing. The monumental
+   comb crop bleeds off the top-right.
+2. **The Idea** — one statement, centered, one screen. No descriptive
+   framing paragraph around it.
+3. **The Three Acts** — three full-width sequential blocks (not a 3-column
+   grid), each roughly one screen tall, separated by a plain hairline. A
+   huge low-opacity roman numeral leads each one.
+4. **Request an Invitation** — a 5-step guided flow (see below).
+5. **Footer** — event name, `New York · September 17, 2026`, contact email.
+   No UNGA mention, no venue name.
 
-Two variants of the whole hero content block shifted vertically (±28px)
-were rendered for review, to test optical alignment against the comb's
-hollow. The shipped version keeps the original (flex-centered) position;
-adjust by adding `transform: translateY(±28px)` to `.hero-v2-content` if
-the raised/lowered variant is preferred instead.
+There is intentionally **no Speakers / Founding Cultural Partners /
+Programme section** — those "(to be announced)" placeholders were removed;
+they read as "unfinished site." They'll be added back once there's
+something real to show.
 
-## Request an Invitation — multi-step flow (SurveyMonkey/Typeform-style)
+## No nav, no logo — just one sticky CTA
 
-The form was rebuilt from one long single-page form into a 13-step guided
-flow (steps `data-step="0"` through `"12"`), per review request for
-SurveyMonkey/Typeform-style fluidity:
+There is no `<nav>`, no "THE SALON" wordmark-and-comb lockup anywhere in
+the chrome, and no in-page links (`#idea`, `#acts`, etc.) — the page is
+short enough to just be scrolled. The only persistent UI element is
+`#sticky-cta`, a single "Request an Invitation" link:
 
-- One question (or a couple of tightly related fields) per screen, a thin
-  progress bar (`.flow-progress`) that fills as you advance, "Continue" /
-  "Back" controls, and Enter-to-advance on single-line text inputs.
-- All steps live in the same `<form>` with the exact same field
-  `name`s as before, stacked in one CSS grid cell (`.flow-steps`) so only
-  the active step is visible/interactive — nothing about the underlying
-  `mailto:` submission mechanism changed.
-- Each step validates its own required fields on "Continue" (via
-  `reportValidity()`) before advancing; the browser's automatic
-  whole-form validation stays suppressed (`novalidate`) so an earlier
-  hidden step's empty field can never block a later step.
-- **Conditional branch**: step 8 ("Is there someone you believe should
-  also be in the room?") offers "Yes — nominate someone" (→ step 9,
-  referral fields) or "No — skip this" (→ step 11, contribution
-  question) via `data-goto` on the step buttons. "Back" correctly
-  un-skips using a navigation history stack, not a blind `index - 1`.
-- The final step still requires the capacity-disclaimer consent checkbox
-  before the `mailto:` submission is allowed to proceed.
+- Hidden over the hero (which already has its own large CTA).
+- Fades in once scrolled past ~92% of the hero's height.
+- **Hides again while `#invitation` is in view** — the guided flow has its
+  own per-step buttons, and a floating duplicate CTA would visually
+  overlap the fields/buttons there. This is tracked with an
+  `IntersectionObserver` on `#invitation` (see the `insideInvitation` flag
+  in the inline script), not just a scroll-position threshold.
+- **Mobile-first positioning**: a full-width bar pinned to the bottom
+  (thumb-reach, since most visitors will open this from a phone), which
+  becomes a small discreet pill in the top-right corner at `≥900px`.
+
+## Hero — monumental comb
+
+The comb is an original silhouette (not traced from any reference image):
+a rectangle with a large circle subtracted from its corner (creating the
+concave "hollow"), plus straight tapered teeth below — built as one
+`<svg viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMin slice">`. On
+desktop it covers the entire hero (`.hero-v2-comb-wrap { inset: 0 }` at
+`≥900px`) so the circle always stays circular regardless of viewport
+aspect ratio, cropped/anchored to the top-right. On mobile it's a smaller,
+separately-positioned corner accent (`top/right/width/height`, not
+`inset: 0`) so the composition doesn't try to force the same wide-aspect
+crop into a narrow portrait screen.
+
+**Do not give `.hero-v2-comb-wrap` both an `inset` and an explicit
+`width`/`height` in the same rule** — `inset` sets all four offsets, which
+over-constrains the box and silently breaks the intended crop (this
+happened once already during review; the fix is documented inline in
+`styles.css`).
+
+There is deliberately **no interior cutout/logo shape** in the comb's
+handle — a flat, solid mass with just the one hollow.
+
+### Typographic details
+
+- Extra spacing between "A" and "L" in SALON (`.lw { margin-left: 0.05em
+  }`) — they sat too close at this scale.
+- **O+N ligature** (off by default): add `class="join-on"` to the "O" span
+  to pull the "N" toward it (`.join-on + .ls { margin-left: -0.06em; }`) —
+  a subtle touch between the O's bowl and the N's stem, not an overlap.
+- **Vertical micro-position**: add `transform: translateY(±28px)` to
+  `.hero-v2-content` to test the hero shifted up/down against the comb's
+  hollow, if the current (flex, bottom-anchored on mobile / centered on
+  desktop) position isn't preferred.
+
+### Ochre — a new, deliberate accent
+
+`--color-ochre: #c6883e`, defined locally in this file's `:root` (not in
+the shared `design-system/tokens.css`), used only for the event date. This
+is **not a placeholder** like the blue hex/font/comb are — it's an
+explicit art-direction decision. It's scoped to this page only for now;
+promote it into the shared tokens if/when this direction rolls out to the
+rest of the system.
+
+## Request an Invitation — 5-step guided flow
+
+Rebuilt around SurveyMonkey/Typeform-style fluidity (interaction only, not
+their visual style — everything still reads as THE SALON's own minimal,
+editorial system):
+
+- **Step 0** (intro, unnumbered) — short framing + "Begin".
+- **01 / 05** — name, email, organization, role, LinkedIn (optional), all
+  on one screen ("Tell us who you are").
+- **02 / 05** — motivation (300-word soft limit, live counter).
+- **03 / 05** — how did you hear about THE SALON (radio group).
+- **04 / 05** — who else should be in the room (optional referral fields —
+  no branch/skip step; just leave them blank).
+- **05 / 05** — how would you like to contribute (checkboxes), the
+  capacity-disclaimer consent checkbox, and the final "Request an
+  Invitation" submit button, all on one screen.
+
+Compared to the previous 13-step version, the **"how are you connected"
+question was dropped** and the founding-contributor step no longer
+branches on a yes/no choice — both simplifications per review, since the
+optional referral fields can just be left empty.
+
+Implementation notes (unchanged in spirit from before):
+- All steps live in one `<form>` with the same field `name`s, stacked in
+  a single CSS grid cell (`.flow-steps`) so only the active step is
+  visible/interactive. The `mailto:` submission mechanism is unchanged.
+- Each step validates its own required fields via `reportValidity()` on
+  "Continue →"; the form itself has `novalidate` so an earlier hidden
+  step's empty field can never block navigation.
+- Enter key advances on single-line text inputs (not `<textarea>`, so
+  multi-line entry still works).
+- The discreet `01 / 05`-style step counter (`.step-index`) replaces the
+  earlier thin progress bar — "très discret," per review, rather than a
+  persistent bar.
+
+### The invitation form has no backend
+
+`<form action="mailto:invitations@bluemindfoundation.org" method="get"
+novalidate>` — submitting opens the visitor's email client with the
+fields encoded as a query string. This is a client-side-only stand-in;
+swap it for a real form endpoint before this page goes live.
+**`invitations@bluemindfoundation.org` is a placeholder address** — it
+must not point at a personal address; swap it for Bluemind's real intake
+inbox.
+
+## Deliberate placeholders (do not treat as final)
+
+Everything below is intentionally provisional and inherited from
+`design-system/tokens.css` — this page does not introduce anything new
+except ochre (see above):
+
+- **Colors** — `--color-blue` (`#14274E`, "Bluemind Blue") is a
+  placeholder hex; swap it in `tokens.css` once Bluemind's real brand file
+  arrives. Nothing on this page needs to change.
+- **Typography** — `--font-display` (Fraunces) and `--font-text` (Inter)
+  stand in for Bluemind's real typeface. A separate `@import` in this
+  file adds Fraunces weight 700 (for the monumental hero wordmark), since
+  `tokens.css` only imports up to 600.
+- **The comb graphic** — an original placeholder silhouette, explicitly
+  not the real "Heal by Hair" artwork/master visual. Swap the SVG path
+  data once the final version is delivered; every place it's used in this
+  file references the same shape, so it's a single find-and-replace.
+- **No gradients, shadows, or glossy effects, and no gimmick
+  animation/effects** anywhere — only quiet fades/rises (`hero-in`,
+  `data-reveal`) and simple opacity/transform transitions, all disabled
+  under `prefers-reduced-motion: reduce`.
 
 ## Files
 
@@ -100,155 +184,13 @@ landing-page/
 └── preview-mobile.png      Playwright screenshot, 390px viewport, full page
 ```
 
-`index.html` links `../design-system/tokens.css` and `../design-system/
-comb-placeholder.svg` directly — those two files are treated as read-only
-inputs and are never edited or duplicated here.
-
-## Structure
-
-The page is a single scroll, in this order:
-
-1. **Hero** — first screen only: "THE SALON", "Convened by Bluemind
-   Foundation", the comb graphic (large, centered, treated as art), the two
-   tagline lines, and a hairline "Register" button that smooth-scrolls to
-   the invitation form. Deliberately the most minimal screen on the page.
-2. **The Idea** — the framing statement.
-3. **The Three Acts** — three editorial blocks (Act I: The Evidence, Act
-   II: From Evidence to Infrastructure, Act III: La Clairière), laid out as
-   three columns with hairline dividers on desktop and stacked with
-   horizontal hairline dividers on mobile. No card or shadow styling.
-4. **Speakers** — text-only placeholder, "(to be announced)".
-5. **Founding Cultural Partners** — same placeholder treatment.
-6. **Programme** — same placeholder treatment.
-7. **Request an Invitation** — the fully built form (see below).
-8. **Footer** — event name, date, city, and a mailto contact line.
-
-## UX layer (added in the second design pass)
-
-A modern-editorial interaction layer sits on top of the structure above,
-built with plain CSS transitions/keyframes and a small vanilla-JS file
-inlined at the bottom of `index.html` (no framework, no build step, no new
-dependency):
-
-- **Fixed nav** — a slim top bar (comb mark + "The Salon", nav links,
-  "Request an Invitation" as a hairline button) that stays transparent over
-  the hero and gains a solid background + hairline bottom border once the
-  page scrolls past ~40px, tracked in JS by toggling a single `.is-scrolled`
-  class. On screens ≤720px it collapses to a hamburger (`#nav-toggle`) that
-  opens a full-screen hairline-divided menu; `Escape` or clicking a link
-  closes it.
-- **Scroll progress** — a 2px hairline at the very top of the viewport that
-  fills left-to-right as the page is read (`transform: scaleX()`, updated
-  on scroll via `requestAnimationFrame` so it never runs more than once per
-  frame).
-- **Active-section nav state** — an `IntersectionObserver` watches `#idea`,
-  `#acts` and `#invitation` and underlines the matching nav link as each
-  section crosses the middle of the viewport.
-- **Scroll-reveal** — any element with a `data-reveal` attribute starts
-  faded/lowered and animates to its resting state the first time it enters
-  view (`IntersectionObserver`, one-shot — it unobserves after revealing).
-  The three Act cards stagger via a `--delay` custom property so they
-  cascade in left-to-right rather than popping in together.
-- **Hero entrance** — the hero's own elements (eyebrow, "Convened by…",
-  comb, taglines, Register button, scroll cue) fade/rise in on page load
-  in sequence via `animation-delay`, driven by the same `--delay` pattern
-  as the act cards — no JS needed for this part, pure CSS.
-- **Ghost act numerals** — a large, very-low-opacity (`0.06`) "I" / "II" /
-  "III" sits behind each Act card's copy (`--color-blue`, no gradient — a
-  flat, quiet layering device, purely typographic).
-- **Comb-motif divider** — a small inline SVG of evenly-spaced vertical
-  hairlines (an abstraction of the comb's own teeth) replaces the plain
-  `<hr>` between the Speakers / Founding Cultural Partners / Programme
-  placeholder sections, tying the page's rhythm back to the hero mark
-  instead of using a generic rule.
-- **Back-to-top** — a small hairline square, bottom-right, fades in once
-  you've scrolled past ~60% of the viewport height.
-- **`prefers-reduced-motion: reduce`** is fully respected: every animation,
-  transition and `scroll-behavior: smooth` is disabled and all `data-reveal`
-  / hero-entrance elements are shown in their resting state immediately.
-
-None of this introduces a color, gradient, shadow or new font — it's all
-built from `design-system/tokens.css` values and plain opacity/transform
-motion, which is what "quiet luxury" motion looks like: confident and
-inevitable, not flashy.
-
-### Bug fixed in this pass: the comb was rendering black, not blue
-
-The first version of this page loaded the comb via
-`<img src="../design-system/comb-placeholder.svg">`. An `<img>` reference to
-an external SVG **cannot** inherit `currentColor` from the host page's CSS —
-the SVG resolves `fill="currentColor"` against its own document's initial
-`color` value, which is black. The comb was silently rendering solid black
-everywhere on this page instead of Bluemind Blue. Fixed by inlining the
-`<svg>…</svg>` markup directly in `index.html` (in the hero, and a smaller
-copy in the nav mark) so it correctly inherits `color: var(--color-blue)`
-from its parent. If you add the comb anywhere else on this page, inline it
-rather than referencing it with `<img src="…">`.
-
-## The "(to be announced)" sections
-
-Speakers, Founding Cultural Partners and Programme are intentionally
-**text-only** — quiet italic serif type, not empty photo grids or avatar
-placeholders. This is a deliberate launch-strategy choice: no photography
-appears anywhere on the page, because none exists yet (speakers and
-partners have not been announced) and because mystery is part of how this
-launch is meant to feel. Empty image grids would read as "unfinished
-website"; quiet typography reads as "more to come, by design."
-
-## The invitation form
-
-The form at `#invitation` is real and fully built, but has **no backend**:
-
-- `<form action="mailto:invitations@bluemindfoundation.org" method="get" novalidate>`
-  — submitting opens the visitor's email client with the form fields
-  encoded as a query string on a `mailto:` link. This is a client-side-only
-  stand-in; browser support for `mailto` + `GET` form submission varies
-  (Chrome and Firefox both open a compose window with the encoded fields;
-  behavior is not identical everywhere), so this should be swapped for a
-  real form endpoint (e.g. a serverless function, Typeform-style service,
-  or CRM webhook) before this page goes live. `action="#"` was the other
-  option considered; `mailto:` was chosen so a submission is not
-  completely silent while there is no backend.
-  **`invitations@bluemindfoundation.org` is a placeholder address** — swap
-  it for Bluemind Foundation's actual intake inbox before this page is
-  used for anything real; it must not point at a personal address.
-- Validation is **client-side only**: native HTML `required` and `type`
-  attributes (`email`, `url`) plus a small inline script that:
-  - live-counts words in the "why would you like to join" textarea and
-    shows "`n / 300 words`" as a soft, non-blocking note (it does not
-    prevent submission over the limit — the brief calls for a soft limit,
-    not a hard one);
-  - reveals a "please specify" text input when "Other" is selected in the
-    "how did you hear," "how are you connected," and "how would you like
-    to contribute" groups, and clears/hides it again if "Other" is
-    deselected.
-- Field grouping mirrors the brief exactly: **Your Information**, **About
-  You**, **Become a Founding Contributor (Optional)**, then the required
-  capacity-disclaimer checkbox and the submit button.
-- "How did you hear…" is a radio group (single choice); "How are you
-  connected…" and "How would you most like to contribute…" are checkbox
-  groups (multiple choice), since a person can plausibly sit in more than
-  one category or want to help in more than one way.
-
-## Deliberate placeholders (do not treat as final)
-
-Everything below is intentionally provisional and inherited from
-`design-system/tokens.css` — this page does not introduce anything new:
-
-- **Colors** — `--color-blue` (`#14274E`, "Bluemind Blue") is a placeholder
-  hex; swap it (and the other three color tokens) in `tokens.css` once
-  Bluemind's real brand file arrives. Nothing in this page needs to change.
-- **Typography** — `--font-display` (Fraunces) and `--font-text` (Inter)
-  stand in for Bluemind's real typeface, not yet delivered.
-- **The comb graphic** — `comb-placeholder.svg` is explicitly a stand-in
-  for the real "Heal by Hair" comb artwork, pending an artist redesign. It
-  is used here as the large, centered hero image, treated as art rather
-  than as a logo mark.
-- **No gradients, shadows, or glossy effects** anywhere on the page — the
-  design system enforces this by simply not defining any; this page
-  follows suit. Buttons are hairline-bordered text buttons with a
-  color-invert hover state on pointer devices only (`@media (hover:
-  hover)`), never a filled default state.
+`index.html` links `../design-system/tokens.css` directly, treated as a
+read-only input and never edited here. The comb SVG is inlined directly in
+`index.html` rather than referenced via `<img src="…design-system/comb-
+placeholder.svg">` — an `<img>` reference to an external SVG cannot
+inherit `currentColor` from the host page and would silently render black
+instead of Bluemind Blue (this bug existed in an earlier pass and was
+fixed by inlining).
 
 ## Previewing
 
@@ -260,18 +202,25 @@ xdg-open landing-page/index.html      # Linux
 ```
 
 Or serve the repo root with any static file server so the relative
-`../design-system/…` links resolve, e.g.:
+`../design-system/…` link resolves, e.g.:
 
 ```
 npx serve /home/user/test-claudre
 ```
 
+**Test mobile first.** This page is designed mobile-first (base CSS rules
+target small screens; `min-width` media queries layer on desktop
+enhancements) because most visitors are expected to arrive from an
+invitation link opened on a phone (email/WhatsApp/LinkedIn).
+
 ## Visual verification
 
 `preview-desktop.png` (1440px viewport) and `preview-mobile.png` (390px
 viewport) are full-page Playwright screenshots taken against the current
-`index.html`, used to check for overlap, clipping, or broken layout before
-this page was considered done. Regenerate them after any markup/CSS change
-with a short Playwright script pointed at
-`file://…/landing-page/index.html`, using the Chromium binary at
-`/opt/pw-browsers/chromium`.
+`index.html`. Regenerate them after any markup/CSS change with a short
+Playwright script pointed at `file://…/landing-page/index.html`, using the
+Chromium binary at `/opt/pw-browsers/chromium`. When checking `hero-in`
+staggered elements or the sticky CTA's opacity transition, wait at least
+~1.5s after page load / class changes before screenshotting — shorter
+waits can catch an element mid-animation and look like a bug (faint text,
+washed-out button) when it isn't one.

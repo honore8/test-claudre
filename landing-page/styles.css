@@ -4,13 +4,19 @@
   Imports design-system/tokens.css for all color, type and spacing
   values. This file only arranges those tokens into layout — it does
   not introduce new colors, gradients, shadows or radii.
+
+  V2 design-review pass: no nav, no logo lockup (THE SALON is not a new
+  brand — the comb is a graphic/architectural element only), radically
+  shorter copy, a single sticky CTA, and a five-step guided invitation
+  flow. Built mobile-first: base rules target small screens, min-width
+  media queries layer on desktop enhancements.
 */
 
 /*
   Supplementary weight for the monumental hero wordmark. tokens.css
   already imports Fraunces at 300–600; this adds 700 for this page only
   (tokens.css itself is shared across the whole system and stays
-  untouched — see the "hero v2" note further down).
+  untouched).
 */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&display=swap');
 
@@ -21,15 +27,11 @@ html {
 }
 
 :root {
-  --nav-height: 76px;
-
   /*
     Ochre — a new accent introduced specifically for the hero-v2 redesign,
-    per explicit client direction (used only for the event date). This is
-    NOT a placeholder like --color-blue/--font-display/the comb SVG are —
-    it's a deliberate creative decision. Scoped to this page only for now;
-    promote it into design-system/tokens.css if/when this direction is
-    adopted system-wide.
+    per explicit client direction (used only for the event date). Not a
+    placeholder like --color-blue/--font-display/the comb SVG — a
+    deliberate creative decision, scoped to this page for now.
   */
   --color-ochre: #c6883e;
 }
@@ -38,21 +40,13 @@ html {
   max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--margin-desktop);
-  padding-right: var(--margin-desktop);
+  padding-left: var(--margin-mobile, 6vw);
+  padding-right: var(--margin-mobile, 6vw);
 }
 
 section {
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-8);
-  scroll-margin-top: var(--nav-height);
-}
-
-.rule {
-  border: none;
-  border-top: var(--border-hairline);
-  margin: 0;
-  opacity: 0.35;
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
 }
 
 .center {
@@ -63,7 +57,7 @@ section {
 
 [data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(24px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -73,9 +67,8 @@ section {
   transform: translateY(0);
 }
 
-.act[data-reveal] {
-  transition-delay: calc(var(--delay, 0) * 0.12s);
-}
+.act-v2[data-reveal]:nth-child(2) { transition-delay: 0.08s; }
+.act-v2[data-reveal]:nth-child(3) { transition-delay: 0.16s; }
 
 /* ---- Scroll progress — thin hairline that fills across the top ---- */
 
@@ -98,202 +91,44 @@ section {
   transform-origin: left center;
 }
 
-/* ---- Fixed nav ---- */
+/* ---- Sticky CTA — the only persistent chrome on the page. Hidden over
+   the hero (which has its own large CTA), appears once scrolled past. ---- */
 
-.site-nav {
+.sticky-cta {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  height: var(--nav-height);
-  display: flex;
-  align-items: center;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background-color 0.35s ease, border-color 0.35s ease;
-}
-
-.site-nav.is-scrolled {
-  background: rgba(255, 255, 255, 0.92);
-  border-bottom: 1px solid rgba(20, 39, 78, 0.14);
-}
-
-.nav-inner {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-}
-
-.nav-mark {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  color: var(--color-white);
-  text-decoration: none;
-  transition: color 0.35s ease;
-}
-
-.nav-mark-comb {
-  width: 14px;
-  height: auto;
-  color: inherit;
-}
-
-.nav-mark-text {
-  font-family: var(--font-display);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 14px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: var(--space-5);
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links a {
-  position: relative;
-  color: var(--color-white);
-  text-decoration: none;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-label);
+  z-index: 55;
+  font-family: var(--font-text);
   font-weight: 500;
-  padding-bottom: 4px;
-  transition: color 0.35s ease;
-}
-
-/* Nav sits over the dark hero by default — white. Once scrolled onto the
-   light page (nav gains a solid white background), flip to blue. */
-.site-nav.is-scrolled .nav-mark,
-.site-nav.is-scrolled .nav-links a {
-  color: var(--color-blue);
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.3s ease;
-}
-
-@media (hover: hover) {
-  .nav-links a:hover::after {
-    transform: scaleX(1);
-  }
-}
-
-.nav-links a.is-active::after {
-  transform: scaleX(1);
-}
-
-.nav-links a.nav-cta {
-  border: var(--border-hairline);
-  padding: var(--space-2) var(--space-3);
-}
-.nav-links a.nav-cta::after {
-  display: none;
-}
-@media (hover: hover) {
-  .nav-links a.nav-cta:hover {
-    background: var(--color-white);
-    color: var(--color-blue);
-  }
-  .site-nav.is-scrolled .nav-links a.nav-cta:hover {
-    background: var(--color-blue);
-    color: var(--color-white);
-  }
-}
-
-.nav-toggle {
-  display: none;
-  align-items: center;
-  gap: var(--space-2);
-  background: transparent;
-  border: none;
-  color: var(--color-white);
-  cursor: pointer;
-  padding: var(--space-2);
-  transition: color 0.35s ease;
-}
-
-.site-nav.is-scrolled .nav-toggle {
-  color: var(--color-blue);
-}
-
-.nav-toggle-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 20px;
-}
-
-.nav-toggle-bars span {
-  display: block;
-  height: 1px;
-  background: currentColor;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.nav-toggle-label {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: var(--tracking-label);
-}
-
-body.nav-open .nav-toggle-bars span:first-child {
-  transform: translateY(3px) rotate(45deg);
-}
-body.nav-open .nav-toggle-bars span:last-child {
-  transform: translateY(-3px) rotate(-45deg);
-}
-
-/* ---- Back to top ---- */
-
-.back-to-top {
-  position: fixed;
-  right: var(--space-3);
-  bottom: var(--space-3);
-  z-index: 45;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: var(--border-hairline);
-  color: var(--color-blue);
-  background: var(--color-white);
   text-decoration: none;
-  font-size: 16px;
+  color: var(--color-white);
+  background: var(--color-blue);
+  border: var(--border-hairline);
+  padding: var(--space-3) var(--space-4);
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(12px);
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease, color 0.2s ease;
+
+  /* mobile-first: full-width bar pinned to the bottom, thumb-friendly */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
 }
 
-.back-to-top.is-visible {
+.sticky-cta.is-visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
 @media (hover: hover) {
-  .back-to-top:hover {
-    background: var(--color-blue);
-    color: var(--color-white);
+  .sticky-cta:hover {
+    background: var(--color-white);
+    color: var(--color-blue);
   }
 }
 
@@ -307,16 +142,17 @@ body.nav-open .nav-toggle-bars span:last-child {
 .skip-link:focus {
   left: var(--space-2);
   top: var(--space-2);
-  z-index: 50;
+  z-index: 70;
   background: var(--color-white);
+  color: var(--color-blue);
   padding: var(--space-1) var(--space-2);
 }
 
 /* ---- HERO v2 ----
    Full-bleed Bluemind Blue, a monumental cropped comb bleeding off the
-   top-right, and exactly the four lines the brief calls for: THE SALON,
-   Convened by Bluemind Foundation, the date (ochre), By invitation only.
-   No tagline, no photography, no second accent beyond ochre. */
+   top-right, and exactly four lines: THE SALON, Convened by Bluemind
+   Foundation, the date (ochre), By invitation only. No tagline, no UNGA
+   framing, no photography. */
 
 .hero {
   position: relative;
@@ -326,12 +162,15 @@ body.nav-open .nav-toggle-bars span:last-child {
   background: var(--color-blue);
   color: var(--color-white);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .hero-v2-comb-wrap {
   position: absolute;
-  inset: 0;
+  top: -2vh;
+  right: -14vw;
+  width: 82vw;
+  height: 34vh;
   color: var(--color-white);
   pointer-events: none;
 }
@@ -345,9 +184,9 @@ body.nav-open .nav-toggle-bars span:last-child {
 .hero-v2-content {
   position: relative;
   z-index: 1;
-  max-width: 720px;
-  padding-left: var(--margin-desktop);
-  padding-right: var(--space-6);
+  width: 100%;
+  padding: 0 var(--margin-mobile, 6vw) var(--space-8);
+  padding-top: 36vh;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -356,12 +195,10 @@ body.nav-open .nav-toggle-bars span:last-child {
 .hero-v2-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(64px, 10.5vw, 158px);
+  font-size: clamp(54px, 16vw, 158px);
   line-height: 0.9;
   letter-spacing: -0.015em;
   margin: 0;
-  /* air between the final "N" and the comb's hollow, per design review */
-  padding-right: 0.12em;
 }
 
 /* A and L sit slightly too close at this scale — separate them.
@@ -373,8 +210,8 @@ body.nav-open .nav-toggle-bars span:last-child {
 /*
   Optional exploration (not enabled by default): a subtle O+N ligature,
   so "ON" reads as a quiet, connected pair. Toggle by adding
-  class="ls join-on" to the O span and adjusting its neighbour — see
-  README "Typographic exploration: O+N" for the exact markup.
+  class="join-on" to the O span. See README "Typographic exploration:
+  O+N" for details.
 */
 .hero-v2-title .join-on + .ls {
   margin-left: -0.06em;
@@ -382,14 +219,14 @@ body.nav-open .nav-toggle-bars span:last-child {
 
 .hero-v2-convened {
   font-family: var(--font-text);
-  font-size: clamp(15px, 1.3vw, 20px);
+  font-size: clamp(14px, 3.4vw, 20px);
   margin: var(--space-2) 0 0;
   opacity: 0.92;
 }
 
 .hero-v2-date {
   font-family: var(--font-text);
-  font-size: clamp(16px, 1.4vw, 22px);
+  font-size: clamp(15px, 3.6vw, 22px);
   color: var(--color-ochre);
   margin: var(--space-3) 0 0;
   letter-spacing: 0.01em;
@@ -397,7 +234,7 @@ body.nav-open .nav-toggle-bars span:last-child {
 
 .hero-v2-invite {
   font-family: var(--font-text);
-  font-size: 13px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: var(--tracking-label);
   opacity: 0.8;
@@ -465,182 +302,98 @@ body.nav-open .nav-toggle-bars span:last-child {
 
 .eyebrow {
   color: var(--color-blue);
+  font-size: 12px;
 }
 
-.section-head {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  margin-bottom: var(--space-6);
-}
-
-/* ---- THE IDEA ---- */
+/* ---- THE IDEA — one statement, one screen ---- */
 
 .idea {
+  min-height: 62vh;
+  display: flex;
+  align-items: center;
   text-align: center;
 }
 
 .idea-frame {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
 .idea-tag {
-  font-family: var(--font-text);
-  font-size: 14px;
-  line-height: 1.7;
-  margin: 0 0 var(--space-5);
-  opacity: 0.85;
+  margin: 0 0 var(--space-4);
 }
 
 .idea-statement {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(24px, 3.4vw, 38px);
-  line-height: 1.4;
+  font-size: clamp(28px, 6.6vw, 46px);
+  line-height: 1.3;
   margin: 0;
 }
 
-/* ---- THE THREE ACTS ---- */
+/* ---- THE THREE ACTS — sequential, one act per screen ---- */
 
-.acts-kicker {
-  font-size: 14px;
-  opacity: 0.6;
-  margin: 0;
+.acts-v2 {
+  padding: 0;
 }
 
-.acts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-}
-
-.act {
-  position: relative;
-  padding: var(--space-6) var(--space-4);
-  border-top: var(--border-hairline);
+.act-v2 {
+  min-height: 56vh;
   display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  overflow: hidden;
+  align-items: center;
+  border-top: var(--border-hairline);
 }
 
-.acts .act + .act {
-  border-left: var(--border-hairline);
+.act-v2-inner {
+  position: relative;
+  padding: var(--space-7) 0;
 }
 
-.act-numeral {
-  position: absolute;
-  top: var(--space-3);
-  right: var(--space-3);
+.act-v2-numeral {
+  display: block;
   font-family: var(--font-display);
-  font-size: clamp(64px, 9vw, 108px);
+  font-size: clamp(72px, 22vw, 220px);
   line-height: 1;
   color: var(--color-blue);
-  opacity: 0.06;
+  opacity: 0.07;
+  margin: 0 0 -0.2em;
   pointer-events: none;
-  z-index: 0;
 }
 
-.act-index,
-.act-title,
-.act-body {
-  position: relative;
-  z-index: 1;
-}
-
-.act-index {
-  opacity: 0.6;
-}
-
-.act-name {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 15px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.act-title {
+.act-v2-title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(21px, 2.4vw, 27px);
-  line-height: 1.3;
-  margin: var(--space-1) 0 0;
+  font-size: clamp(26px, 6.4vw, 46px);
+  line-height: 1.2;
+  margin: var(--space-2) 0 0;
+  max-width: 14ch;
 }
 
-.act-body {
-  font-size: 15px;
+.act-v2-body {
+  font-size: 16px;
   line-height: 1.7;
-  margin: 0;
+  max-width: 46ch;
   opacity: 0.85;
+  margin: var(--space-3) 0 0;
 }
 
-/* ---- Motif divider — an abstraction of the comb's teeth, used as a signature section break ---- */
-
-.motif-divider {
-  display: flex;
-  justify-content: center;
-  padding: var(--space-3) 0;
-  color: var(--color-blue);
-  opacity: 0.35;
-}
-
-.motif-divider svg {
-  width: 240px;
-  height: 24px;
-}
-
-/* ---- Placeholder sections: Speakers / Partners / Programme ---- */
-
-.placeholder {
-  text-align: center;
-}
-
-.placeholder-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: clamp(22px, 3vw, 30px);
-  margin: 0 0 var(--space-4);
-}
-
-.placeholder-note {
+.act-v2-body--quiet {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 17px;
-  opacity: 0.55;
-  margin: 0 auto;
+  font-size: clamp(18px, 3.4vw, 22px);
+  opacity: 1;
 }
 
-/* ---- REQUEST AN INVITATION — multi-step flow (Typeform/SurveyMonkey-style) ---- */
+/* ---- REQUEST AN INVITATION — five-step guided flow ---- */
 
 .invitation-flow {
   padding-top: var(--space-6);
-  padding-bottom: var(--space-6);
+  padding-bottom: var(--space-8);
 }
 
 .flow-shell {
   position: relative;
-  max-width: 720px;
-}
-
-.flow-progress {
-  height: 2px;
-  background: rgba(20, 39, 78, 0.12);
-  margin-bottom: var(--space-7);
-}
-
-.flow-progress span {
-  display: block;
-  height: 100%;
-  width: 100%;
-  background: var(--color-blue);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 640px;
 }
 
 .flow-steps {
@@ -652,8 +405,8 @@ body.nav-open .nav-toggle-bars span:last-child {
   grid-row: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
-  min-height: 46vh;
+  gap: var(--space-4);
+  min-height: 50vh;
   justify-content: center;
   opacity: 0;
   transform: translateY(10px);
@@ -669,8 +422,17 @@ body.nav-open .nav-toggle-bars span:last-child {
   pointer-events: auto;
 }
 
+.step-index {
+  font-family: var(--font-text);
+  font-size: 12px;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-blue);
+  opacity: 0.55;
+  margin: 0;
+}
+
 .step-copy {
-  max-width: 620px;
+  max-width: 560px;
   font-size: 16px;
   line-height: 1.75;
   opacity: 0.9;
@@ -680,14 +442,20 @@ body.nav-open .nav-toggle-bars span:last-child {
 .step-q {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(22px, 2.6vw, 30px);
-  line-height: 1.35;
+  font-size: clamp(24px, 5.6vw, 32px);
+  line-height: 1.3;
   margin: 0;
+}
+
+.step-q .hint {
+  display: block;
+  font-family: var(--font-text);
+  margin-top: var(--space-1);
 }
 
 .step-fields {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-4);
 }
 
@@ -698,12 +466,8 @@ body.nav-open .nav-toggle-bars span:last-child {
 .step-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
   margin-top: var(--space-2);
-}
-
-.step-actions.branch {
-  flex-wrap: wrap;
 }
 
 .step-back {
@@ -715,7 +479,7 @@ body.nav-open .nav-toggle-bars span:last-child {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: var(--tracking-label);
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: pointer;
   text-decoration: underline;
   text-decoration-color: transparent;
@@ -729,21 +493,6 @@ body.nav-open .nav-toggle-bars span:last-child {
 
 .step:first-child .step-back {
   display: none;
-}
-
-.btn-ghost {
-  opacity: 0.7;
-}
-@media (hover: hover) {
-  .btn-ghost:hover {
-    opacity: 1;
-  }
-}
-
-.field-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
 }
 
 .field {
@@ -775,7 +524,7 @@ input[type="url"],
 textarea,
 select {
   font-family: var(--font-text);
-  font-size: 15px;
+  font-size: 16px;
   color: var(--color-blue);
   background: transparent;
   border: none;
@@ -823,8 +572,8 @@ textarea::placeholder {
 
 .option-list.columns {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-2) var(--space-4);
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
 }
 
 .option {
@@ -838,8 +587,8 @@ textarea::placeholder {
 .option input[type="radio"],
 .option input[type="checkbox"] {
   margin: 3px 0 0;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
   accent-color: var(--color-blue);
 }
@@ -856,7 +605,7 @@ textarea::placeholder {
   display: flex;
   align-items: flex-start;
   gap: var(--space-2);
-  padding-top: var(--space-2);
+  padding-top: var(--space-3);
   border-top: var(--border-hairline);
 }
 
@@ -873,29 +622,18 @@ textarea::placeholder {
   line-height: 1.6;
 }
 
-.form-closing {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 560px;
-  margin: 0;
-}
-
 /* ---- FOOTER ---- */
 
 footer {
   padding-top: var(--space-6);
-  padding-bottom: var(--space-6);
+  padding-bottom: calc(var(--space-6) + 64px); /* clear the mobile sticky CTA bar */
   border-top: var(--border-hairline);
 }
 
 .footer-inner {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: var(--space-4);
-  align-items: baseline;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
 .footer-name {
@@ -921,135 +659,96 @@ footer {
 }
 
 /* =====================================================================
-   RESPONSIVE — mobile-first adjustments below a tablet breakpoint
+   DESKTOP ENHANCEMENTS — min-width, layered on top of the mobile-first
+   base rules above
    ===================================================================== */
 
-@media (max-width: 900px) {
-  .wrap {
-    padding-left: var(--margin-mobile, 6vw);
-    padding-right: var(--margin-mobile, 6vw);
-  }
-
-  section {
-    padding-top: var(--space-6);
-    padding-bottom: var(--space-6);
-  }
-
-  .acts {
-    grid-template-columns: 1fr;
-  }
-
-  .acts .act + .act {
-    border-left: none;
-  }
-
-  .field-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .field-grid .field {
-    grid-column: 1 / -1;
-  }
-
+@media (min-width: 640px) {
   .step-fields {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .option-list.columns {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2) var(--space-4);
+  }
+}
+
+@media (min-width: 900px) {
+  .wrap {
+    padding-left: var(--margin-desktop);
+    padding-right: var(--margin-desktop);
+  }
+
+  section {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  /* Sticky CTA becomes a small discreet top-right pill instead of a
+     full-width mobile bar. */
+  .sticky-cta {
+    left: auto;
+    bottom: auto;
+    top: var(--space-3);
+    right: var(--space-3);
+    padding: var(--space-2) var(--space-4);
+  }
+
+  footer {
+    padding-bottom: var(--space-6);
   }
 
   .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-3);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
   }
 
-  /* Hero v2 on mobile: a smaller corner comb, text stacked below it
-     rather than beside it — the full bleed/hollow composition is a
-     desktop-scale gesture. */
+  /* Hero: monumental comb bleeding off the top-right, text beside it */
+  .hero {
+    align-items: center;
+  }
+
+  /* Full-hero coverage so the SVG's own preserveAspectRatio="slice" does
+     the cropping — a separately-sized box here previously caused a
+     mismatched aspect ratio that over-cropped and pushed the arch too
+     far right, closing the gap to "SALON" more than intended. */
   .hero-v2-comb-wrap {
-    inset: auto;
-    top: -2vh;
-    right: -12vw;
-    width: 78vw;
-    height: 32vh;
+    inset: 0;
+    width: auto;
+    height: auto;
   }
 
   .hero-v2-content {
-    padding-left: var(--margin-mobile, 6vw);
-    padding-right: var(--margin-mobile, 6vw);
-    padding-top: 34vh;
-    max-width: none;
+    max-width: 720px;
+    padding: 0;
+    padding-left: var(--margin-desktop);
+    padding-right: var(--space-6);
   }
 
   .hero-v2-title {
-    padding-right: 0;
+    padding-right: 0.12em; /* air between the final "N" and the comb's hollow */
   }
 
-  .step {
-    min-height: 40vh;
-  }
-}
-
-@media (max-width: 480px) {
-  .btn {
-    width: 100%;
-    text-align: center;
-    padding: var(--space-3) var(--space-3);
+  .idea {
+    min-height: 72vh;
   }
 
-  .step-actions {
-    flex-wrap: wrap;
-  }
-}
-
-/* ---- Mobile nav: hamburger toggle + full-screen overlay menu ---- */
-
-@media (max-width: 720px) {
-  .nav-toggle {
-    display: flex;
+  .idea-frame {
+    max-width: 920px;
   }
 
-  .nav-links {
-    position: fixed;
-    inset: 0;
-    top: var(--nav-height);
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 0;
-    background: var(--color-white);
-    padding: var(--space-4) var(--margin-mobile, 6vw);
-    transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  .act-v2 {
+    min-height: 68vh;
   }
 
-  .nav-links.is-open {
-    transform: translateX(0);
+  .act-v2-inner {
+    max-width: 640px;
   }
 
-  .nav-links li {
-    border-bottom: var(--border-hairline);
-  }
-
-  .nav-links li:first-child {
-    border-top: var(--border-hairline);
-  }
-
-  .nav-links a {
-    display: block;
-    padding: var(--space-4) 0;
-    font-size: 16px;
-  }
-
-  .nav-links a.nav-cta {
-    border: none;
-    margin-top: var(--space-2);
-  }
-
-  body.nav-open {
-    overflow: hidden;
+  .act-v2-title {
+    max-width: 20ch;
   }
 }
 
@@ -1071,19 +770,9 @@ footer {
     transition: none;
   }
 
-  .site-nav,
-  .nav-links a::after,
   .btn,
-  .back-to-top,
-  .nav-links {
-    transition: none;
-  }
-
+  .sticky-cta,
   .step {
-    transition: none;
-  }
-
-  .flow-progress span {
     transition: none;
   }
 }
