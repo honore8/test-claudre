@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>THE SALON by Bluemind Foundation</title>
 <meta name="description" content="THE SALON by Bluemind Foundation — an invitation-only cultural gathering, 17 September 2026, New York.">
+<meta name="theme-color" content="#14274E">
 <link rel="stylesheet" href="../design-system/tokens.css">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,26 +13,81 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
+<!-- Scroll progress — thin hairline that fills as the page is read -->
+<div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+
+<!-- ============================= NAV ============================= -->
+<nav class="site-nav" id="site-nav">
+  <div class="wrap nav-inner">
+    <a class="nav-mark" href="#top" aria-label="THE SALON — back to top">
+      <svg class="nav-mark-comb" viewBox="0 0 240 320" aria-hidden="true">
+        <g fill="currentColor">
+          <rect x="20" y="30" width="200" height="24" rx="12"/>
+          <path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/>
+          <path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/>
+          <path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/>
+          <path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/>
+          <path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/>
+          <path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/>
+          <path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/>
+          <path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/>
+          <path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/>
+        </g>
+      </svg>
+      <span class="nav-mark-text">The Salon</span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#idea" data-nav>The Idea</a></li>
+      <li><a href="#acts" data-nav>The Three Acts</a></li>
+      <li><a href="#invitation" data-nav class="nav-cta">Request an Invitation</a></li>
+    </ul>
+  </div>
+</nav>
+
 <main id="main">
 
   <!-- ============================= HERO ============================= -->
   <section class="hero" id="top">
-    <p class="eyebrow hero-kicker">The Salon</p>
-    <p class="hero-convened">Convened by Bluemind Foundation</p>
+    <p class="eyebrow hero-kicker hero-in" style="--delay:0">The Salon</p>
+    <p class="hero-convened hero-in" style="--delay:1">Convened by Bluemind Foundation</p>
 
-    <img class="hero-comb" src="../design-system/comb-placeholder.svg" alt="" role="presentation">
+    <svg class="hero-comb hero-in" style="--delay:2" viewBox="0 0 240 320" role="img" aria-label="THE SALON comb symbol (placeholder)">
+      <g fill="currentColor">
+        <rect x="20" y="30" width="200" height="24" rx="12"/>
+        <path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/>
+        <path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/>
+        <path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/>
+        <path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/>
+        <path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/>
+        <path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/>
+        <path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/>
+        <path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/>
+        <path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/>
+      </g>
+    </svg>
 
-    <p class="hero-lines font-display">
+    <p class="hero-lines font-display hero-in" style="--delay:3">
       <span class="line">Shaped by Africa. Open to the World.</span>
       <span class="line">Where Relationships Become Infrastructure.</span>
     </p>
 
-    <a class="btn hero-cta" href="#invitation">Register</a>
+    <a class="btn hero-cta hero-in" style="--delay:4" href="#invitation" data-nav>Register</a>
+
+    <a class="scroll-cue hero-in" style="--delay:5" href="#idea" aria-label="Scroll to explore">
+      <span class="scroll-cue-line" aria-hidden="true"></span>
+      Scroll
+    </a>
   </section>
 
   <!-- ============================= THE IDEA ============================= -->
-  <section class="idea">
-    <div class="wrap idea-frame">
+  <section class="idea" id="idea">
+    <div class="wrap idea-frame" data-reveal>
       <p class="idea-tag eyebrow">
         The Salon<br>
         Convened by Bluemind Foundation. Shaped by Africa. Open to the World.
@@ -44,15 +100,17 @@
   </section>
 
   <!-- ============================= THE THREE ACTS ============================= -->
-  <section class="acts-section">
+  <section class="acts-section" id="acts">
     <div class="wrap">
-      <div class="section-head center">
+      <div class="section-head center" data-reveal>
         <p class="eyebrow">The Three Acts</p>
+        <p class="acts-kicker">Lower level to upper level — from evidence to encounter.</p>
       </div>
     </div>
     <div class="wrap">
       <div class="acts">
-        <article class="act">
+        <article class="act" data-reveal style="--delay:0">
+          <span class="act-numeral" aria-hidden="true">I</span>
           <p class="eyebrow act-index">Act I — The Evidence</p>
           <h3 class="act-title font-display">Trust as Health Infrastructure</h3>
           <p class="act-body">
@@ -60,7 +118,8 @@
             spaces can become mental health infrastructure.
           </p>
         </article>
-        <article class="act">
+        <article class="act" data-reveal style="--delay:1">
+          <span class="act-numeral" aria-hidden="true">II</span>
           <p class="eyebrow act-index">Act II — From Evidence to Infrastructure</p>
           <h3 class="act-title font-display">How do we build mental health systems people already trust?</h3>
           <p class="act-body">
@@ -68,7 +127,8 @@
             leaders on what it takes to move from evidence to national scale.
           </p>
         </article>
-        <article class="act">
+        <article class="act" data-reveal style="--delay:2">
+          <span class="act-numeral" aria-hidden="true">III</span>
           <p class="eyebrow act-index">Act III — La Clairière</p>
           <h3 class="act-title font-display">A Celebration of Black Cultures of Care</h3>
           <p class="act-body">
@@ -83,27 +143,45 @@
 
   <!-- ============================= SPEAKERS ============================= -->
   <section class="placeholder">
-    <div class="wrap">
+    <div class="wrap" data-reveal>
       <h2 class="placeholder-title">Speakers</h2>
       <p class="placeholder-note">(to be announced)</p>
     </div>
   </section>
 
-  <div class="wrap"><hr class="rule"></div>
+  <div class="wrap"><div class="motif-divider" aria-hidden="true">
+    <svg viewBox="0 0 240 24" preserveAspectRatio="none"><g fill="currentColor">
+      <rect x="4" y="8" width="3" height="8" rx="1.5"/><rect x="24" y="2" width="3" height="20" rx="1.5"/>
+      <rect x="44" y="10" width="3" height="4" rx="1.5"/><rect x="64" y="0" width="3" height="24" rx="1.5"/>
+      <rect x="84" y="6" width="3" height="12" rx="1.5"/><rect x="104" y="9" width="3" height="6" rx="1.5"/>
+      <rect x="124" y="1" width="3" height="22" rx="1.5"/><rect x="144" y="7" width="3" height="10" rx="1.5"/>
+      <rect x="164" y="10" width="3" height="4" rx="1.5"/><rect x="184" y="2" width="3" height="20" rx="1.5"/>
+      <rect x="204" y="8" width="3" height="8" rx="1.5"/><rect x="224" y="6" width="3" height="12" rx="1.5"/>
+    </g></svg>
+  </div></div>
 
   <!-- ============================= FOUNDING CULTURAL PARTNERS ============================= -->
   <section class="placeholder">
-    <div class="wrap">
+    <div class="wrap" data-reveal>
       <h2 class="placeholder-title">Founding Cultural Partners</h2>
       <p class="placeholder-note">(to be announced)</p>
     </div>
   </section>
 
-  <div class="wrap"><hr class="rule"></div>
+  <div class="wrap"><div class="motif-divider" aria-hidden="true">
+    <svg viewBox="0 0 240 24" preserveAspectRatio="none"><g fill="currentColor">
+      <rect x="4" y="8" width="3" height="8" rx="1.5"/><rect x="24" y="2" width="3" height="20" rx="1.5"/>
+      <rect x="44" y="10" width="3" height="4" rx="1.5"/><rect x="64" y="0" width="3" height="24" rx="1.5"/>
+      <rect x="84" y="6" width="3" height="12" rx="1.5"/><rect x="104" y="9" width="3" height="6" rx="1.5"/>
+      <rect x="124" y="1" width="3" height="22" rx="1.5"/><rect x="144" y="7" width="3" height="10" rx="1.5"/>
+      <rect x="164" y="10" width="3" height="4" rx="1.5"/><rect x="184" y="2" width="3" height="20" rx="1.5"/>
+      <rect x="204" y="8" width="3" height="8" rx="1.5"/><rect x="224" y="6" width="3" height="12" rx="1.5"/>
+    </g></svg>
+  </div></div>
 
   <!-- ============================= PROGRAMME ============================= -->
   <section class="placeholder">
-    <div class="wrap">
+    <div class="wrap" data-reveal>
       <h2 class="placeholder-title">Programme</h2>
       <p class="placeholder-note">(to be announced)</p>
     </div>
@@ -112,11 +190,11 @@
   <!-- ============================= REQUEST AN INVITATION ============================= -->
   <section id="invitation">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head" data-reveal>
         <p class="eyebrow">Request an Invitation</p>
       </div>
 
-      <p class="invitation-intro">
+      <p class="invitation-intro" data-reveal>
         THE SALON by Bluemind Foundation is an invitation-only gathering.
         Attendance is intentionally limited to approximately 50 participants
         to foster meaningful conversations among leaders from government,
@@ -293,9 +371,13 @@
   </div>
 </footer>
 
+<a class="back-to-top" id="back-to-top" href="#top" aria-label="Back to top">↑</a>
+
 <script>
   (function () {
     "use strict";
+
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     // ---- Word counter for the motivation textarea (soft limit, not enforced) ----
     var textarea = document.getElementById("motivation");
@@ -342,17 +424,97 @@
     wireOther('input[name="connection"]', "connection-other-field", "connection-other-text");
     wireOther('input[name="contribute"]', "contribute-other-field", "contribute-other-text");
 
-    // ---- Smooth scroll to the invitation form from the hero CTA ----
-    var registerLink = document.querySelector('.hero-cta');
-    if (registerLink) {
-      registerLink.addEventListener("click", function (e) {
-        var target = document.getElementById("invitation");
-        if (target && "scrollBehavior" in document.documentElement.style) {
+    // ---- Smooth scroll for every in-page anchor (nav, hero CTA, scroll cue, back-to-top) ----
+    var supportsSmoothScroll = "scrollBehavior" in document.documentElement.style;
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        var id = link.getAttribute("href").slice(1);
+        var target = id ? document.getElementById(id) : document.body;
+        if (!target) return;
+        if (supportsSmoothScroll && !reduceMotion) {
           e.preventDefault();
           target.scrollIntoView({ behavior: "smooth", block: "start" });
         }
+        closeMobileNav();
       });
+    });
+
+    // ---- Fixed nav: solid background once scrolled past the hero, progress bar, back-to-top ----
+    var nav = document.getElementById("site-nav");
+    var progressBar = document.getElementById("scroll-progress-bar");
+    var backToTop = document.getElementById("back-to-top");
+    var ticking = false;
+
+    function onScroll() {
+      var scrollY = window.scrollY || window.pageYOffset;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? Math.min(1, scrollY / docHeight) : 0;
+
+      nav.classList.toggle("is-scrolled", scrollY > 40);
+      backToTop.classList.toggle("is-visible", scrollY > window.innerHeight * 0.6);
+      progressBar.style.transform = "scaleX(" + progress + ")";
+      ticking = false;
     }
+
+    window.addEventListener("scroll", function () {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+    onScroll();
+
+    // ---- Active nav link tracking ----
+    var navLinks = document.querySelectorAll('#nav-menu a[data-nav]');
+    var sections = ["idea", "acts", "invitation"].map(function (id) { return document.getElementById(id); }).filter(Boolean);
+
+    if ("IntersectionObserver" in window && sections.length) {
+      var sectionObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach(function (link) {
+            link.classList.toggle("is-active", link.getAttribute("href") === "#" + entry.target.id);
+          });
+        });
+      }, { rootMargin: "-45% 0px -45% 0px" });
+      sections.forEach(function (s) { sectionObserver.observe(s); });
+    }
+
+    // ---- Scroll-reveal for [data-reveal] elements ----
+    var revealEls = document.querySelectorAll("[data-reveal]");
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+    } else {
+      var revealObserver = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+      revealEls.forEach(function (el) { revealObserver.observe(el); });
+    }
+
+    // ---- Mobile nav overlay ----
+    var navToggle = document.getElementById("nav-toggle");
+    var navMenu = document.getElementById("nav-menu");
+
+    function closeMobileNav() {
+      navToggle.setAttribute("aria-expanded", "false");
+      navMenu.classList.remove("is-open");
+      document.body.classList.remove("nav-open");
+    }
+
+    navToggle.addEventListener("click", function () {
+      var isOpen = navMenu.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+      document.body.classList.toggle("nav-open", isOpen);
+    });
+
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMobileNav();
+    });
   })();
 </script>
 

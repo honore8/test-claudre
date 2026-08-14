@@ -43,6 +43,68 @@ The page is a single scroll, in this order:
 7. **Request an Invitation** — the fully built form (see below).
 8. **Footer** — event name, date, city, and a mailto contact line.
 
+## UX layer (added in the second design pass)
+
+A modern-editorial interaction layer sits on top of the structure above,
+built with plain CSS transitions/keyframes and a small vanilla-JS file
+inlined at the bottom of `index.html` (no framework, no build step, no new
+dependency):
+
+- **Fixed nav** — a slim top bar (comb mark + "The Salon", nav links,
+  "Request an Invitation" as a hairline button) that stays transparent over
+  the hero and gains a solid background + hairline bottom border once the
+  page scrolls past ~40px, tracked in JS by toggling a single `.is-scrolled`
+  class. On screens ≤720px it collapses to a hamburger (`#nav-toggle`) that
+  opens a full-screen hairline-divided menu; `Escape` or clicking a link
+  closes it.
+- **Scroll progress** — a 2px hairline at the very top of the viewport that
+  fills left-to-right as the page is read (`transform: scaleX()`, updated
+  on scroll via `requestAnimationFrame` so it never runs more than once per
+  frame).
+- **Active-section nav state** — an `IntersectionObserver` watches `#idea`,
+  `#acts` and `#invitation` and underlines the matching nav link as each
+  section crosses the middle of the viewport.
+- **Scroll-reveal** — any element with a `data-reveal` attribute starts
+  faded/lowered and animates to its resting state the first time it enters
+  view (`IntersectionObserver`, one-shot — it unobserves after revealing).
+  The three Act cards stagger via a `--delay` custom property so they
+  cascade in left-to-right rather than popping in together.
+- **Hero entrance** — the hero's own elements (eyebrow, "Convened by…",
+  comb, taglines, Register button, scroll cue) fade/rise in on page load
+  in sequence via `animation-delay`, driven by the same `--delay` pattern
+  as the act cards — no JS needed for this part, pure CSS.
+- **Ghost act numerals** — a large, very-low-opacity (`0.06`) "I" / "II" /
+  "III" sits behind each Act card's copy (`--color-blue`, no gradient — a
+  flat, quiet layering device, purely typographic).
+- **Comb-motif divider** — a small inline SVG of evenly-spaced vertical
+  hairlines (an abstraction of the comb's own teeth) replaces the plain
+  `<hr>` between the Speakers / Founding Cultural Partners / Programme
+  placeholder sections, tying the page's rhythm back to the hero mark
+  instead of using a generic rule.
+- **Back-to-top** — a small hairline square, bottom-right, fades in once
+  you've scrolled past ~60% of the viewport height.
+- **`prefers-reduced-motion: reduce`** is fully respected: every animation,
+  transition and `scroll-behavior: smooth` is disabled and all `data-reveal`
+  / hero-entrance elements are shown in their resting state immediately.
+
+None of this introduces a color, gradient, shadow or new font — it's all
+built from `design-system/tokens.css` values and plain opacity/transform
+motion, which is what "quiet luxury" motion looks like: confident and
+inevitable, not flashy.
+
+### Bug fixed in this pass: the comb was rendering black, not blue
+
+The first version of this page loaded the comb via
+`<img src="../design-system/comb-placeholder.svg">`. An `<img>` reference to
+an external SVG **cannot** inherit `currentColor` from the host page's CSS —
+the SVG resolves `fill="currentColor"` against its own document's initial
+`color` value, which is black. The comb was silently rendering solid black
+everywhere on this page instead of Bluemind Blue. Fixed by inlining the
+`<svg>…</svg>` markup directly in `index.html` (in the hero, and a smaller
+copy in the nav mark) so it correctly inherits `color: var(--color-blue)`
+from its parent. If you add the comb anywhere else on this page, inline it
+rather than referencing it with `<img src="…">`.
+
 ## The "(to be announced)" sections
 
 Speakers, Founding Cultural Partners and Programme are intentionally
