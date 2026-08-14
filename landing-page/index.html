@@ -53,36 +53,37 @@
 <main id="main">
 
   <!-- ============================= HERO ============================= -->
-  <section class="hero" id="top">
-    <p class="eyebrow hero-kicker hero-in" style="--delay:0">The Salon</p>
-    <p class="hero-convened hero-in" style="--delay:1">Convened by Bluemind Foundation</p>
+  <!-- Monumental comb crop: an original silhouette (rectangle minus a large
+       circle, plus tapered teeth) — not traced from any reference image.
+       The concave "hollow" is the circle's bite into the rectangle's corner. -->
+  <section class="hero hero-v2" id="top">
+    <div class="hero-v2-comb-wrap" aria-hidden="true">
+      <svg class="hero-v2-comb" viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMin slice">
+        <g fill="currentColor">
+          <path fill-rule="evenodd" d="
+            M 760,-200 L 1500,-200 L 1500,470 L 760,470 Z
+            M 1090,10 m -350,0 a 350,350 0 1,0 700,0 a 350,350 0 1,0 -700,0
+          "/>
+          <path d="
+            M795,470 L805,900 L860,900 L870,470 Z
+            M905,470 L915,900 L970,900 L980,470 Z
+            M1015,470 L1025,900 L1080,900 L1090,470 Z
+            M1125,470 L1135,900 L1190,900 L1200,470 Z
+            M1235,470 L1245,900 L1300,900 L1310,470 Z
+          "/>
+        </g>
+      </svg>
+    </div>
 
-    <svg class="hero-comb hero-in" style="--delay:2" viewBox="0 0 240 320" role="img" aria-label="THE SALON comb symbol (placeholder)">
-      <g fill="currentColor">
-        <rect x="20" y="30" width="200" height="24" rx="12"/>
-        <path d="M24.11,54 L28.11,297 A3,3 0 0 0 34.11,297 L38.11,54 Z"/>
-        <path d="M46.33,54 L50.33,297 A3,3 0 0 0 56.33,297 L60.33,54 Z"/>
-        <path d="M68.56,54 L72.56,297 A3,3 0 0 0 78.56,297 L82.56,54 Z"/>
-        <path d="M90.78,54 L94.78,297 A3,3 0 0 0 100.78,297 L104.78,54 Z"/>
-        <path d="M113.00,54 L117.00,297 A3,3 0 0 0 123.00,297 L127.00,54 Z"/>
-        <path d="M135.22,54 L139.22,297 A3,3 0 0 0 145.22,297 L149.22,54 Z"/>
-        <path d="M157.44,54 L161.44,297 A3,3 0 0 0 167.44,297 L171.44,54 Z"/>
-        <path d="M179.67,54 L183.67,297 A3,3 0 0 0 189.67,297 L193.67,54 Z"/>
-        <path d="M201.89,54 L205.89,297 A3,3 0 0 0 211.89,297 L215.89,54 Z"/>
-      </g>
-    </svg>
-
-    <p class="hero-lines font-display hero-in" style="--delay:3">
-      <span class="line">Shaped by Africa. Open to the World.</span>
-      <span class="line">Where Relationships Become Infrastructure.</span>
-    </p>
-
-    <a class="btn hero-cta hero-in" style="--delay:4" href="#invitation" data-nav>Register</a>
-
-    <a class="scroll-cue hero-in" style="--delay:5" href="#idea" aria-label="Scroll to explore">
-      <span class="scroll-cue-line" aria-hidden="true"></span>
-      Scroll
-    </a>
+    <div class="hero-v2-content">
+      <h1 class="hero-v2-title hero-in" style="--delay:0">
+        THE<br><span class="ls">S</span><span class="ls">A</span><span class="ls lw">L</span><span class="ls">O</span><span class="ls">N</span>
+      </h1>
+      <p class="hero-v2-convened hero-in" style="--delay:1">Convened by Bluemind Foundation</p>
+      <p class="hero-v2-date hero-in" style="--delay:2">September 17, 2026 · New York</p>
+      <p class="hero-v2-invite hero-in" style="--delay:3">By invitation only</p>
+      <a class="btn hero-v2-cta hero-in" style="--delay:4" href="#invitation" data-nav>Request an Invitation</a>
+    </div>
   </section>
 
   <!-- ============================= THE IDEA ============================= -->
@@ -187,67 +188,117 @@
     </div>
   </section>
 
-  <!-- ============================= REQUEST AN INVITATION ============================= -->
-  <section id="invitation">
-    <div class="wrap">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow">Request an Invitation</p>
-      </div>
+  <!-- ============================= REQUEST AN INVITATION — multi-step flow ============================= -->
+  <section id="invitation" class="invitation-flow">
+    <div class="wrap flow-shell" data-reveal>
 
-      <p class="invitation-intro" data-reveal>
-        THE SALON by Bluemind Foundation is an invitation-only gathering.
-        Attendance is intentionally limited to approximately 50 participants
-        to foster meaningful conversations among leaders from government,
-        philanthropy, research, business, media, the arts and civil society.
-        If you believe you should be part of this inaugural edition, we would
-        be delighted to hear from you.
-      </p>
+      <div class="flow-progress" aria-hidden="true"><span id="flow-progress-bar"></span></div>
 
       <form id="invitation-form" action="mailto:invitations@bluemindfoundation.org" method="get" novalidate>
+        <div class="flow-steps">
 
-        <!-- Your Information -->
-        <fieldset>
-          <legend>Your Information</legend>
-          <div class="field-grid">
-            <div class="field">
-              <label for="first-name">First Name</label>
-              <input type="text" id="first-name" name="first_name" required autocomplete="given-name">
-            </div>
-            <div class="field">
-              <label for="last-name">Last Name</label>
-              <input type="text" id="last-name" name="last_name" required autocomplete="family-name">
-            </div>
-            <div class="field">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" required autocomplete="email">
-            </div>
-            <div class="field">
-              <label for="organization">Organization</label>
-              <input type="text" id="organization" name="organization" required autocomplete="organization">
-            </div>
-            <div class="field">
-              <label for="role">Role / Title</label>
-              <input type="text" id="role" name="role" required autocomplete="organization-title">
-            </div>
-            <div class="field">
-              <label for="linkedin">LinkedIn Profile <span class="hint">(optional, but encouraged)</span></label>
-              <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/…">
+          <!-- Step 0 — intro -->
+          <div class="step is-active" data-step="0">
+            <p class="eyebrow">Request an Invitation</p>
+            <p class="step-copy">
+              THE SALON by Bluemind Foundation is an invitation-only gathering.
+              Attendance is intentionally limited to approximately 50 participants
+              to foster meaningful conversations among leaders from government,
+              philanthropy, research, business, media, the arts and civil society.
+              If you believe you should be part of this inaugural edition, we
+              would be delighted to hear from you.
+            </p>
+            <div class="step-actions">
+              <button type="button" class="btn step-next">Begin</button>
             </div>
           </div>
-        </fieldset>
 
-        <!-- About You -->
-        <fieldset>
-          <legend>About You</legend>
-
-          <div class="field">
-            <label for="motivation">Why would you like to join THE SALON by Bluemind Foundation? <span class="hint">(Maximum 300 words.)</span></label>
-            <textarea id="motivation" name="motivation" required aria-describedby="motivation-count"></textarea>
-            <p class="word-count" id="motivation-count">0 / 300 words</p>
+          <!-- Step 1 — name -->
+          <div class="step" data-step="1">
+            <p class="step-q">What's your name?</p>
+            <div class="step-fields">
+              <div class="field">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first_name" required autocomplete="given-name">
+              </div>
+              <div class="field">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last_name" required autocomplete="family-name">
+              </div>
+            </div>
+            <div class="step-actions">
+              <button type="button" class="step-back">Back</button>
+              <button type="button" class="btn step-next">Continue</button>
+            </div>
           </div>
 
-          <div class="field full">
-            <p class="group-label">How did you hear about THE SALON by Bluemind Foundation?</p>
+          <!-- Step 2 — email -->
+          <div class="step" data-step="2">
+            <p class="step-q">What's your email address?</p>
+            <div class="step-fields">
+              <div class="field full">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+              </div>
+            </div>
+            <div class="step-actions">
+              <button type="button" class="step-back">Back</button>
+              <button type="button" class="btn step-next">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 3 — organization / role -->
+          <div class="step" data-step="3">
+            <p class="step-q">Where do you work, and in what role?</p>
+            <div class="step-fields">
+              <div class="field">
+                <label for="organization">Organization</label>
+                <input type="text" id="organization" name="organization" required autocomplete="organization">
+              </div>
+              <div class="field">
+                <label for="role">Role / Title</label>
+                <input type="text" id="role" name="role" required autocomplete="organization-title">
+              </div>
+            </div>
+            <div class="step-actions">
+              <button type="button" class="step-back">Back</button>
+              <button type="button" class="btn step-next">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 4 — LinkedIn (optional) -->
+          <div class="step" data-step="4">
+            <p class="step-q">Care to share your LinkedIn profile? <span class="hint">(optional, but encouraged)</span></p>
+            <div class="step-fields">
+              <div class="field full">
+                <label for="linkedin">LinkedIn Profile</label>
+                <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/…">
+              </div>
+            </div>
+            <div class="step-actions">
+              <button type="button" class="step-back">Back</button>
+              <button type="button" class="btn step-next">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 5 — motivation -->
+          <div class="step" data-step="5">
+            <p class="step-q">Why would you like to join THE SALON by Bluemind Foundation? <span class="hint">(Maximum 300 words.)</span></p>
+            <div class="step-fields">
+              <div class="field full">
+                <textarea id="motivation" name="motivation" required aria-describedby="motivation-count"></textarea>
+                <p class="word-count" id="motivation-count">0 / 300 words</p>
+              </div>
+            </div>
+            <div class="step-actions">
+              <button type="button" class="step-back">Back</button>
+              <button type="button" class="btn step-next">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 6 — how did you hear -->
+          <div class="step" data-step="6">
+            <p class="step-q">How did you hear about THE SALON by Bluemind Foundation?</p>
             <div class="option-list columns" role="radiogroup" aria-label="How did you hear about THE SALON">
               <label class="option"><input type="radio" name="heard_about" value="Through Bluemind Foundation" required> Through Bluemind Foundation</label>
               <label class="option"><input type="radio" name="heard_about" value="Through Marie-Alix de Putter"> Through Marie-Alix de Putter</label>
@@ -265,10 +316,15 @@
               <label for="heard-other-text">Please specify</label>
               <input type="text" id="heard-other-text" name="heard_about_other">
             </div>
+            <div class="step-actions">
+              <button type="button" class="step-back">Back</button>
+              <button type="button" class="btn step-next">Continue</button>
+            </div>
           </div>
 
-          <div class="field full">
-            <p class="group-label">How are you connected to THE SALON by Bluemind Foundation?</p>
+          <!-- Step 7 — how connected -->
+          <div class="step" data-step="7">
+            <p class="step-q">How are you connected to THE SALON by Bluemind Foundation?</p>
             <div class="option-list columns">
               <label class="option"><input type="checkbox" name="connection" value="Government"> Government</label>
               <label class="option"><input type="checkbox" name="connection" value="Philanthropy"> Philanthropy</label>
@@ -283,40 +339,67 @@
               <label for="connection-other-text">Please specify</label>
               <input type="text" id="connection-other-text" name="connection_other">
             </div>
-          </div>
-        </fieldset>
-
-        <!-- Become a Founding Contributor -->
-        <fieldset>
-          <legend>Become a Founding Contributor (Optional)</legend>
-
-          <p class="subfields-note">Is there someone you believe should also be in the room?</p>
-
-          <div class="field-grid">
-            <div class="field">
-              <label for="ref-first-name">First Name</label>
-              <input type="text" id="ref-first-name" name="referral_first_name">
-            </div>
-            <div class="field">
-              <label for="ref-last-name">Last Name</label>
-              <input type="text" id="ref-last-name" name="referral_last_name">
-            </div>
-            <div class="field">
-              <label for="ref-organization">Organization</label>
-              <input type="text" id="ref-organization" name="referral_organization">
-            </div>
-            <div class="field">
-              <label for="ref-role">Role / Title</label>
-              <input type="text" id="ref-role" name="referral_role">
-            </div>
-            <div class="field full">
-              <label for="ref-email">Email Address <span class="hint">(if known)</span></label>
-              <input type="email" id="ref-email" name="referral_email">
+            <div class="step-actions">
+              <button type="button" class="step-back">Back</button>
+              <button type="button" class="btn step-next">Continue</button>
             </div>
           </div>
 
-          <div class="field full">
-            <p class="group-label">How would you most like to contribute to THE SALON by Bluemind Foundation?</p>
+          <!-- Step 8 — founding contributor branch -->
+          <div class="step" data-step="8">
+            <p class="step-q">Is there someone you believe should also be in the room? <span class="hint">(optional)</span></p>
+            <div class="step-actions branch">
+              <button type="button" class="step-back">Back</button>
+              <button type="button" class="btn btn-ghost step-goto" data-goto="11">No — skip this</button>
+              <button type="button" class="btn step-goto" data-goto="9">Yes — nominate someone</button>
+            </div>
+          </div>
+
+          <!-- Step 9 — referral name -->
+          <div class="step" data-step="9">
+            <p class="step-q">Who should we know about?</p>
+            <div class="step-fields">
+              <div class="field">
+                <label for="ref-first-name">First Name</label>
+                <input type="text" id="ref-first-name" name="referral_first_name">
+              </div>
+              <div class="field">
+                <label for="ref-last-name">Last Name</label>
+                <input type="text" id="ref-last-name" name="referral_last_name">
+              </div>
+            </div>
+            <div class="step-actions">
+              <button type="button" class="step-back">Back</button>
+              <button type="button" class="btn step-next">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 10 — referral org/role/email -->
+          <div class="step" data-step="10">
+            <p class="step-q">Where are they, and in what role?</p>
+            <div class="step-fields">
+              <div class="field">
+                <label for="ref-organization">Organization</label>
+                <input type="text" id="ref-organization" name="referral_organization">
+              </div>
+              <div class="field">
+                <label for="ref-role">Role / Title</label>
+                <input type="text" id="ref-role" name="referral_role">
+              </div>
+              <div class="field full">
+                <label for="ref-email">Email Address <span class="hint">(if known)</span></label>
+                <input type="email" id="ref-email" name="referral_email">
+              </div>
+            </div>
+            <div class="step-actions">
+              <button type="button" class="step-back">Back</button>
+              <button type="button" class="btn step-next" data-goto="11">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 11 — how would you contribute -->
+          <div class="step" data-step="11">
+            <p class="step-q">How would you most like to contribute to THE SALON by Bluemind Foundation?</p>
             <div class="option-list">
               <label class="option"><input type="checkbox" name="contribute" value="Attend as a participant"> Attend as a participant</label>
               <label class="option"><input type="checkbox" name="contribute" value="Introduce a speaker or moderator"> Introduce a speaker or moderator</label>
@@ -332,27 +415,34 @@
               <label for="contribute-other-text">Please specify</label>
               <input type="text" id="contribute-other-text" name="contribute_other">
             </div>
+            <div class="step-actions">
+              <button type="button" class="step-back">Back</button>
+              <button type="button" class="btn step-next">Continue</button>
+            </div>
           </div>
-        </fieldset>
 
-        <!-- Consent + submit -->
-        <div class="consent">
-          <input type="checkbox" id="consent" name="consent" required>
-          <label for="consent">
-            I understand that, due to the intentionally limited capacity of
-            THE SALON, submitting this request does not guarantee an invitation.
-          </label>
+          <!-- Step 12 — consent + submit -->
+          <div class="step" data-step="12">
+            <p class="step-q">Almost there.</p>
+            <div class="consent">
+              <input type="checkbox" id="consent" name="consent" required>
+              <label for="consent">
+                I understand that, due to the intentionally limited capacity of
+                THE SALON, submitting this request does not guarantee an invitation.
+              </label>
+            </div>
+            <p class="form-closing font-display">
+              Thank you for your interest in THE SALON. Invitations will be
+              extended on a rolling basis as we thoughtfully curate the
+              inaugural gathering.
+            </p>
+            <div class="step-actions">
+              <button type="button" class="step-back">Back</button>
+              <button class="btn" type="submit">Request an Invitation</button>
+            </div>
+          </div>
+
         </div>
-
-        <div class="form-submit">
-          <p class="form-closing font-display">
-            Thank you for your interest in THE SALON. Invitations will be
-            extended on a rolling basis as we thoughtfully curate the
-            inaugural gathering.
-          </p>
-          <button class="btn" type="submit">Request an Invitation</button>
-        </div>
-
       </form>
     </div>
   </section>
@@ -424,6 +514,109 @@
     wireOther('input[name="connection"]', "connection-other-field", "connection-other-text");
     wireOther('input[name="contribute"]', "contribute-other-field", "contribute-other-text");
 
+    // ---- Multi-step "Request an Invitation" flow ----
+    var flowForm = document.getElementById("invitation-form");
+    var progressBar = document.getElementById("flow-progress-bar");
+    var LAST_STEP = 12;
+    var stepHistory = [0];
+
+    function stepEls() { return flowForm.querySelectorAll(".step"); }
+    function stepByIndex(i) { return flowForm.querySelector('.step[data-step="' + i + '"]'); }
+    function activeStep() { return flowForm.querySelector(".step.is-active"); }
+
+    function updateProgress(index) {
+      if (!progressBar) return;
+      var pct = Math.min(100, Math.round((index / LAST_STEP) * 100));
+      progressBar.style.transform = "scaleX(" + (pct / 100) + ")";
+    }
+
+    function focusFirstField(stepEl) {
+      if (reduceMotion) {
+        var f = stepEl.querySelector("input, textarea, button");
+        if (f) f.focus({ preventScroll: true });
+        return;
+      }
+      window.setTimeout(function () {
+        var f = stepEl.querySelector('input:not([type="hidden"]), textarea');
+        if (f) { f.focus({ preventScroll: true }); }
+      }, 250);
+    }
+
+    function goToStep(targetIndex) {
+      var current = activeStep();
+      var target = stepByIndex(targetIndex);
+      if (!target || target === current) return;
+      if (current) current.classList.remove("is-active");
+      target.classList.add("is-active");
+      stepHistory.push(targetIndex);
+      updateProgress(targetIndex);
+      focusFirstField(target);
+    }
+
+    function validateStep(stepEl) {
+      var invalids = stepEl.querySelectorAll("input:invalid, textarea:invalid, select:invalid");
+      if (invalids.length) {
+        invalids[0].reportValidity();
+        return false;
+      }
+      return true;
+    }
+
+    function handleNext(btn) {
+      var current = activeStep();
+      if (!current) return;
+      if (current.dataset.step !== "0" && !validateStep(current)) return;
+      var explicitGoto = btn.dataset.goto ? parseInt(btn.dataset.goto, 10) : null;
+      var target = explicitGoto !== null ? explicitGoto : parseInt(current.dataset.step, 10) + 1;
+      goToStep(target);
+    }
+
+    function handleBack() {
+      if (stepHistory.length <= 1) return;
+      stepHistory.pop();
+      var prevIndex = stepHistory[stepHistory.length - 1];
+      var current = activeStep();
+      var prevEl = stepByIndex(prevIndex);
+      if (current) current.classList.remove("is-active");
+      prevEl.classList.add("is-active");
+      updateProgress(prevIndex);
+      focusFirstField(prevEl);
+    }
+
+    if (flowForm) {
+      flowForm.querySelectorAll(".step-next").forEach(function (btn) {
+        btn.addEventListener("click", function () { handleNext(btn); });
+      });
+      flowForm.querySelectorAll(".step-goto").forEach(function (btn) {
+        btn.addEventListener("click", function () { goToStep(parseInt(btn.dataset.goto, 10)); });
+      });
+      flowForm.querySelectorAll(".step-back").forEach(function (btn) {
+        btn.addEventListener("click", handleBack);
+      });
+
+      // Enter key advances on single-line inputs (not textareas, so multi-line entry still works)
+      flowForm.querySelectorAll('.step input[type="text"], .step input[type="email"], .step input[type="url"]').forEach(function (input) {
+        input.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            var btn = input.closest(".step").querySelector(".step-next");
+            if (btn) btn.click();
+          }
+        });
+      });
+
+      // Require consent before the final mailto submission goes through
+      flowForm.addEventListener("submit", function (e) {
+        var consent = document.getElementById("consent");
+        if (consent && !consent.checkValidity()) {
+          e.preventDefault();
+          consent.reportValidity();
+        }
+      });
+
+      updateProgress(0);
+    }
+
     // ---- Smooth scroll for every in-page anchor (nav, hero CTA, scroll cue, back-to-top) ----
     var supportsSmoothScroll = "scrollBehavior" in document.documentElement.style;
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
@@ -441,7 +634,7 @@
 
     // ---- Fixed nav: solid background once scrolled past the hero, progress bar, back-to-top ----
     var nav = document.getElementById("site-nav");
-    var progressBar = document.getElementById("scroll-progress-bar");
+    var scrollProgressBar = document.getElementById("scroll-progress-bar");
     var backToTop = document.getElementById("back-to-top");
     var ticking = false;
 
@@ -452,7 +645,7 @@
 
       nav.classList.toggle("is-scrolled", scrollY > 40);
       backToTop.classList.toggle("is-visible", scrollY > window.innerHeight * 0.6);
-      progressBar.style.transform = "scaleX(" + progress + ")";
+      scrollProgressBar.style.transform = "scaleX(" + progress + ")";
       ticking = false;
     }
 

@@ -9,6 +9,86 @@ It is one of five parallel workstreams building a shared visual-identity
 system in this repository. It consumes the shared design system and does
 not redefine any of it.
 
+## Hero v2 — monumental comb, simplified content (design review pass)
+
+Following design review, the hero was rebuilt from the earlier centered,
+small-comb-on-white treatment to a full-bleed Bluemind Blue composition:
+
+- **The comb** is now monumental — a large, cropped, original silhouette
+  (not traced from any reference image) bleeding off the top and right
+  edges: a rectangle with a large circle subtracted from its corner
+  (creating the concave "hollow"), plus straight tapered teeth below. It's
+  built as one `<svg viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMin
+  slice">` covering the whole hero (`.hero-v2-comb-wrap { inset: 0 }`), so
+  it scales to cover any viewport size while keeping the circle circular
+  (never stretched into an ellipse) and staying anchored to the top-right.
+  There is deliberately **no interior cutout/logo shape** in the handle —
+  a flat, solid mass with just the one hollow.
+- **Content was cut to exactly four lines**, per review: "THE SALON",
+  "Convened by Bluemind Foundation", the date/city (in a new ochre accent,
+  see below), "By invitation only". The earlier "Where Relationships
+  Become Infrastructure." tagline was removed entirely — nothing replaces
+  it.
+- **One CTA, one label**: the button reads "Request an Invitation"
+  everywhere it appears (hero, nav) — no more "Register" vs "Request an
+  Invitation" inconsistency.
+- **Typographic adjustments**: extra spacing was added between the final
+  "N" of SALON and the comb's hollow (`padding-right: 0.12em` on the
+  title), and between "A" and "L" (`.lw { margin-left: 0.05em }`), which
+  were sitting too close at this scale.
+- **New accent — ochre** (`--color-ochre: #c6883e`, defined locally in
+  this file's `:root`, not in the shared `design-system/tokens.css`): used
+  only for the event date, per explicit art-direction request. This is a
+  deliberate creative decision, not a placeholder like the blue hex/font/
+  comb are — but it's scoped to this page only for now, since the design
+  review asked to work on the landing page before rolling this direction
+  out to the rest of the system.
+
+### Typographic exploration: O+N ligature (not enabled by default)
+
+One further exploration was requested: a subtle visual connection between
+the "O" and "N" of SALON, without touching any other letterform. This
+exists as ready-to-use CSS but is **off by default** — to enable it, add
+`class="ls join-on"` to the "O" span in the `<h1 class="hero-v2-title">`
+markup (it already has `class="ls"`; just add `join-on`). The rule
+`.hero-v2-title .join-on + .ls { margin-left: -0.06em; }` pulls the very
+next letter (N) toward it. Tested at -0.06em, the O's bowl and N's stem
+touch subtly without overlapping awkwardly — see the design review chat
+for a rendered comparison.
+
+### Vertical micro-position
+
+Two variants of the whole hero content block shifted vertically (±28px)
+were rendered for review, to test optical alignment against the comb's
+hollow. The shipped version keeps the original (flex-centered) position;
+adjust by adding `transform: translateY(±28px)` to `.hero-v2-content` if
+the raised/lowered variant is preferred instead.
+
+## Request an Invitation — multi-step flow (SurveyMonkey/Typeform-style)
+
+The form was rebuilt from one long single-page form into a 13-step guided
+flow (steps `data-step="0"` through `"12"`), per review request for
+SurveyMonkey/Typeform-style fluidity:
+
+- One question (or a couple of tightly related fields) per screen, a thin
+  progress bar (`.flow-progress`) that fills as you advance, "Continue" /
+  "Back" controls, and Enter-to-advance on single-line text inputs.
+- All steps live in the same `<form>` with the exact same field
+  `name`s as before, stacked in one CSS grid cell (`.flow-steps`) so only
+  the active step is visible/interactive — nothing about the underlying
+  `mailto:` submission mechanism changed.
+- Each step validates its own required fields on "Continue" (via
+  `reportValidity()`) before advancing; the browser's automatic
+  whole-form validation stays suppressed (`novalidate`) so an earlier
+  hidden step's empty field can never block a later step.
+- **Conditional branch**: step 8 ("Is there someone you believe should
+  also be in the room?") offers "Yes — nominate someone" (→ step 9,
+  referral fields) or "No — skip this" (→ step 11, contribution
+  question) via `data-goto` on the step buttons. "Back" correctly
+  un-skips using a navigation history stack, not a blind `index - 1`.
+- The final step still requires the capacity-disclaimer consent checkbox
+  before the `mailto:` submission is allowed to proceed.
+
 ## Files
 
 ```
