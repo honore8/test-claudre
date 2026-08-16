@@ -75,24 +75,32 @@ subtracted from its corner) that was used before this artwork arrived —
 if you see any reference to a "hollow" or "rectangle minus a circle" left
 over anywhere, it's stale from that earlier pass.
 
-**Its fill, `#d88d63` (a warm terracotta), is preserved exactly as
-delivered in the source file — not recoloured to `currentColor` or
-white.** This was a deliberate choice: the file's `style="fill:#d88d63"`
-on every path reads as an intentional designer decision, not a
-placeholder color, so it wasn't overridden. If Bluemind wants it in a
-different color, change the three `fill:#d88d63` occurrences in
-`index.html`.
+**Color**: the source file's own fill is `#d88d63` (a warm terracotta).
+The first pass on this page preserved that exact color, on the reasoning
+that it read as a deliberate designer choice. The following round of
+review asked for it in white instead, to match the earlier reference
+visual — so all three `<path>` elements now use `style="fill:currentColor…"`
+and `.hero-v2-comb-wrap { color: var(--color-white) }` sets it. If a
+future review wants the terracotta back (or any other color), it's the
+same three `fill:` occurrences in `index.html` plus the one `color` line
+in `styles.css`.
 
-**Sizing**: `.hero-v2-comb-wrap` uses `aspect-ratio: 275.75048 /
+**Sizing and crop**: `.hero-v2-comb-wrap` uses `aspect-ratio: 275.75048 /
 607.53936` (the artwork's own proportions from its `viewBox`) plus a
 `width`, rather than an independent `width` + `height` box — this
 guarantees the real artwork is never stretched or arbitrarily cropped
-internally (the SVG itself uses `preserveAspectRatio="xMidYMin meet"`, so
-it always renders whole and undistorted inside its box). All the "bleed
-off the edge" effect comes from *positioning* that box partly outside the
-hero via negative `top`/`right`, not from cropping inside the SVG —
-different `top`/`right`/`width` values for mobile (base rules) vs.
-`≥900px` (desktop override).
+*internally* (the SVG itself uses `preserveAspectRatio="xMidYMin meet"`,
+so it always renders whole and undistorted inside its box). All the
+"bleed off the edge" / monumental-crop effect comes from *positioning*
+that box mostly outside the hero via negative `top`/`right` — per review,
+this is now a much larger, tighter crop than the first integration pass
+(only a fragment of the artwork is visible within the frame, matching the
+reference visual), with separate tuned `top`/`right`/`width` values for
+mobile (base rules) vs. `≥900px` (desktop override). On mobile
+specifically, `right` has to stay pushed far enough out (`-30vw`) that the
+oversized shape doesn't visually collide with "Convened by Bluemind
+Foundation." to its left — if you make it larger still, check that
+overlap doesn't come back.
 
 **Do not give `.hero-v2-comb-wrap` both `inset` and an explicit
 `width`/`height` in the same rule** if you touch this again — `inset` sets

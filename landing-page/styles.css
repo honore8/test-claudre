@@ -172,10 +172,11 @@ section {
    not by cropping inside the SVG. */
 .hero-v2-comb-wrap {
   position: absolute;
-  top: -4vh;
-  right: -10vw;
-  width: 58vw;
+  top: -6vh;
+  right: -30vw;
+  width: 64vw;
   aspect-ratio: 275.75048 / 607.53936;
+  color: var(--color-white);
   pointer-events: none;
 }
 
@@ -719,9 +720,9 @@ footer {
   }
 
   .hero-v2-comb-wrap {
-    top: -5vh;
-    right: -4vw;
-    width: 30vw;
+    top: -10vh;
+    right: -8vw;
+    width: 46vw;
     bottom: auto;
     left: auto;
   }
