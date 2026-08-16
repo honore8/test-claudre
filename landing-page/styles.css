@@ -165,17 +165,18 @@ section {
   align-items: flex-end;
 }
 
-/* Sized with aspect-ratio (matching the artwork's own 275.75:607.54
-   proportions) rather than an independent width+height box — the real
-   artwork should never be stretched or arbitrarily cropped internally.
-   Bleed is achieved by positioning the box partly off the hero's edges,
-   not by cropping inside the SVG. */
+/* Sized with aspect-ratio (matching the artwork's own pre-cropped
+   139.07:420.37 viewBox) rather than an independent width+height box —
+   the artwork should never be stretched. This crop was baked into the
+   SVG itself by Landry (clip-paths), so unlike the first integration
+   pass, we mostly just scale it up large ("bien zoomé") and position it,
+   rather than composing the crop ourselves via CSS. */
 .hero-v2-comb-wrap {
   position: absolute;
-  top: -6vh;
-  right: -30vw;
-  width: 64vw;
-  aspect-ratio: 275.75048 / 607.53936;
+  top: -4vh;
+  right: -18vw;
+  width: 46vw;
+  aspect-ratio: 139.07036 / 420.37173;
   color: var(--color-white);
   pointer-events: none;
 }
@@ -720,9 +721,9 @@ footer {
   }
 
   .hero-v2-comb-wrap {
-    top: -10vh;
-    right: -8vw;
-    width: 46vw;
+    top: -6vh;
+    right: -6vw;
+    width: 30vw;
     bottom: auto;
     left: auto;
   }

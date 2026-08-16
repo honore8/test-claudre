@@ -65,42 +65,55 @@ short enough to just be scrolled. The only persistent UI element is
 
 ## Hero — the master visual comb
 
-The comb is Landry's **final master visual artwork** — a figure-with-
-raised-arms silhouette transitioning into an afro-pick spine and teeth —
-supplied as a real SVG and inlined verbatim in `index.html` (three
-`<path>` elements, exact coordinates from the source file, wrapped in the
-same `translate(-172.59999,-96.629739)` group the file shipped with). It
-replaced an earlier original placeholder shape (a rectangle with a circle
-subtracted from its corner) that was used before this artwork arrived —
-if you see any reference to a "hollow" or "rectangle minus a circle" left
-over anywhere, it's stale from that earlier pass.
+The comb went through three versions on this page — the current one
+(third) is Landry's **own pre-cropped export**, supplied directly as SVG
+and inlined verbatim in `index.html`:
+
+1. An original placeholder shape (a rectangle with a circle subtracted
+   from its corner, plus tapered teeth) — used before any real artwork
+   arrived. If you see a reference anywhere to a "hollow" or "rectangle
+   minus a circle," it's stale from this pass.
+2. Landry's full master-visual artwork (a figure-with-raised-arms
+   silhouette transitioning into an afro-pick spine and teeth), `viewBox
+   0 0 275.75048 607.53936`, cropped/positioned via this page's own CSS
+   (`.hero-v2-comb-wrap` offsets).
+3. **Current**: Landry supplied the SAME three paths already cropped —
+   `viewBox="0 0 139.07036 420.37173"`, with three `<clipPath>` elements
+   in `<defs>` (Inkscape's own export of a crop applied in the source
+   file) referenced by each path via `clip-path="url(#clipPath17/18/19)"`.
+   This is *their* crop, not one composed via CSS — the whole point of
+   this version was to use their exact framing, "en intégralité," rather
+   than us re-deciding where to cut it.
 
 **Color**: the source file's own fill is `#d88d63` (a warm terracotta).
-The first pass on this page preserved that exact color, on the reasoning
-that it read as a deliberate designer choice. The following round of
-review asked for it in white instead, to match the earlier reference
-visual — so all three `<path>` elements now use `style="fill:currentColor…"`
-and `.hero-v2-comb-wrap { color: var(--color-white) }` sets it. If a
-future review wants the terracotta back (or any other color), it's the
-same three `fill:` occurrences in `index.html` plus the one `color` line
-in `styles.css`.
+Preserved as-is in version 2 (read as a deliberate choice at the time),
+then explicitly changed to white in versions 2 and 3 per review — all
+three `<path>` elements use `style="fill:currentColor…"` and
+`.hero-v2-comb-wrap { color: var(--color-white) }` sets it. Change both
+the three `fill:` occurrences in `index.html` and the `color` line in
+`styles.css` together if a future review wants a different color.
 
-**Sizing and crop**: `.hero-v2-comb-wrap` uses `aspect-ratio: 275.75048 /
-607.53936` (the artwork's own proportions from its `viewBox`) plus a
-`width`, rather than an independent `width` + `height` box — this
-guarantees the real artwork is never stretched or arbitrarily cropped
-*internally* (the SVG itself uses `preserveAspectRatio="xMidYMin meet"`,
-so it always renders whole and undistorted inside its box). All the
-"bleed off the edge" / monumental-crop effect comes from *positioning*
-that box mostly outside the hero via negative `top`/`right` — per review,
-this is now a much larger, tighter crop than the first integration pass
-(only a fragment of the artwork is visible within the frame, matching the
-reference visual), with separate tuned `top`/`right`/`width` values for
-mobile (base rules) vs. `≥900px` (desktop override). On mobile
-specifically, `right` has to stay pushed far enough out (`-30vw`) that the
-oversized shape doesn't visually collide with "Convened by Bluemind
-Foundation." to its left — if you make it larger still, check that
-overlap doesn't come back.
+**Sizing**: `.hero-v2-comb-wrap` uses `aspect-ratio: 139.07036 /
+420.37173` (matching the *current* SVG's own `viewBox`, not the earlier
+275.75:607.54 one — update both together if the source file changes
+again) plus a `width`, rather than an independent `width` + `height` box.
+Since the crop is now baked into the SVG itself, this page's job is just
+to scale it up ("bien zoomé") and position it — `preserveAspectRatio=
+"xMidYMin meet"` on the `<svg>` means it always renders whole and
+undistorted, never stretched, inside whatever box `.hero-v2-comb-wrap`
+is given. Separate tuned `top`/`right`/`width` values for mobile (base
+rules) vs. `≥900px` (desktop override); on mobile, `right` has to stay
+pushed out far enough (`-18vw` currently) that the oversized shape
+doesn't collide with "Convened by Bluemind Foundation." to its left.
+
+**Known open question, not resolved**: at the current size/position there
+is a visible gap of plain blue between the diagonal wedge shape (near the
+top of the crop) and the teeth below it — i.e. the connecting spine
+doesn't read as continuous at this specific zoom. This might be exactly
+what the source crop looks like at any scale (nothing wrong), or it might
+mean a different width/position would show the connecting piece. Flagged
+to the client rather than adjusted unilaterally — check before assuming
+either way.
 
 **Do not give `.hero-v2-comb-wrap` both `inset` and an explicit
 `width`/`height` in the same rule** if you touch this again — `inset` sets
