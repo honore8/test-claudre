@@ -63,27 +63,42 @@ short enough to just be scrolled. The only persistent UI element is
   (thumb-reach, since most visitors will open this from a phone), which
   becomes a small discreet pill in the top-right corner at `≥900px`.
 
-## Hero — monumental comb
+## Hero — the master visual comb
 
-The comb is an original silhouette (not traced from any reference image):
-a rectangle with a large circle subtracted from its corner (creating the
-concave "hollow"), plus straight tapered teeth below — built as one
-`<svg viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMin slice">`. On
-desktop it covers the entire hero (`.hero-v2-comb-wrap { inset: 0 }` at
-`≥900px`) so the circle always stays circular regardless of viewport
-aspect ratio, cropped/anchored to the top-right. On mobile it's a smaller,
-separately-positioned corner accent (`top/right/width/height`, not
-`inset: 0`) so the composition doesn't try to force the same wide-aspect
-crop into a narrow portrait screen.
+The comb is Landry's **final master visual artwork** — a figure-with-
+raised-arms silhouette transitioning into an afro-pick spine and teeth —
+supplied as a real SVG and inlined verbatim in `index.html` (three
+`<path>` elements, exact coordinates from the source file, wrapped in the
+same `translate(-172.59999,-96.629739)` group the file shipped with). It
+replaced an earlier original placeholder shape (a rectangle with a circle
+subtracted from its corner) that was used before this artwork arrived —
+if you see any reference to a "hollow" or "rectangle minus a circle" left
+over anywhere, it's stale from that earlier pass.
 
-**Do not give `.hero-v2-comb-wrap` both an `inset` and an explicit
-`width`/`height` in the same rule** — `inset` sets all four offsets, which
-over-constrains the box and silently breaks the intended crop (this
-happened once already during review; the fix is documented inline in
-`styles.css`).
+**Its fill, `#d88d63` (a warm terracotta), is preserved exactly as
+delivered in the source file — not recoloured to `currentColor` or
+white.** This was a deliberate choice: the file's `style="fill:#d88d63"`
+on every path reads as an intentional designer decision, not a
+placeholder color, so it wasn't overridden. If Bluemind wants it in a
+different color, change the three `fill:#d88d63` occurrences in
+`index.html`.
 
-There is deliberately **no interior cutout/logo shape** in the comb's
-handle — a flat, solid mass with just the one hollow.
+**Sizing**: `.hero-v2-comb-wrap` uses `aspect-ratio: 275.75048 /
+607.53936` (the artwork's own proportions from its `viewBox`) plus a
+`width`, rather than an independent `width` + `height` box — this
+guarantees the real artwork is never stretched or arbitrarily cropped
+internally (the SVG itself uses `preserveAspectRatio="xMidYMin meet"`, so
+it always renders whole and undistorted inside its box). All the "bleed
+off the edge" effect comes from *positioning* that box partly outside the
+hero via negative `top`/`right`, not from cropping inside the SVG —
+different `top`/`right`/`width` values for mobile (base rules) vs.
+`≥900px` (desktop override).
+
+**Do not give `.hero-v2-comb-wrap` both `inset` and an explicit
+`width`/`height` in the same rule** if you touch this again — `inset` sets
+all four offsets at once and can silently override a `top`/`right` you
+meant to keep (this happened once during an earlier pass, when the
+wrapper still held the placeholder shape).
 
 ### Typographic details
 
@@ -92,19 +107,19 @@ handle — a flat, solid mass with just the one hollow.
 - **O+N ligature** (off by default): add `class="join-on"` to the "O" span
   to pull the "N" toward it (`.join-on + .ls { margin-left: -0.06em; }`) —
   a subtle touch between the O's bowl and the N's stem, not an overlap.
-- **Vertical micro-position**: add `transform: translateY(±28px)` to
-  `.hero-v2-content` to test the hero shifted up/down against the comb's
-  hollow, if the current (flex, bottom-anchored on mobile / centered on
-  desktop) position isn't preferred.
+- **Vertical micro-position**: `.hero-v2-content` already carries
+  `transform: translateY(-6vh)` (raises the whole block slightly, per
+  review) — adjust that value directly if it needs further tuning against
+  the comb artwork's position.
 
 ### Ochre — a new, deliberate accent
 
 `--color-ochre: #c6883e`, defined locally in this file's `:root` (not in
 the shared `design-system/tokens.css`), used only for the event date. This
-is **not a placeholder** like the blue hex/font/comb are — it's an
-explicit art-direction decision. It's scoped to this page only for now;
-promote it into the shared tokens if/when this direction rolls out to the
-rest of the system.
+is **not a placeholder** like the blue hex/font still are (the comb
+artwork is now final, per above) — it's an explicit art-direction
+decision. It's scoped to this page only for now; promote it into the
+shared tokens if/when this direction rolls out to the rest of the system.
 
 ## Request an Invitation — 5-step guided flow
 
@@ -164,10 +179,9 @@ except ochre (see above):
   stand in for Bluemind's real typeface. A separate `@import` in this
   file adds Fraunces weight 700 (for the monumental hero wordmark), since
   `tokens.css` only imports up to 600.
-- **The comb graphic** — an original placeholder silhouette, explicitly
-  not the real "Heal by Hair" artwork/master visual. Swap the SVG path
-  data once the final version is delivered; every place it's used in this
-  file references the same shape, so it's a single find-and-replace.
+- **The comb graphic** — final, not a placeholder. Landry's master visual
+  artwork (see "Hero — the master visual comb" above), fill color
+  preserved exactly as delivered.
 - **No gradients, shadows, or glossy effects, and no gimmick
   animation/effects** anywhere — only quiet fades/rises (`hero-in`,
   `data-reveal`) and simple opacity/transform transitions, all disabled
@@ -185,12 +199,16 @@ landing-page/
 ```
 
 `index.html` links `../design-system/tokens.css` directly, treated as a
-read-only input and never edited here. The comb SVG is inlined directly in
-`index.html` rather than referenced via `<img src="…design-system/comb-
-placeholder.svg">` — an `<img>` reference to an external SVG cannot
-inherit `currentColor` from the host page and would silently render black
-instead of Bluemind Blue (this bug existed in an earlier pass and was
-fixed by inlining).
+read-only input and never edited here. The comb SVG is inlined directly
+in `index.html` with its own fixed `#d88d63` fill — this page no longer
+references the shared `design-system/comb-placeholder.svg` at all (that
+placeholder is still used by the other four workstreams — poster,
+carousel, invitations, social-toolkit, event-experience/press-kit — which
+haven't received the final master visual yet). An earlier pass on this
+page did load the comb via `<img src="…design-system/comb-placeholder.svg">`,
+which silently rendered black instead of Bluemind Blue because an `<img>`
+reference to an external SVG can't inherit `currentColor` — fixed at the
+time by inlining, and inlining remains how the comb is included today.
 
 ## Previewing
 

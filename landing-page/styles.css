@@ -149,7 +149,7 @@ section {
 }
 
 /* ---- HERO v2 ----
-   Full-bleed Bluemind Blue, a monumental cropped comb bleeding off the
+   Full-bleed Bluemind Blue, the master visual comb artwork bled large off the
    top-right, and exactly four lines: THE SALON, Convened by Bluemind
    Foundation, the date (ochre), By invitation only. No tagline, no UNGA
    framing, no photography. */
@@ -165,13 +165,17 @@ section {
   align-items: flex-end;
 }
 
+/* Sized with aspect-ratio (matching the artwork's own 275.75:607.54
+   proportions) rather than an independent width+height box — the real
+   artwork should never be stretched or arbitrarily cropped internally.
+   Bleed is achieved by positioning the box partly off the hero's edges,
+   not by cropping inside the SVG. */
 .hero-v2-comb-wrap {
   position: absolute;
-  top: -2vh;
-  right: -14vw;
-  width: 82vw;
-  height: 34vh;
-  color: var(--color-white);
+  top: -4vh;
+  right: -10vw;
+  width: 58vw;
+  aspect-ratio: 275.75048 / 607.53936;
   pointer-events: none;
 }
 
@@ -714,14 +718,12 @@ footer {
     align-items: center;
   }
 
-  /* Full-hero coverage so the SVG's own preserveAspectRatio="slice" does
-     the cropping — a separately-sized box here previously caused a
-     mismatched aspect ratio that over-cropped and pushed the arch too
-     far right, closing the gap to "SALON" more than intended. */
   .hero-v2-comb-wrap {
-    inset: 0;
-    width: auto;
-    height: auto;
+    top: -5vh;
+    right: -4vw;
+    width: 30vw;
+    bottom: auto;
+    left: auto;
   }
 
   .hero-v2-content {
@@ -732,7 +734,7 @@ footer {
   }
 
   .hero-v2-title {
-    padding-right: 0.12em; /* air between the final "N" and the comb's hollow */
+    padding-right: 0.12em; /* air between the final "N" and the comb artwork */
   }
 
   .idea {
