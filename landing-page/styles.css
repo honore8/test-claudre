@@ -20,6 +20,21 @@
 */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&display=swap');
 
+/*
+  Lapidary No. 333 Bold — the real brand display face, supplied directly
+  as an OTF file and used for the "THE SALON" hero wordmark only. Not a
+  placeholder: this is the client's own asset. If/when this typeface is
+  adopted for other headings across the site, promote this @font-face
+  into design-system/tokens.css instead of duplicating it per page.
+*/
+@font-face {
+  font-family: 'Lapidary 333';
+  src: url('fonts/Lapidary333-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---- Layout primitives ---- */
 
 html {
@@ -165,18 +180,18 @@ section {
   align-items: flex-end;
 }
 
-/* Sized with aspect-ratio (matching the artwork's own pre-cropped
-   139.07:420.37 viewBox) rather than an independent width+height box —
-   the artwork should never be stretched. This crop was baked into the
-   SVG itself by Landry (clip-paths), so unlike the first integration
-   pass, we mostly just scale it up large ("bien zoomé") and position it,
-   rather than composing the crop ourselves via CSS. */
+/* Sized with aspect-ratio (matching the artwork's own 152.08:526.44
+   viewBox) rather than an independent width+height box — the artwork is
+   never stretched. This is a single continuous outline (the notch curve
+   flows straight into the teeth, no multi-path gap), with the notch on
+   its LEFT edge — positioned facing the text block, and its flat top/
+   right edges bleeding off the hero. */
 .hero-v2-comb-wrap {
   position: absolute;
-  top: -4vh;
-  right: -18vw;
-  width: 46vw;
-  aspect-ratio: 139.07036 / 420.37173;
+  top: 0;
+  right: -2vw;
+  width: 26vw;
+  aspect-ratio: 152.08364 / 526.43707;
   color: var(--color-white);
   pointer-events: none;
 }
@@ -201,7 +216,7 @@ section {
 }
 
 .hero-v2-title {
-  font-family: var(--font-display);
+  font-family: 'Lapidary 333', var(--font-display);
   font-weight: 700;
   font-size: clamp(54px, 16vw, 158px);
   line-height: 0.9;
@@ -721,9 +736,9 @@ footer {
   }
 
   .hero-v2-comb-wrap {
-    top: -6vh;
-    right: -6vw;
-    width: 30vw;
+    top: -2vh;
+    right: -1vw;
+    width: 22vw;
     bottom: auto;
     left: auto;
   }

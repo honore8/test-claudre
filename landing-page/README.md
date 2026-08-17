@@ -65,55 +65,52 @@ short enough to just be scrolled. The only persistent UI element is
 
 ## Hero — the master visual comb
 
-The comb went through three versions on this page — the current one
-(third) is Landry's **own pre-cropped export**, supplied directly as SVG
-and inlined verbatim in `index.html`:
+The comb went through four versions on this page. The current one
+(fourth) is Landry's **cleanest export** — a single continuous outline —
+supplied directly as SVG and inlined verbatim in `index.html`:
 
 1. An original placeholder shape (a rectangle with a circle subtracted
    from its corner, plus tapered teeth) — used before any real artwork
    arrived. If you see a reference anywhere to a "hollow" or "rectangle
    minus a circle," it's stale from this pass.
 2. Landry's full master-visual artwork (a figure-with-raised-arms
-   silhouette transitioning into an afro-pick spine and teeth), `viewBox
-   0 0 275.75048 607.53936`, cropped/positioned via this page's own CSS
-   (`.hero-v2-comb-wrap` offsets).
-3. **Current**: Landry supplied the SAME three paths already cropped —
-   `viewBox="0 0 139.07036 420.37173"`, with three `<clipPath>` elements
-   in `<defs>` (Inkscape's own export of a crop applied in the source
-   file) referenced by each path via `clip-path="url(#clipPath17/18/19)"`.
-   This is *their* crop, not one composed via CSS — the whole point of
-   this version was to use their exact framing, "en intégralité," rather
-   than us re-deciding where to cut it.
+   silhouette transitioning into an afro-pick spine and teeth, three
+   separate `<path>`s), `viewBox 0 0 275.75048 607.53936`, cropped/
+   positioned via this page's own CSS (`.hero-v2-comb-wrap` offsets).
+3. Landry's own pre-cropped export of that same artwork — the same three
+   paths, `viewBox 0 0 139.07036 420.37173`, each wrapped in a
+   `<clipPath>` (Inkscape's own crop export). This version had a visible
+   gap of plain blue between the top wedge and the teeth at the size we
+   were using it at — flagged to the client rather than patched
+   unilaterally, since it wasn't clear whether that was inherent to
+   their crop or a sizing issue on our end.
+4. **Current**: Landry supplied a completely different, single-path SVG
+   — `viewBox 0 0 152.08364 526.43707`, ONE continuous outline (no
+   `<clipPath>`, no multi-path seams). The notch/curve that reads as the
+   comb's "hollow" flows directly into the teeth with no gap — this
+   resolved the version-3 issue by construction, not by us tuning
+   position/size. The notch sits on the shape's LEFT edge (its top and
+   right edges are straight lines), so it's positioned facing the text
+   block, bleeding its flat top/right edges off the hero.
 
-**Color**: the source file's own fill is `#d88d63` (a warm terracotta).
-Preserved as-is in version 2 (read as a deliberate choice at the time),
-then explicitly changed to white in versions 2 and 3 per review — all
-three `<path>` elements use `style="fill:currentColor…"` and
-`.hero-v2-comb-wrap { color: var(--color-white) }` sets it. Change both
-the three `fill:` occurrences in `index.html` and the `color` line in
-`styles.css` together if a future review wants a different color.
+**Color**: the source files' own fill was `#d88d63` (a warm terracotta)
+in versions 2–3; version 4's source used `#333333` (likely just an
+Inkscape export default, not a meaningful color). All versions from the
+white-color request onward use `style="fill:currentColor"` on the path
+plus `.hero-v2-comb-wrap { color: var(--color-white) }` — change both
+together if a future review wants a different color.
 
-**Sizing**: `.hero-v2-comb-wrap` uses `aspect-ratio: 139.07036 /
-420.37173` (matching the *current* SVG's own `viewBox`, not the earlier
-275.75:607.54 one — update both together if the source file changes
-again) plus a `width`, rather than an independent `width` + `height` box.
-Since the crop is now baked into the SVG itself, this page's job is just
-to scale it up ("bien zoomé") and position it — `preserveAspectRatio=
-"xMidYMin meet"` on the `<svg>` means it always renders whole and
-undistorted, never stretched, inside whatever box `.hero-v2-comb-wrap`
-is given. Separate tuned `top`/`right`/`width` values for mobile (base
-rules) vs. `≥900px` (desktop override); on mobile, `right` has to stay
-pushed out far enough (`-18vw` currently) that the oversized shape
-doesn't collide with "Convened by Bluemind Foundation." to its left.
-
-**Known open question, not resolved**: at the current size/position there
-is a visible gap of plain blue between the diagonal wedge shape (near the
-top of the crop) and the teeth below it — i.e. the connecting spine
-doesn't read as continuous at this specific zoom. This might be exactly
-what the source crop looks like at any scale (nothing wrong), or it might
-mean a different width/position would show the connecting piece. Flagged
-to the client rather than adjusted unilaterally — check before assuming
-either way.
+**Sizing**: `.hero-v2-comb-wrap` uses `aspect-ratio: 152.08364 /
+526.43707` (the CURRENT (v4) SVG's own `viewBox` — update this alongside
+the SVG itself if Landry sends another version) plus a `width`, rather
+than an independent `width` + `height` box, so the artwork is never
+stretched (`preserveAspectRatio="xMidYMin meet"` on the `<svg>` handles
+this). Separate tuned `top`/`right`/`width` for mobile (base rules) vs.
+`≥900px` (desktop override) — both currently keep the shape close to its
+natural flush position (`top: 0`, `right` near `0`) since, unlike
+versions 2–3, there's no interesting internal crop left to compose via
+positioning; the "bleed" mostly reads through the flat top/right edges
+naturally leaving frame.
 
 **Do not give `.hero-v2-comb-wrap` both `inset` and an explicit
 `width`/`height` in the same rule** if you touch this again — `inset` sets
@@ -196,17 +193,32 @@ except ochre (see above):
 - **Colors** — `--color-blue` (`#14274E`, "Bluemind Blue") is a
   placeholder hex; swap it in `tokens.css` once Bluemind's real brand file
   arrives. Nothing on this page needs to change.
-- **Typography** — `--font-display` (Fraunces) and `--font-text` (Inter)
-  stand in for Bluemind's real typeface. A separate `@import` in this
-  file adds Fraunces weight 700 (for the monumental hero wordmark), since
-  `tokens.css` only imports up to 600.
+- **Typography** — `--font-text` (Inter) still stands in for Bluemind's
+  real body typeface; `--font-display` (Fraunces) still stands in
+  everywhere it's used (Idea, Acts, form questions, etc.) *except* the
+  hero wordmark, which now uses **Lapidary 333 Bold — the client's real
+  supplied typeface**, not a placeholder (see "The hero wordmark
+  typeface" below).
 - **The comb graphic** — final, not a placeholder. Landry's master visual
-  artwork (see "Hero — the master visual comb" above), fill color
-  preserved exactly as delivered.
+  artwork (see "Hero — the master visual comb" above; now on its 4th
+  supplied version), fill recolored to white per review.
 - **No gradients, shadows, or glossy effects, and no gimmick
   animation/effects** anywhere — only quiet fades/rises (`hero-in`,
   `data-reveal`) and simple opacity/transform transitions, all disabled
   under `prefers-reduced-motion: reduce`.
+
+## The hero wordmark typeface
+
+`fonts/Lapidary333-Bold.otf` is the client's own supplied font file
+(Lapidary No. 333 Bold), loaded via a page-local `@font-face` in
+`styles.css` and applied only to `.hero-v2-title` ("THE SALON"), with
+Fraunces as the fallback (`font-family: 'Lapidary 333', var(--font-
+display);`). Everything else on the page (Idea, Acts, form, footer)
+still uses Fraunces/Inter — this typeface hasn't been rolled out beyond
+the hero wordmark. If it should apply more broadly, add more `@font-face`
+weights as they're supplied and update the relevant selectors — don't
+just swap `--font-display` globally without confirming, since Fraunces
+elsewhere hasn't been reviewed against this typeface.
 
 ## Files
 
@@ -215,13 +227,15 @@ landing-page/
 ├── index.html            the page (semantic HTML, one long scroll)
 ├── styles.css             layout / component styles — imports the design system
 ├── README.md              this file
+├── fonts/
+│   └── Lapidary333-Bold.otf   client-supplied, hero wordmark only (see above)
 ├── preview-desktop.png     Playwright screenshot, 1440px viewport, full page
 └── preview-mobile.png      Playwright screenshot, 390px viewport, full page
 ```
 
 `index.html` links `../design-system/tokens.css` directly, treated as a
 read-only input and never edited here. The comb SVG is inlined directly
-in `index.html` with its own fixed `#d88d63` fill — this page no longer
+in `index.html` with `fill:currentColor` (white) — this page no longer
 references the shared `design-system/comb-placeholder.svg` at all (that
 placeholder is still used by the other four workstreams — poster,
 carousel, invitations, social-toolkit, event-experience/press-kit — which
